@@ -12,7 +12,7 @@
   "voice_reference": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/source-voice.wav",
   "source_video": "/home/anagrath/Downloads/Generated Video October 21, 2026 - 10_49AM.mp4",
   "voice_reference_adapter": "Lightricks/LTX-2.3-22b-IC-LoRA-DubIt",
-  "voice_reference_adapter_access": "awaiting separate gated-repository access",
+  "voice_reference_adapter_access": "granted, downloaded and SHA256 verified",
   "speeches": [
     "Okay, check this out.",
     "Every day somebody comes up and asks me, what ages does Elephant Learning cover?",
@@ -22,5 +22,7 @@
     "And so I hope that clarifies things for everyone.",
     "We literally accept students of all ages.",
     "They just have to be able to use a computer or tablet or phone and understand the prompts."
-  ]
+  ],
+  "latest_render": "/home/anagrath/Downloads/JE All Ages - Boardwalk - LTX Test 1.mp4",
+  "latest_render_status": "completed; normalized 94-word transcript match; listening review pending"
 }
