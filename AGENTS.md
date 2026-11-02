@@ -27,3 +27,13 @@
   checks in `test_ripper3_je_dubit.py` cover this and the late-window voice reference.
 - All media processing runs locally. Keep HF credentials outside Git. Commit
   code and useful measured results locally; do not push or publish advertising.
+
+## Current rerender direction
+
+The user reviewed Test 1: the reference voice did not match and delivery was too
+calm/monotone. They explicitly requested a new version WITHOUT Dub-It, with
+influencer-style acting and more playful ball interaction. Use
+`ripper3_je_native.py` and `all-ages-native-playful-story-plan.json` for this pass.
+Plain LTX-2.5 generates video AND audio; no LoRAs or reference-audio conditioning.
+Keep Test 1 and its inputs intact. Deliver the new result to the Mac Downloads
+folder, verify its hash, and preserve GLM with drafting and RTX worker OFF.

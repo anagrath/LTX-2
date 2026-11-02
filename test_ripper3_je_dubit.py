@@ -20,6 +20,20 @@ class ReferenceCompositionTests(unittest.TestCase):
             image=Path('image.png'),reference_video=Path('voice.mp4'))
         with self.assertRaises(Prepared):story_result(Fake(),args,{'prompts':['speech']})
 
+    def test_plain_native_call_matches_the_official_setup_signature(self):
+        import inspect
+        from ltx_pipelines.distilled import DistilledPipeline
+        from ripper3_je_native import story_result as native_story
+        class Prepared(Exception):pass
+        class Fake:
+            def _prepare_run(inner, **kwargs):
+                self.assertTrue(torch.is_inference_mode_enabled())
+                inspect.signature(DistilledPipeline._prepare_run).bind(inner,**kwargs)
+                raise Prepared()
+        args=SimpleNamespace(chunk_frames=185,carry_frames=25,seed=42,
+            num_frames=985,image=Path('image.png'))
+        with self.assertRaises(Prepared):native_story(Fake(),args,{'prompts':['speech']})
+
     def test_target_duration_is_independent_of_reference_duration(self):
         @dataclass
         class Context:num_frames:int
