@@ -1,0 +1,32 @@
+{
+  "python": "3.14.4",
+  "torch": "2.13.0+cu132",
+  "cuda_build": "13.2",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "bf16_matmul": "passed",
+  "fp8_cast": "passed",
+  "sdpa": "passed",
+  "pipeline_import": "passed",
+  "gemma_processor_import": "passed",
+  "model_generation": "not tested; weights require gated model access",
+  "upstream_revision": "e98f6d927d83c92ef2be6aec76c8440b19306e39",
+  "model_repository": "Lightricks/LTX-2.5",
+  "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+  "model_access": "gated; no account or token configured yet",
+  "environment": "/home/anagrath/ai/code/LTX-2/.venv",
+  "uv_executable": "/home/anagrath/ai/tools/uv/uv",
+  "sync_arguments": [
+    "sync",
+    "--package",
+    "ltx-pipelines",
+    "--no-dev",
+    "--python",
+    "3.14"
+  ],
+  "cli_help": "passed",
+  "nonfatal_import_warnings": [
+    "optional matplotlib unavailable",
+    "OpenImageIO nanobind shutdown reference warnings also observed on Python 3.12"
+  ],
+  "generation_verified": false
+}
