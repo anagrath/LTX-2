@@ -1,0 +1,11 @@
+{
+  "glm_generation_during_ltx_run": "passed",
+  "answer": "323",
+  "draft_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true
+  }
+}

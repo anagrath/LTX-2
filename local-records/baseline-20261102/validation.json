@@ -1,0 +1,19 @@
+{
+  "video": "/home/anagrath/ai/outputs/ltx/baseline-20261102/baseline.mp4",
+  "width": 768,
+  "height": 512,
+  "fps": "24/1",
+  "frame_count": 49,
+  "duration_s": 2.0416666666666665,
+  "distinct_decoded_frames": 49,
+  "audio": [
+    {
+      "sample_rate": 48000,
+      "channels": 2
+    }
+  ],
+  "sha256": "fb47160d98bd24ba3c64b10b36be255b3ed3f00e2e59e441946a0fecfe8443c2",
+  "audio_decoded_samples_per_channel": 96480,
+  "audio_rms": 0.0006415496693009767,
+  "audio_peak": 0.002414220478385687
+}
