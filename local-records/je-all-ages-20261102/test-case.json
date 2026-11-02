@@ -1,0 +1,26 @@
+{
+  "script": "Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover? And we say we accept students of all ages. That's because we cover from counting through algebra. We have seen success with students as young as two years old, and our algebra curriculum was designed to remediate students struggling with college algebra. And so I hope that clarifies things for everyone. We literally accept students of all ages. They just have to be able to use a computer or tablet or phone and understand the prompts.",
+  "word_count": 94,
+  "scene": {
+    "setting": "Sunny beach boardwalk with ocean, sand, railings, soft coastal daylight",
+    "wardrobe": "Coral athletic top and navy leggings",
+    "openingAction": "Selfie close-up from phone held in JE's trunk, trunk edge visible; she speaks while setting phone securely on railing ledge, then steps back into medium-wide shot. JE holds her familiar red ball in her left hand throughout, visibly at waist/chest height once she steps back.",
+    "voice": "Warm adult female American conversational voice, medium pitch, lightly mischievous, confident and playful"
+  },
+  "current_user_direction": "JE walking on beach boardwalk; recreate exact all-ages script while testing visual and voice consistency with provided generated reference. Use LTX native audio first.",
+  "image_reference": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-anchor.png",
+  "voice_reference": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/source-voice.wav",
+  "source_video": "/home/anagrath/Downloads/Generated Video October 21, 2026 - 10_49AM.mp4",
+  "voice_reference_adapter": "Lightricks/LTX-2.3-22b-IC-LoRA-DubIt",
+  "voice_reference_adapter_access": "awaiting separate gated-repository access",
+  "speeches": [
+    "Okay, check this out.",
+    "Every day somebody comes up and asks me, what ages does Elephant Learning cover?",
+    "And we say we accept students of all ages.",
+    "That's because we cover from counting through algebra.",
+    "We have seen success with students as young as two years old, and our algebra curriculum was designed to remediate students struggling with college algebra.",
+    "And so I hope that clarifies things for everyone.",
+    "We literally accept students of all ages.",
+    "They just have to be able to use a computer or tablet or phone and understand the prompts."
+  ]
+}

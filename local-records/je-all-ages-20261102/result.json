@@ -1,0 +1,51 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "experimental_reference_composition": true,
+  "target_frames": 985,
+  "reference_video": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/voice-reference-clean-7s.mp4",
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-anchor.png",
+  "prompt": "A continuous portrait 3D animated video of JE, exactly the female gray elephant in the reference image, on a sunny beach boardwalk. Preserve her exact large blue eyes, freckles, ears, trunk, coral athletic top and navy leggings. She holds her glossy red ball in her left hand. Ocean waves, sand and wooden railings in the background. She speaks directly to the camera, takes a small relaxed step along the boardwalk, with gentle ear movements and expressive natural lip synchronization. Warm adult female American conversational voice, medium pitch, lightly mischievous, confident and playful. No other speakers, no music. She says exactly once at a natural conversational pace: \"Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover?\" No additional dialogue. No subtitles, lettering, logos or watermarks.",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "story_plan": {
+    "script": "Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover? And we say we accept students of all ages. That's because we cover from counting through algebra. We have seen success with students as young as two years old, and our algebra curriculum was designed to remediate students struggling with college algebra. And so I hope that clarifies things for everyone. We literally accept students of all ages. They just have to be able to use a computer or tablet or phone and understand the prompts.",
+    "dialogue": [
+      "Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover?",
+      "And we say we accept students of all ages. That's because we cover from counting through algebra.",
+      "We have seen success with students as young as two years old,",
+      "and our algebra curriculum was designed to remediate students struggling with college algebra.",
+      "And so I hope that clarifies things for everyone. We literally accept students of all ages.",
+      "They just have to be able to use a computer or tablet or phone and understand the prompts."
+    ],
+    "prompts": [
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover?\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment.",
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"And we say we accept students of all ages. That's because we cover from counting through algebra.\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment.",
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"We have seen success with students as young as two years old,\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment.",
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"and our algebra curriculum was designed to remediate students struggling with college algebra.\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment.",
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"And so I hope that clarifies things for everyone. We literally accept students of all ages.\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment.",
+      "A continuous portrait 3D animated video of JE, exactly the female gray elephant shown in the starting image, walking slowly along a sunny wooden beach boardwalk. Ocean, sand, wooden railings and soft coastal daylight. Preserve her exact large blue eyes, freckles, face, ears and trunk, coral athletic top, navy leggings, and red ball held in her left hand throughout. A smooth phone-camera view follows her gentle walk. She speaks directly to the viewer with expressive natural mouth and ear movements, clear synchronized speech. Use the same warm adult female American voice as the audio reference, medium pitch, lightly mischievous, confident and playful. No music, other voices, captions, lettering, logos or watermarks. For this segment, say exactly once at a clear natural pace: \"They just have to be able to use a computer or tablet or phone and understand the prompts.\". Do not restart the introduction or add any other words. Continue the same performance, character, voice and setting from the preceding segment."
+    ],
+    "num_frames": 985,
+    "fps": 24,
+    "chunk_frames": 185,
+    "carry_frames": 25,
+    "duration_s": 41.041666666666664,
+    "word_count": 94
+  },
+  "wall_s": 596.258,
+  "peak_allocated_bytes": 20472448000,
+  "peak_reserved_bytes": 22458400768,
+  "peak_process_rss_kib": 78225200
+}

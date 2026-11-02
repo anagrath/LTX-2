@@ -30,5 +30,6 @@
   ],
   "generation_verified": true,
   "baseline_result": "local-records/baseline-20261102/result.json",
-  "baseline_validation": "local-records/baseline-20261102/validation.json"
+  "baseline_validation": "local-records/baseline-20261102/validation.json",
+  "je_all_ages_test": "local-records/je-all-ages-20261102/review.json"
 }

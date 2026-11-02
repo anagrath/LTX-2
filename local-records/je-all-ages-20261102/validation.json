@@ -1,0 +1,33 @@
+{
+  "video": "/home/anagrath/ai/outputs/ltx/je-all-ages-boardwalk-20261102-v2/video.mp4",
+  "width": 576,
+  "height": 1024,
+  "fps": 24.0,
+  "frame_count": 985,
+  "video_duration_s": 41.041666666666664,
+  "distinct_frames": 985,
+  "near_black_frames": [],
+  "sample_frames": [
+    0,
+    89,
+    178,
+    268,
+    357,
+    447,
+    536,
+    626,
+    715,
+    805,
+    894,
+    984
+  ],
+  "audio_rate": 48000,
+  "audio_channels": 2,
+  "audio_samples_per_channel": 1969120,
+  "audio_duration_s": 41.02333333333333,
+  "audio_rms": 0.2557498068565952,
+  "audio_peak": 1.032857060432434,
+  "audio_finite": true,
+  "audio_video_duration_delta_s": -0.01833333333333087,
+  "sha256": "d3406113a70b6afa9e200954cbdb5e9dffbfe2a488ecb0bedef33ea2cddebf63"
+}

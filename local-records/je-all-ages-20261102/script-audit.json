@@ -1,0 +1,7 @@
+{
+  "expected_words": 94,
+  "transcribed_words": 94,
+  "normalized_exact_match": true,
+  "differences": [],
+  "note": "ASR verifies detected wording, not perceived voice match or lip synchronization."
+}

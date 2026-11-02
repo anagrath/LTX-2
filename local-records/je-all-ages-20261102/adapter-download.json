@@ -1,0 +1,14 @@
+{
+  "revision": "cc18226c909e87aa8a1a079896ad46a4ec01e4d1",
+  "complete": true,
+  "files": [
+    {
+      "path": "ltx-2.3-22b-ic-lora-dubit-0.9.safetensors",
+      "size": 2466665072,
+      "sha256": "fc415b12cb639e78511bc264f85080c2f7b188e334c1d9fade76b310e2bc419c",
+      "local_path": "/home/anagrath/ai/models/LTX-2.5/dubit/ltx-2.3-22b-ic-lora-dubit-0.9.safetensors",
+      "verified": true,
+      "elapsed_s": 42.479
+    }
+  ]
+}

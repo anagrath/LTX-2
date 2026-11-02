@@ -1,0 +1,39 @@
+{
+  "code_commit": "33de4fe",
+  "review_copy": "/home/anagrath/Downloads/JE All Ages - Boardwalk - LTX Test 1.mp4",
+  "inputs": [
+    {
+      "path": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-anchor.png",
+      "sha256": "4b6a162f5154e65634e874cc86111bb490593560a5f60d03d02a8349e7531c5a"
+    },
+    {
+      "path": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/frame-06s.png",
+      "sha256": "48087f9ade063fcf701194a06675283b033f18258b9f5c9ae3808f093b82acf2"
+    },
+    {
+      "path": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/voice-reference-clean-7s.mp4",
+      "sha256": "d4b2ec16d3aba79a6b6d0993ab5d93d11ab0715c1519c4d716241d40854bad51"
+    },
+    {
+      "path": "/home/anagrath/Downloads/Generated Video October 21, 2026 - 10_49AM.mp4",
+      "sha256": "91ec6262fa88d38b4a1e5a8f450aed548fba90c73b7c1c981d2bb3d9be0e7e03"
+    }
+  ],
+  "scene_source": "/Users/anagrath/Code/elschema/helpers/marketing/creative/2026-10-21-je-faq/all-ages-boardwalk-production.json",
+  "anchor_provenance": "Built-in image-generation edit from the supplied video frame at 6s: boardwalk, coral top and navy leggings added; source media preserved.",
+  "native_audio": true,
+  "external_tts_used": false,
+  "audio_reference_adapter": "Lightricks/LTX-2.3-22b-IC-LoRA-DubIt",
+  "render_model": "Lightricks/LTX-2.5 distilled BF16, FP8 cast and CPU offload",
+  "composition": "Experimental image-only video conditionings plus full audio-reference tokens repeated at each window; per-window captions; native video/audio carry.",
+  "test_scene": "Continuous walking shot, rather than the historical selfie/phone-placement opening.",
+  "automatic_checks": "985 frames, 24 fps, 576x1024, all 94 expected words detected in order, finite non-silent audio, no near-black frames.",
+  "visual_check": "Contact sheet of 12 samples inspected for character/outfit/setting continuity; full performance not human-approved.",
+  "remaining_review": [
+    "Perceived voice match to the provided reference",
+    "Lip synchronization and audible joins",
+    "Walking/hand/trunk artifacts and camera framing"
+  ],
+  "development_failure": "Initial custom long-form call omitted inference mode and retained autograd buffers; corrected and covered by CPU regression test.",
+  "memory_note": "Current __call__ path buffers decoded chunks; use streaming encode for substantially longer outputs."
+}

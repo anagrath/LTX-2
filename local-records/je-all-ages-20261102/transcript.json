@@ -1,0 +1,7 @@
+{
+  "source": "/home/anagrath/ai/outputs/ltx/je-all-ages-boardwalk-20261102-v2/video.mp4",
+  "model": "openai/whisper-small.en",
+  "revision": "e8727524f962ee844a7319d92be39ac1bd25655a",
+  "text": "Okay, check this out. Every day somebody comes up and asks me, what ages does Elephant Learning cover? And we say we accept students of all ages. That's because we cover from counting through algebra. We have seen success with students as young as two years old. And our algebra curriculum was designed to remediate students struggling with college algebra. And so I hope that clarifies things for everyone. We literally accept students of all ages. They just have to be able to use a computer or tablet or phone and understand the prompts.",
+  "transcription_mode": "native timestamped long-form; no independent hard cuts"
+}
