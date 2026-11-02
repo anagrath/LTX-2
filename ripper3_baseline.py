@@ -15,8 +15,20 @@ import time
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', type=Path, required=True)
+    parser.add_argument('--image', type=Path)
+    parser.add_argument('--prompt-file', type=Path)
+    parser.add_argument('--height', type=int, default=512)
+    parser.add_argument('--width', type=int, default=768)
+    parser.add_argument('--num-frames', type=int, default=49)
+    parser.add_argument('--chunked', action='store_true')
     parser.add_argument('--models', type=Path, default=Path('/home/anagrath/ai/models/LTX-2.5'))
     args = parser.parse_args()
+    if args.height <= 0 or args.width <= 0 or args.height % 64 or args.width % 64:
+        parser.error('Two-stage dimensions must be positive multiples of 64')
+    if args.num_frames < 1 or (args.num_frames - 1) % 8:
+        parser.error('Frame count must be 8*k+1')
+    if args.image and not args.image.is_file():
+        parser.error('Reference image does not exist')
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     video = output / 'baseline.mp4'
@@ -40,11 +52,17 @@ def main():
         if not path.is_file():
             parser.error('Missing model file: ' + str(path))
         command += [flag, str(path)]
-    command += ['--output-path', str(video), '--height', '512', '--width', '768',
-                '--num-frames', '49', '--frame-rate', '24', '--seed', '42',
+    command += ['--output-path', str(video), '--height', str(args.height), '--width', str(args.width),
+                '--num-frames', str(args.num_frames), '--frame-rate', '24', '--seed', '42',
                 '--quantization', 'fp8-cast', '--offload', 'cpu', '--prompt',
                 'A small red wooden toy boat floats slowly across a calm pond. '
                 'Static camera, gentle ripples, natural daylight. Soft water sounds.']
+    if args.prompt_file:
+        command[-1] = args.prompt_file.read_text().strip()
+    if args.image:
+        command += ['--image', str(args.image.resolve()), '0', '1.0']
+    if args.chunked:
+        command += ['--chunked', '--chunk-pixel-frames', '97', '--chunk-carry-frames', '25']
     os.environ['HF_HUB_DISABLE_TELEMETRY'] = '1'
     os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
     # The weights and embedded tokenizer must suffice for this local run.
