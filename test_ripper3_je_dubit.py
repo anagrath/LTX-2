@@ -34,6 +34,28 @@ class ReferenceCompositionTests(unittest.TestCase):
             num_frames=985,image=Path('image.png'))
         with self.assertRaises(Prepared):native_story(Fake(),args,{'prompts':['speech']})
 
+    def test_native_story_wires_the_actual_distilled_context_fields(self):
+        from ltx_pipelines.distilled import _DistilledRunContext
+        from ltx_core.types import VIDEO_SCALE_FACTORS
+        import ripper3_je_native as native
+        context=_DistilledRunContext(generator=torch.Generator(),noiser=object(),
+            dtype=torch.bfloat16,vae_dtype=torch.bfloat16,images=[],
+            video_context=torch.zeros(1),audio_context=torch.zeros(1),num_frames=185,
+            tiling_config=None,stage_1_width=288,stage_1_height=512,
+            chunk_config=native.ChunkConfig(chunk_pixel_frames=185,next_video_carry_frames=0))
+        pipeline=SimpleNamespace(device=torch.device('cpu'),
+            _prepare_run=lambda **kwargs:context,
+            _video_conditionings=lambda *args:lambda chunk:[],
+            _sampler_kwargs=lambda *args:{},
+            stage=SimpleNamespace(video_scale_factors=VIDEO_SCALE_FACTORS),
+            upsampler=object(),video_decoder=object(),audio_decoder=object())
+        args=SimpleNamespace(chunk_frames=185,carry_frames=0,seed=42,
+            num_frames=185,image=Path('image.png'))
+        sentinel=object()
+        with patch.object(native,'pipeline_output_from_chunks',return_value=sentinel) as pack:
+            self.assertIs(native.story_result(pipeline,args,{'prompts':['speech']}),sentinel)
+            self.assertEqual(pack.call_args.kwargs['num_frames'],185)
+
     def test_target_duration_is_independent_of_reference_duration(self):
         @dataclass
         class Context:num_frames:int

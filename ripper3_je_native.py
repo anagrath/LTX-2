@@ -35,6 +35,7 @@ from ltx_pipelines.utils.types import ImageConditioningInput, OffloadMode, Video
 def story_result(pipeline, args, plan):
     config=ChunkConfig(chunk_pixel_frames=args.chunk_frames,next_video_carry_frames=args.carry_frames)
     prompts=plan['prompts']
+    frame_rate=24
     ctx=pipeline._prepare_run(prompt=prompts[0],seed=args.seed,height=1024,width=576,
         frame_rate=24,num_frames=args.num_frames,
         images=[ImageConditioningInput.at(str(args.image),0,1.0)],color_space=None,
@@ -45,7 +46,7 @@ def story_result(pipeline, args, plan):
         for encoded in pipeline.prompt_encoder(prompts[1:]):
             contexts.append(VideoAudio(video=encoded.video_encoding,audio=encoded.audio_encoding))
     target=VideoPixelShape(batch=1,frames=ctx.num_frames,height=ctx.stage_1_height,
-        width=ctx.stage_1_width,fps=ctx.frame_rate)
+        width=ctx.stage_1_width,fps=frame_rate)
     layouts=uniform_chunk_layouts(target_pixel_shape=target,config=config)
     if len(layouts)!=len(contexts):
         raise ValueError(f'{len(layouts)} windows but {len(contexts)} script contexts')
@@ -57,13 +58,13 @@ def story_result(pipeline, args, plan):
             logging.info('Story window %d/%d: %s',i+1,len(prompts),plan['dialogue'][i])
             yield replace(chunk,video_context=contexts[i].video,audio_context=contexts[i].audio)
     base=denoise_chunks(scripted(),pipeline.stage,sigmas=DISTILLED_SIGMAS.to(pipeline.device),
-        noiser=ctx.noiser,fps=ctx.frame_rate,noise_scale=1.0,
+        noiser=ctx.noiser,fps=frame_rate,noise_scale=1.0,
         **pipeline._sampler_kwargs(args.seed,ANCESTRAL_NOISE_SEED_OFFSET))
     upscaled=spatially_upsample_chunks(base,pipeline.upsampler)
     refined=denoise_chunks(upscaled,pipeline.stage,sigmas=STAGE_2_DISTILLED_SIGMAS.to(pipeline.device),
-        noiser=ctx.noiser,fps=ctx.frame_rate,
+        noiser=ctx.noiser,fps=frame_rate,
         **pipeline._sampler_kwargs(args.seed,ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
-    decoded=decode_chunks(refined,pipeline.video_decoder,pipeline.audio_decoder,fps=ctx.frame_rate,
+    decoded=decode_chunks(refined,pipeline.video_decoder,pipeline.audio_decoder,fps=frame_rate,
         tiling_config=ctx.tiling_config,generator=ctx.generator,dtype=ctx.vae_dtype)
     return pipeline_output_from_chunks(decoded,num_frames=ctx.num_frames,tiling_config=ctx.tiling_config)
 
