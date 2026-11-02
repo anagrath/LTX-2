@@ -35,5 +35,11 @@
     "Walking/hand/trunk artifacts and camera framing"
   ],
   "development_failure": "Initial custom long-form call omitted inference mode and retained autograd buffers; corrected and covered by CPU regression test.",
-  "memory_note": "Current __call__ path buffers decoded chunks; use streaming encode for substantially longer outputs."
+  "memory_note": "Current __call__ path buffers decoded chunks; use streaming encode for substantially longer outputs.",
+  "owner_feedback": {
+    "voice_match": "User reports the generated voice does not match the Google Omni reference.",
+    "delivery": "User describes monotone, calmly spoken delivery and wants influencer-style storytelling.",
+    "other_aspects": "User says other than that this is pretty good; this is not publication approval.",
+    "requested_next_test": "Remove Dub-It, use plain LTX-2.5 native audio/video, add expressive acting and more playful ball interaction."
+  }
 }
