@@ -263,3 +263,31 @@ the warm worker. Opened/played on Mac: Shared/Videos/JE All Ages - Updated Scrip
 Exact prompt wording was checked; no ASR/decode gate was added. Do not claim
 generated speech is word-perfect without owner review. Evidence:
 local-records/owner-script-41-20261102. Worker1996568 stays alive at the same queue.
+
+## Restored full opening after owner-script v2
+
+The owner revised the FAQ body to all ages because counting through algebra,
+success as young as2years old, and college algebra confidence; keep the existing
+If your student ending and close: Do me a favor, go check it out okay?
+V2 incorrectly removed the original hook/question. Owner corrected this: only
+add this to the original opening, retaining Hey! Okay, check this out guys. I get
+asked this ALL the time, what ages does Elephant Learning cover?
+Owner also reported stuttering. ffmpeg decoded v2 without errors,985frames/24fps,
+but this does not establish smooth perceptual speech/video. Whisper suggests
+extra speech near the end and is not ground truth. Stutter modality remains
+unconfirmed; owner said render restored opening first and decide afterward.
+
+Current89-word exact script: all-ages-native-restored-opening-41-story-plan.json
+in the reference workspace. Same approved reference,voice,41.04s,six185-frame
+windows/25carry,seed42,576x1024/24fps. Keep young-student and college-algebra
+sentences intact. Final long sentence splits after help them, with closing in
+last caption. Experiment restored-opening-41 uses existing worker1996568; deliver
+Shared/Videos/JE All Ages - Restored Opening.mp4 and open/play immediately.
+No additional ASR/decode playback gate. Prior rejected v2 evidence:
+local-records/owner-script-v2-41-20261102.
+
+Restored-opening41s completed and opened/played on Mac at the path above without
+additional media QA. Prompt preparation5.858s; exact driver timing and89-word
+script in local-records/restored-opening-41-20261102. Do not claim stutter or
+word-perfect speech fixed before owner reviews; requested outcome was preview
+with opening restored. Same warm worker remains alive.

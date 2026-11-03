@@ -1,0 +1,9 @@
+{
+  "output_dir": "/home/anagrath/ai/outputs/ltx/je-restored-opening-41-20261102",
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-refined-standing-reference-v2.png",
+  "story_plan": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/all-ages-native-restored-opening-41-story-plan.json",
+  "num_frames": 985,
+  "chunk_frames": 185,
+  "carry_frames": 25,
+  "seed": 42
+}
