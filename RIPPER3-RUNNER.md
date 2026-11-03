@@ -37,6 +37,21 @@ with the number of planned windows. This is not a claim of constant total RAM.
 the CPU-offloaded transformer. `combined_compile` is available for experiments
 but has a larger memory budget and is not the default.
 
+## Shared CPU tests and mode recovery
+
+The helpers `compute-control.js run/reserve/release/recover` lifecycle captures
+live LTX workers and GLM drafting state before testing. It lets a current LTX
+scene finish, stops LTX and GLM to free CPU/RAM/GPU, and restores the same mode
+after the last reservation releases. Video mode restores GLM with drafting OFF
+before restarting the captured LTX worker. Conversation mode restores drafting
+ON and leaves LTX stopped. Previously stopped services stay stopped.
+
+Use `node /home/anagrath/Code/elschema/helpers/compute-control.js status` on Ripper3
+to see the mode, queue/PID and reservations. Mode changes belong outside active
+test reservations. The recovery record preserves argv/env/cwd and pending jobs,
+not warm RAM caches or unfinished generation state. See helpers
+`compute/README.md` for failure recovery and exact behavior.
+
 ## Persistent scene worker
 
 Start from the checkout on Ripper3:

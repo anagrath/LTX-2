@@ -490,3 +490,15 @@ bridge also overlapped native vocal tracks. Corrected clean join retains full
 opening19.125s, holds last frame0.5s, then starts body at19.625s. Voice tracks
 never overlap; continuous approved music preserved. Latest FuLu/Fu Lu - Full Rap -
 Clean Join.mp4 is60.6667s/1456frames. No model rerender or tempo change.
+
+## Shared testing preserves LTX / GLM mode
+
+Owner explicitly requested CPU-heavy shared tests stop LTX as well as GLM and
+restore the same prior mode. Helpers compute-control.js now saves live draft
+status and exact LTX worker argv/env/cwd in the durable first-pause capture. It
+lets the current scene finish, stops both for tests, and restores GLM + draft
+state before LTX. Video returns with drafting OFF; conversation returns with
+drafting ON and LTX OFF. No service previously OFF is enabled. RAM caches must
+rebuild after restart. See helpers compute/README.md and RIPPER3-RUNNER.md.
+Validation:137 lifecycle checks, including a real tiny CPU-only queue fixture;
+owner's live LTX/GLM were only inspected, not stopped for this validation.
