@@ -224,3 +224,14 @@ Timing driver: experiments/ltx-setup-20261102/refined-standing-41/run.py (worksp
 root). It primes older captions once, times fresh changed captions and render,
 and keeps the worker alive afterward. Deliver to Shared/Videos and open/play on
 Mac immediately after completion, without delaying for extra media QA.
+
+Refined standing41s completed and opened/played on Mac at
+Shared/Videos/JE All Ages - Refined Standing - 41 Seconds.mp4. Render221.412s
+(previous221.555s), fresh-caption prep6.493s, warm request including queue230.747s,
+cold startup+prime+fresh prep+render272.352s (previous273.273s). Cold total did not
+meaningfully improve; subsequent changed-caption preparation benefits from the
+retained weights. Owner wait also included earlier debugging/GPU correctness
+tests, not counted in render driver totals. Evidence local-records/refined-standing-41-20261102.
+Persistent workerPID1996568 remains alive at that experiment's queue. Reuse it
+for next jobs; stop explicitly before restoring RTX drafting. No extra ASR/decode
+review was done before playback, and owner quality review remains pending.

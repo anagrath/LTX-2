@@ -1,0 +1,10 @@
+{
+  "worker_pid": 1996568,
+  "artifact_reuse_requested": false,
+  "worker_kept_alive": true,
+  "cold-prime_submitted_to_complete_s": 41.604,
+  "prewarm_submitted_to_complete_s": 8.086,
+  "render_submitted_to_complete_s": 222.661,
+  "warm_request_prep_and_render_wall_s": 230.747,
+  "startup_cold_prime_prep_and_render_wall_s": 272.352
+}

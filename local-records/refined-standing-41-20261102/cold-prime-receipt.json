@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "output_dir": null,
+  "action": "prewarm",
+  "details": {
+    "prewarm_wall_s": 33.257,
+    "prompt_count": 6,
+    "cache_hits": 0,
+    "cache_misses": 6,
+    "cache_bytes": 75546624,
+    "prepared_weights": {
+      "hits": 0,
+      "misses": 3,
+      "evictions": 0,
+      "bytes": 32277182208,
+      "entries": 3,
+      "prepare_wall_s": 25.557,
+      "inflight_copies": 0,
+      "max_bytes": 34359738368
+    }
+  },
+  "wall_s": 34.314
+}
