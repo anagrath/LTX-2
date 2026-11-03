@@ -1,0 +1,24 @@
+{
+  "script": "There once was a dog named Fu Lu Puppy. Who made kissy lips like a guppy. With her crest full of flair. and her nose in the air. She demanded a throne, extra fluffy!",
+  "dialogue": [
+    "There once was a dog named Fu Lu Puppy. Who made kissy lips like a guppy.",
+    "With her crest full of flair. and her nose in the air. She demanded a throne, extra fluffy!"
+  ],
+  "prompts": [
+    "SCENE / ACTION:\nA photorealistic portrait video of Fu Lu, the female Chinese Crested dog in the starting photograph, sitting beside her owner in the same warm living room. Preserve this exact dog's recognizable white silky crest and facial hair, gray skin and fur markings, dark glossy eyes, black canine nose and small delicate canine face. Keep her recognizable as the same real dog, with natural fur and lighting. Keep her complete crest and muzzle visible as the camera gently frames her face. Her canine mouth and lower jaw visibly articulate her spoken words in sync with her single female voice. She performs the poem expressively with friendly eye contact and small head movements. No off-camera speaker, captions, text, logos or music.\n\nAfter she finishes the second sentence about a guppy, she briefly pauses her speech and purses her muzzle into an exaggerated cute rounded kissy O shape, making guppy-like puckering lips toward the viewer. Hold the kissy face for a beat, then let her mouth relax. This is a facial performance, with no spoken stage directions.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nA single friendly, light, clear female voice with gentle warmth and a lively playful storytelling cadence. Recite the limerick clearly at an easy natural pace, letting the rhymes land. Pronounce Fu Lu as foo loo. The acting is silent visual expression between phrases; only the quoted poem is spoken, once, without added words. Quiet room ambience behind clean foreground speech.\n\nDIALOGUE \u2014 FU LU (exact words, spoken once):\n\"There once was a dog named Fu Lu Puppy. Who made kissy lips like a guppy.\"",
+    "SCENE / ACTION:\nA photorealistic portrait video of Fu Lu, the female Chinese Crested dog in the starting photograph, sitting beside her owner in the same warm living room. Preserve this exact dog's recognizable white silky crest and facial hair, gray skin and fur markings, dark glossy eyes, black canine nose and small delicate canine face. Keep her recognizable as the same real dog, with natural fur and lighting. Keep her complete crest and muzzle visible as the camera gently frames her face. Her canine mouth and lower jaw visibly articulate her spoken words in sync with her single female voice. She performs the poem expressively with friendly eye contact and small head movements. No off-camera speaker, captions, text, logos or music.\n\nAs she mentions her crest, she makes a small jaunty head flick that tosses her long silky crest and lets it swish and settle. On the nose phrase, she lifts her nose proudly into the air. She delivers the final fluffy-throne demand with charming mock-regal confidence, then settles into a pleased expression. Do not introduce any extra speech.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nA single friendly, light, clear female voice with gentle warmth and a lively playful storytelling cadence. Recite the limerick clearly at an easy natural pace, letting the rhymes land. Pronounce Fu Lu as foo loo. The acting is silent visual expression between phrases; only the quoted poem is spoken, once, without added words. Quiet room ambience behind clean foreground speech.\n\nDIALOGUE \u2014 FU LU (exact words, spoken once):\n\"With her crest full of flair. and her nose in the air. She demanded a throne, extra fluffy!\""
+  ],
+  "num_frames": 473,
+  "chunk_frames": 249,
+  "carry_frames": 25,
+  "fps": 24,
+  "duration_s": 19.708333333333332,
+  "native_audio": true,
+  "external_tts": false,
+  "acting": [
+    "After she finishes the second sentence about a guppy, she briefly pauses her speech and purses her muzzle into an exaggerated cute rounded kissy O shape, making guppy-like puckering lips toward the viewer. Hold the kissy face for a beat, then let her mouth relax. This is a facial performance, with no spoken stage directions.",
+    "As she mentions her crest, she makes a small jaunty head flick that tosses her long silky crest and lets it swish and settle. On the nose phrase, she lifts her nose proudly into the air. She delivers the final fluffy-throne demand with charming mock-regal confidence, then settles into a pleased expression. Do not introduce any extra speech."
+  ],
+  "source_image": "/mnt/mongo-raid/shared/Images/Fu Lu - Source.png",
+  "notes": "Owner parentheticals are visual direction only, not spoken dialogue."
+}

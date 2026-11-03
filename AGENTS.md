@@ -1,5 +1,13 @@
 # Local LTX work on Ripper3
 
+For future JE creative work, first read the canonical workflow and full examples
+at `/home/anagrath/Code/elschema/helpers/marketing/JE-VIDEO-WORKFLOW.md`, linked from
+that repo's MARKETING-WORKER.md. It covers clean-frame/new-scene image generation,
+script sections and full prompt samples, A/B seeds, native audio, warm worker,
+B-roll/source edits, review, final approval, Drive delivery and CSV updates. Older
+creative notes below are history, not permission to restore an older script or
+force every new video into a prior window count/duration. Current owner brief wins.
+
 - Use this project's Python 3.14 `.venv` and pinned `uv.lock`. The CUDA runtime is
   isolated from GLM. Do not upgrade the system driver or alter the GLM target
   architecture/placement for LTX experiments.
@@ -364,3 +372,33 @@ at31.156s, about0.656s on A side. Adds13frames,901frames/37.5417s total. Other
 cuts and speed unchanged. Opened/played at observed1x on Mac: Shared/Videos/JE All
 Ages - Final Cut - Pause.mp4. Previous Final Cut moved back to scratch. Evidence
 edit_paused.py/paused-timeline.json in same local-records folder. Owner review pending.
+
+## Final approval, delivery, process guide and Fu Lu singing
+
+Owner selected the pause edit as FINAL. Uploaded to existing Marketing/JE Google
+Generated folder18jKdpIepMic7SNoD7sKdOJFdQBqltK1k as JE All Ages - Final.mp4,
+DriveID1Q8fg73Sr6CBcOmxnfolpEU5D5uM7Zxq9. Size/checksum matched. Marketing CSV
+ID1eTT7AHn4gL4zvFbAvx1NfzbhB2yrcvTf updated in place with one row;8771existing
+rows preserved,8772after; prewrite concurrency hash and exact download readback
+verified. Status owner_approved_finished,draft=false. No ad publication/scheduling.
+Local shared filename now JE All Ages - Final.mp4; originalA/B preserved. Evidence:
+local-records/je-final-delivery-20261102. Full index backups remain outside Git.
+
+Owner explicitly requested a reusable guide for fresh threads: canonical helpers
+marketing/JE-VIDEO-WORKFLOW.md plus complete examples/je-video prompts and A/B jobs,
+linked from MARKETING-WORKER.md and this runner. Do not substitute this historical
+log for that guide/current owner brief. Helpers had unrelated paper/INFRA changes;
+only new marketing docs/examples were staged, with an isolated worktree used to
+integrate newer remote commits without disturbing the dirty checkout.
+
+Fu Lu limerick: five owner lyric lines, kissy guppy lips after guppy, crest toss
+after flair; actions are silent directions. First19.708s recitation missed the
+nose-in-air line (post-delivery transcript). Owner requested Michael Finnegan tune;
+25.042s singing take included all lines in transcript but had unwanted music.
+Owner clarified SOLO SINGING TO THE MELODY, no instruments/backing track. Latest
+take: Shared/Videos/Fu Lu - Guppy Song - A Cappella.mp4,601frames,2x313windows,
+25carry,seed44,25.042s; submission122.121s. Opened/played on Mac directly.
+Prompts explicitly exclude instruments/beat/harmonies, but owner must assess audio
+and melody; do not claim prompt compliance from generation success alone. Never
+upload personal Fu Lu videos to marketing without instruction. Evidence under
+local-records/fu-lu-{limerick,finnegan,acappella}-20261102; source photo preserved.

@@ -1,0 +1,9 @@
+{
+  "output_dir": "/home/anagrath/ai/outputs/ltx/fu-lu-limerick-20261102",
+  "image": "/home/anagrath/ai/outputs/ltx/fu-lu-reference-20261102/fu-lu-source.png",
+  "story_plan": "/home/anagrath/ai/outputs/ltx/fu-lu-reference-20261102/guppy-limerick-story-plan.json",
+  "num_frames": 473,
+  "chunk_frames": 249,
+  "carry_frames": 25,
+  "seed": 42
+}

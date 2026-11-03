@@ -1,5 +1,11 @@
 # Ripper3 native LTX runner
 
+For the complete JE creative process and executable sample plans/jobs, read
+`/home/anagrath/Code/elschema/helpers/marketing/JE-VIDEO-WORKFLOW.md` (helpers repo,
+linked from MARKETING-WORKER.md). This document covers runner operation; the
+marketing guide covers scene-reference creation, scripting/cadence, A/B editorial
+assembly, owner review, Google Drive delivery and the asset CSV.
+
 Use this checkout's `.venv`. GLM stays serving; its draft model and dedicated RTX
 worker must be off. The runner checks this before every job. No network service
 or automatic boot service is installed by these scripts.

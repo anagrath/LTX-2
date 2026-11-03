@@ -1,0 +1,7 @@
+{
+  "source": "/mnt/mongo-raid/shared/Videos/Fu Lu - Guppy Limerick.mp4",
+  "model": "openai/whisper-small.en",
+  "revision": "e8727524f962ee844a7319d92be39ac1bd25655a",
+  "text": "There once was a dog named Fulu Puppy, who made kissy lips like a guppy. With her crest full of flare, she demanded a throne extra fluffy.",
+  "transcription_mode": "native timestamped long-form; no independent hard cuts"
+}

@@ -1,0 +1,9 @@
+{
+  "output_dir": "/home/anagrath/ai/outputs/ltx/fu-lu-finnegan-20261102",
+  "image": "/home/anagrath/ai/outputs/ltx/fu-lu-reference-20261102/fu-lu-source.png",
+  "story_plan": "/home/anagrath/ai/outputs/ltx/fu-lu-reference-20261102/guppy-finnegan-story-plan.json",
+  "num_frames": 601,
+  "chunk_frames": 313,
+  "carry_frames": 25,
+  "seed": 43
+}
