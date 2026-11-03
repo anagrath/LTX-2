@@ -235,3 +235,25 @@ tests, not counted in render driver totals. Evidence local-records/refined-stand
 Persistent workerPID1996568 remains alive at that experiment's queue. Reuse it
 for next jobs; stop explicitly before restoring RTX drafting. No extra ASR/decode
 review was done before playback, and owner quality review remains pending.
+
+## Owner's replacement FAQ wording and Fu Lu
+
+Clean-ending41s render completed188.147s including preparation on the existing
+warm worker, opened/played as Shared/Videos/JE All Ages - Clean Ending - 41 Seconds.mp4.
+The owner explicitly said not to wait for the speech check. Respect immediate
+review playback for subsequent media; do not add ASR/decode gates unasked.
+After reviewing that video, the owner said everything else was perfect and
+supplied a new exact76-word script. It is saved in
+all-ages-native-owner-script-41-story-plan.json in the reference workspace.
+This supersedes previous99/102-word dialogue. Keep the same approved reference,
+voice direction, standing performance,41.04s,6x185/25carry,576x1024/24fps/seed42.
+Emphasize ALL as a spoken word, not spelled letters. Do not rewrite the supplied
+wording or add a recap. Current experiment: owner-script-41; media should be
+Shared/Videos/JE All Ages - Updated Script.mp4 and opened/played on Mac promptly.
+
+Separate dog task completed: female Chinese Crested Fu Lu, sourceIMG_4340.HEIC
+in Shared/Images, converted to Fu Lu - Source.png with macOS
+sips (original preserved). Native6.04s video greeting: Hello, My name is Fu Lu.
+Shared/Videos/Fu Lu - Hello.mp4 opened/played on Mac. Submission32.595s including
+5.708s prompt preparation. Same warm worker; no external TTS or image edit.
+Evidence records: clean-ending-41-20261102 and fu-lu-hello-20261102.

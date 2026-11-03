@@ -1,0 +1,17 @@
+{
+  "script": "Hello, My name is Fu Lu",
+  "dialogue": [
+    "Hello, My name is Fu Lu"
+  ],
+  "prompts": [
+    "SCENE / ACTION:\nA photorealistic portrait video of Fu Lu, the female Chinese Crested dog in the starting photograph, sitting beside her owner in the same warm living room. Preserve this exact dog's recognizable white silky crest and facial hair, gray skin and fur markings, dark glossy eyes, black canine nose and small delicate canine face. Preserve the photo's indoor lighting, sofa, room and composition. She looks toward the camera with a friendly attentive expression, blinks naturally and gives a small gentle head tilt. Her canine mouth and lower jaw visibly articulate the spoken sentence in sync with the audio, as if this real dog could talk. Keep her a real dog with her original canine anatomy, not a human face or cartoon. Minimal body movement, steady camera. She says the sentence once, then quietly holds an affectionate expression. No text, captions, logos or music.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nA single friendly, light, clear female voice with gentle warmth and natural conversational delivery. Pronounce the dog's name as foo loo. One short greeting, spoken clearly once; the rest of the shot is quiet room ambience. All speech comes from the dog, with matching mouth movement; no off-camera speaker.\n\nDIALOGUE \u2014 FU LU (exact words, spoken once):\n\"Hello, My name is Fu Lu\""
+  ],
+  "num_frames": 145,
+  "fps": 24,
+  "chunk_frames": 145,
+  "carry_frames": 0,
+  "native_audio": true,
+  "external_tts": false,
+  "source_heic": "/mnt/mongo-raid/shared/Images/IMG_4340.HEIC",
+  "source_conversion": "macOS sips HEIC to PNG, original unchanged"
+}
