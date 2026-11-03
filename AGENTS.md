@@ -345,3 +345,15 @@ Drive plugin raw download failed413, rclone downloaded read-only. Marketing inde
 was read for discovery; no Drive write or upload. Full index and source media stay
 outside Git. Repro scripts/timelines: local-records/je-ab-edit-20261102.
 Shared Images must still keep JE reference AND Fu Lu - Source.png.
+
+Owner then requested collapsing gap near17s, returning from B-roll on seen, and
+cutting to A at If your student is working on for the entire remainder. Latest
+review is Shared/Videos/JE All Ages - Final Cut.mp4,37s/888frames/24fps, opened and
+played on Mac at observed1x. Earlier Edited A+B review was moved back to scratch.
+New source timeline: B0:267; B-roll with B audio318:456 then508:522; B522:751;
+A745:985. Really removal retained; B19–21.1667s gap removed, leaving short natural
+pause. Return sourceB21.75s (seen), output17.4583s; switch to A source31.0417s,
+output27s (If your student), through closing. Same portrait B-roll crops, shorter
+second shot. No speed scaling. Evidence appended in local-records/je-ab-edit-20261102,
+edit_tightened.py/tightened-timeline.json. A/B/Fu Lu sources and both Images keepers
+remain intact. User creative review still pending; no ASR/decode playback gate.

@@ -39,3 +39,25 @@ segments from original A/B rather than stacking another edit on the rejected fil
 Current review output: Shared/Videos/JE All Ages - Edited A+B.mp4. No upload or
 asset-index write was requested. Files here preserve scripts and timing evidence,
 not a claim of final creative approval or word-perfect transcription.
+
+## Owner-directed tighter revision
+
+Owner identified a long gap near17s, requested collapsing it and returning on
+seen (rather than have), then directed switching to A at If your student is
+working on and using A through the end. Silence detection in the39.625s previous
+cut found16.749396–19.203104s below-32dB, matching that reported gap.
+
+Latest edit rebuilt from original sources: B0:267; B-roll over B audio318:456
+then508:522; B picture/audio522:751; A picture/audio745:985. Removes the Really
+interval267:318 plus the gap456:508 (B19–21.1667s), preserving about0.29s natural
+pause. B-roll ends at output419/24=17.4583s, sourceB21.75s on seen. A begins at
+output648/24=27s, sourceA31.0417s at the start of its If your student window;
+source B cuts31.2917s in its short pause before If. A continues through the closing.
+
+The two B-roll crops now use96 and56frames. No tempo/time-scaling filters.
+888frames/24fps=37s; encode6.158s. Open/play commands returned1x and37s on Mac.
+Latest review output: Shared/Videos/JE All Ages - Final Cut.mp4. Previous corrected
+edit moved back to scratch, so Shared does not retain that superseded review file.
+OriginalA/B/Fu Lu remain. No new ASR or full-decode review delayed playback, and
+owner approval remains pending. New scripts/timeline are edit_tightened.py and
+tightened-timeline.json; earlier scripts are historical evidence.
