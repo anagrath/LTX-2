@@ -1,0 +1,17 @@
+{
+  "output": "/mnt/mongo-raid/shared/Videos/Fu Lu - Full Rap.mp4",
+  "duration_s": 59.875,
+  "frames": 1437,
+  "body_starts_s": 18.833333333333332,
+  "loop_source_s": [
+    3.8,
+    8.75
+  ],
+  "music_overlap_s": 0.45,
+  "music_repeat_period_s": 4.5,
+  "native_ltx_voice": true,
+  "existing_opening_preserved": true,
+  "external_tts": false,
+  "time_scaling": false,
+  "compose_wall_s": 8.47
+}

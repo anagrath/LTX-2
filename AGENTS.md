@@ -470,3 +470,15 @@ Owner found3.6too early and requested3.75. Latest selected source is3.750–8.65
 4.9s/235200samples at48kHz. Restarts8.65/13.55/18.45s. Paused rap/video unchanged,
 19.125s. Opened/played on Mac1x: Fu Lu - Walking Rap - Loop 3.75.mp4. Owner review
 pending; supersedes3.6trial. Repro local-records/fu-lu-rap-loop-375-20261103.
+
+## Full Fu Lu rap, November3
+
+Owner selected3.8–8.75s melody, then reported its repeating gap. The short approved
+Blended Loop uses450ms qsin overlap to cover the quiet phrase head,4.5s effective
+period. Owner called it awesome and approved the full rap lyrics plus spins.
+Latest Shared/Videos/Fu Lu - Full Rap.mp4 is59.875s: preserved19.125s opening,
+new985-frame native rap body,7-frame video bridge. Four265/25carry windows,seed49,
+last approved frame458 as image seed. Warm submit187.643s,compose8.470s. Music
+retains the approved overlap method; no tempo scaling or external TTS. Immediate
+Mac review; do not claim exact spoken words, spins or quality verified by generation.
+Evidence local-records/fu-lu-full-rap-20261103. Original sources preserved.
