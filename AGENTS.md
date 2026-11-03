@@ -291,3 +291,18 @@ additional media QA. Prompt preparation5.858s; exact driver timing and89-word
 script in local-records/restored-opening-41-20261102. Do not claim stutter or
 word-perfect speech fixed before owner reviews; requested outcome was preview
 with opening restored. Same warm worker remains alive.
+
+## Four-window FAQ trial
+
+Owner reported drawn-out speech in windows3/4 and requested merging3+4 and5+6.
+Current88-word script all-ages-native-four-windows-41-story-plan.json uses four
+prompts: restored opening,all-ages explanation,combined young/college student
+statement,full closing. Middle exact wording ends college algebra find confidence.
+Use four265-frame windows/25carry to retain985frames/41.04s. Same reference,
+voice,standing performance,seed42,576x1024/24fps. Unlike earlier six-window jobs,
+time allocation is first11.04s then10s new body per window; owner review needed
+for cadence. All sentences fit inside individual windows now.
+Completed186.275s render including prep,187.635s submission total; opened/played
+Shared/Videos/JE All Ages - Four Windows.mp4 directly on Mac. No ASR/decode gate
+or quality approval implied. Evidence local-records/four-windows-41-20261102.
+Worker1996568 remains alive with CPU weights and video models retained.

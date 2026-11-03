@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "dub_it_loaded": false,
+  "audio_reference_used": false,
+  "loras": [],
+  "target_frames": 985,
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-refined-standing-reference-v2.png",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "sampler": "official LTX-2.5 Euler ancestral",
+  "optimizations": {
+    "single_encoder_lifetime": true,
+    "persistent_streaming_transformer": true,
+    "compile": true,
+    "cuda_graphs": false,
+    "progressive_encode": true,
+    "completed_audio_device": "cpu",
+    "decoder_mode": "chunked_compile",
+    "auxiliary_residency": true
+  },
+  "wall_s": 186.275,
+  "peak_allocated_bytes": 14761308160,
+  "peak_reserved_bytes": 16053698560,
+  "peak_process_rss_kib": 106507236
+}
