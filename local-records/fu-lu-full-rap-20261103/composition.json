@@ -1,8 +1,10 @@
 {
-  "output": "/mnt/mongo-raid/shared/Videos/Fu Lu - Full Rap.mp4",
-  "duration_s": 59.875,
-  "frames": 1437,
-  "body_starts_s": 18.833333333333332,
+  "output": "/mnt/mongo-raid/shared/Videos/FuLu/Fu Lu - Full Rap - Clean Join.mp4",
+  "duration_s": 60.666666666666664,
+  "frames": 1456,
+  "join_pause_s": 0.5,
+  "vocal_overlap_s": 0,
+  "body_starts_s": 19.625,
   "loop_source_s": [
     3.8,
     8.75
@@ -13,5 +15,5 @@
   "existing_opening_preserved": true,
   "external_tts": false,
   "time_scaling": false,
-  "compose_wall_s": 8.47
+  "compose_wall_s": 8.328
 }

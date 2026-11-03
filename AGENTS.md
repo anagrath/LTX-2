@@ -482,3 +482,11 @@ last approved frame458 as image seed. Warm submit187.643s,compose8.470s. Music
 retains the approved overlap method; no tempo scaling or external TTS. Immediate
 Mac review; do not claim exact spoken words, spins or quality verified by generation.
 Evidence local-records/fu-lu-full-rap-20261103. Original sources preserved.
+
+Owner requested Shared/Videos split into JE and FuLu; all matching media and
+Apple sidecars moved into those folders,15 local workspace symlinks repaired.
+Owner reported vocal overlap at full-rap extension join. Original7-frame video
+bridge also overlapped native vocal tracks. Corrected clean join retains full
+opening19.125s, holds last frame0.5s, then starts body at19.625s. Voice tracks
+never overlap; continuous approved music preserved. Latest FuLu/Fu Lu - Full Rap -
+Clean Join.mp4 is60.6667s/1456frames. No model rerender or tempo change.
