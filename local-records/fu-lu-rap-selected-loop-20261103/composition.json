@@ -1,0 +1,28 @@
+{
+  "output": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-selected-loop-20261103/video.mp4",
+  "intro": "/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Hook.mp4",
+  "rap_section": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-section-v2-20261103/video.mp4",
+  "owner_selected_loop_start_s": 3.959,
+  "owner_selected_loop_end_s": 8.65,
+  "loop_duration_s": 4.691,
+  "loop_source_samples": [
+    190032,
+    415200
+  ],
+  "sample_rate": 48000,
+  "music_restart_output_s": 8.65,
+  "subsequent_loop_restarts_s": [
+    13.341,
+    18.032
+  ],
+  "voice_section_output_start_s": 8.75,
+  "video_bridge_frames": 7,
+  "video_bridge_s": 0.2916666666666667,
+  "frames": 459,
+  "duration_s": 19.125,
+  "rap_regenerated": false,
+  "music_ducked_under_rap": true,
+  "loop_edge_declick_ms": 5,
+  "loop_period_shortened_by_crossfade": false,
+  "compose_wall_s": 3.891
+}

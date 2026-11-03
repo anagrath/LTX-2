@@ -449,3 +449,12 @@ two times or save fu-lu-loop-selection.json on Mac. Once supplied, use those exa
 source bounds for the melodic loop and revise the existing v2 editorial mix.
 No need to regenerate the rap just to change the audio loop. Repro scripts and
 HTML saved in local-records/fu-lu-rap-{extension,v2}-20261103; media stays outside Git.
+
+Owner supplied exact melody bounds3.959–8.5s, then corrected end to8.65s. Current
+authoritative loop is3.959–8.650s of original Walking Hook (4.691s),225168samples
+at48kHz. New mix restarts it at original endpoint8.65s, then13.341/18.032s, with
+5ms de-click fades preserving full loop period; no tempo/beat-boundary guessing.
+Reuses paused v2 rapper unchanged; same19.125s picture. Opened/played on Mac at1x:
+Shared/Videos/Fu Lu - Walking Rap - Selected Loop.mp4. Owner audible-join review
+pending. Evidence local-records/fu-lu-rap-selected-loop-20261103. Earlier pending
+selection notes and guessed ranges are superseded. No model rerender needed.
