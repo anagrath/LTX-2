@@ -5,7 +5,6 @@ from __future__ import annotations
 import logging
 from collections import deque
 from collections.abc import Generator, Iterator
-from itertools import chain
 
 import torch
 from torch._prims_common import DeviceLikeType
@@ -69,7 +68,8 @@ def split_decoded_chunks(
 ) -> tuple[Iterator[torch.Tensor], Iterator[Audio] | None, int | None]:
     """Split decoded chunks into a video iterator, stitched audio, and sample rate.
     Drain ``video`` before iterating ``audio``; audio is filled as video is
-    consumed. Both audio fields are ``None`` when the stream is video-only.
+    consumed. Collected waveform parts live on CPU so duration does not grow
+    GPU audio storage. Both audio fields are ``None`` for video-only streams.
     """
     first = next(chunks, None)
     if first is None:
@@ -90,12 +90,30 @@ def split_decoded_chunks(
             raise ValueError(f"chunk video size {chunk_w}x{chunk_h} does not match expected {width}x{height}")
         if chunk.audio is not None:
             validate_audio_waveform(chunk.audio)
-            audio_chunks.append(chunk.audio)
+            audio_chunks.append(Audio(
+                waveform=chunk.audio.waveform.detach().to(device="cpu", copy=True),
+                sampling_rate=chunk.audio.sampling_rate,
+            ))
+
+    # Transfer the first chunk into a mutable slot rather than closing over it:
+    # the old closure retained its whole GPU frame allocation until video ended.
+    pending = first
 
     def video() -> Iterator[torch.Tensor]:
-        for chunk in chain((first,), chunks):
-            validate_and_collect(chunk)
-            yield chunk.video
+        nonlocal pending
+        try:
+            while pending is not None:
+                chunk = pending
+                pending = None
+                validate_and_collect(chunk)
+                yield chunk.video
+                del chunk  # release the previous body before asking decode for another
+                pending = next(chunks, None)
+        finally:
+            pending = None
+            close = getattr(chunks, "close", None)
+            if close is not None:
+                close()
 
     audio = None if sample_rate is None else deferred_stitch_audio(audio_chunks)
     return video(), audio, sample_rate

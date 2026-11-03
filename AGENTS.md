@@ -73,3 +73,28 @@ leakage/repetition and a garbled question. The owner explicitly stopped a propos
 correction, asked to view this render, and requested discussion of optimizations;
 do not start another render without further direction. Mac QuickTime playback
 of the NATTEN file was verified.
+
+## Progressive export for long videos (November 2)
+
+The native runner now exposes `story_result` as a context-managed progressive
+A/V stream. Its production path uses `split_decoded_chunks` and the existing
+H.264 encoder's bounded one-slot CPU queue instead of collecting all decoded
+RGB windows on the GPU. Inference mode and transformer residency surround actual
+lazy consumption; generator closure on encoder/setup failure releases residency.
+The splitter releases historical frame bodies and clones completed audio to CPU;
+the encoder no longer pins its first full frame window for the whole video.
+Decoder carry/overlap and crossfade algorithms are unchanged; pending decoded
+video/audio tails already clone their small retained regions.
+
+Completed audio is still collected in CPU RAM and concatenated before AAC muxing,
+so host audio memory grows with duration (including concatenation peak). Video
+export buffering is bounded by window/carry and the encoder's CPU queue; this
+is not a claim that all pipeline memory is independent of duration (prompt
+contexts/layout metadata still grow). No full GPU render or measured VRAM/speed
+comparison has been run for this change. Do not claim a tested 5-10 minute render.
+
+Validation: `.venv/bin/python -m unittest test_ripper3_streaming_output
+ test_ripper3_je_dubit` passed 11 CPU checks, including weakref lifetime checks,
+real synthetic H.264/AAC encode/decode, frame/audio ordering, existing overlap
+blend/audio-crossfade equivalence, independent retained-tail storage, and
+residency/inference/cleanup on consumer failure. `git diff --check` passed.

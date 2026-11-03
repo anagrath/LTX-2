@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Plain LTX-2.5 joint video/audio story with per-window acting prompts."""
 import argparse
+from contextlib import contextmanager
 from dataclasses import replace
+from types import SimpleNamespace
 import json
 import logging
 import os
@@ -21,7 +23,7 @@ from ltx_core.types import VideoPixelShape
 from ltx_core.quantization.fp8_cast import build_policy
 from ltx_core.model.transformer.compiling import CompilationConfig
 from ltx_pipelines.chunks import (ChunkConfig, generate_uniform_chunks, denoise_chunks,
-    spatially_upsample_chunks, decode_chunks, pipeline_output_from_chunks)
+    spatially_upsample_chunks, decode_chunks, split_decoded_chunks)
 from ltx_pipelines.chunks.layout import uniform_chunk_layouts
 from ltx_pipelines.utils.constants import DISTILLED_SIGMAS, STAGE_2_DISTILLED_SIGMAS
 from ltx_pipelines.chunks.conditionings import image_conditionings_for_chunk
@@ -54,7 +56,7 @@ def prepare_story_run(pipeline, prompts, **kwargs):
 
 
 @torch.inference_mode()
-def story_result(pipeline, args, plan):
+def _story_chunks(pipeline, args, plan):
     config=ChunkConfig(chunk_pixel_frames=args.chunk_frames,next_video_carry_frames=args.carry_frames)
     prompts=plan['prompts']
     frame_rate=24
@@ -84,9 +86,32 @@ def story_result(pipeline, args, plan):
         **pipeline._sampler_kwargs(args.seed,ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
     decoded=decode_chunks(refined,pipeline.video_decoder,pipeline.audio_decoder,fps=frame_rate,
         tiling_config=ctx.tiling_config,generator=ctx.generator,dtype=ctx.vae_dtype)
-    # Both lazy denoising iterators share one streaming transformer lifetime.
-    with pipeline.stage.resident():
-        return pipeline_output_from_chunks(decoded,num_frames=ctx.num_frames,tiling_config=ctx.tiling_config)
+    return decoded, ctx
+
+
+@contextmanager
+def story_result(pipeline, args, plan):
+    """Progressive A/V stream; consume it inside this scope to retain model/inference lifetimes.
+
+    Completed frame bodies flow straight through the encoder's bounded host queue.
+    Only decoder overlap/carry and the current output window remain on the GPU;
+    the deferred audio track is accumulated in CPU RAM and muxed after video drain.
+    """
+    # The context surrounds consumer-driven iteration, not just generator creation.
+    with torch.inference_mode():
+        decoded, ctx = _story_chunks(pipeline, args, plan)
+        video = audio = None
+        with pipeline.stage.resident():
+            try:
+                video, audio, sample_rate = split_decoded_chunks(decoded)
+                yield SimpleNamespace(video=video, audio=audio, audio_sampling_rate=sample_rate,
+                    num_frames=ctx.num_frames, tiling_config=ctx.tiling_config)
+            finally:
+                # Explicitly release suspended generators on encode/setup failure, too.
+                for stream in (video, audio, decoded):
+                    close = getattr(stream, 'close', None)
+                    if close is not None:
+                        close()
 
 
 def main():
@@ -118,7 +143,8 @@ def main():
             'target_frames':args.num_frames,'image':str(args.image),
             'seed':args.seed,'glm_state':state,'sampler':'official LTX-2.5 Euler ancestral',
             'optimizations':{'single_encoder_lifetime':True,'persistent_streaming_transformer':True,
-                             'compile':args.compile,'cuda_graphs':False}}
+                             'compile':args.compile,'cuda_graphs':False,
+                             'progressive_encode':True,'completed_audio_device':'cpu'}}
     torch.cuda.reset_peak_memory_stats();start=time.monotonic()
     try:
         pipeline=DistilledPipeline(model_paths=models,
@@ -129,9 +155,10 @@ def main():
         report['story_plan']=plan
         if ' '.join(plan['dialogue'])!=plan['script']:
             raise ValueError('Dialogue windows do not reproduce the script exactly')
-        result=story_result(pipeline,args,plan)
-        encode_video(video=result.video,fps=24,audio=result.audio,output_path=str(output/'video.mp4'),
-            video_chunks_number=get_video_chunks_number(result.num_frames,result.tiling_config))
+        with story_result(pipeline,args,plan) as result:
+            encode_video(video=result.video,fps=24,audio=result.audio,output_path=str(output/'video.mp4'),
+                audio_sampling_rate=result.audio_sampling_rate,
+                video_chunks_number=get_video_chunks_number(result.num_frames,result.tiling_config))
         torch.cuda.synchronize();report['status']='completed'
     except BaseException as error:
         report.update(status='failed',error_type=type(error).__name__,error=str(error));raise

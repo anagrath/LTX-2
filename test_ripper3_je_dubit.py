@@ -34,7 +34,8 @@ class ReferenceCompositionTests(unittest.TestCase):
                 raise Prepared()
         args=SimpleNamespace(chunk_frames=185,carry_frames=25,seed=42,
             num_frames=985,image=Path('image.png'))
-        with self.assertRaises(Prepared):native_story(Fake(),args,{'prompts':['speech']})
+        with self.assertRaises(Prepared):
+            with native_story(Fake(),args,{'prompts':['speech']}):pass
 
     def test_native_story_wires_the_actual_distilled_context_fields(self):
         from ltx_pipelines.distilled import _DistilledRunContext
@@ -54,10 +55,10 @@ class ReferenceCompositionTests(unittest.TestCase):
             upsampler=object(),video_decoder=object(),audio_decoder=object())
         args=SimpleNamespace(chunk_frames=185,carry_frames=0,seed=42,
             num_frames=185,image=Path('image.png'))
-        sentinel=object()
-        with patch.object(native,'pipeline_output_from_chunks',return_value=sentinel) as pack:
-            self.assertIs(native.story_result(pipeline,args,{'prompts':['speech']}),sentinel)
-            self.assertEqual(pack.call_args.kwargs['num_frames'],185)
+        with patch.object(native,'split_decoded_chunks',return_value=(iter(()),None,None)):
+            with native.story_result(pipeline,args,{'prompts':['speech']}) as result:
+                self.assertEqual(result.num_frames,185)
+                self.assertTrue(torch.is_inference_mode_enabled())
 
     def test_native_encoder_lifetime_encodes_all_windows_once_and_restores(self):
         from ripper3_je_native import prepare_story_run

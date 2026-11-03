@@ -223,6 +223,7 @@ def encode_sdr_h264(  # noqa: PLR0913
         raise ValueError("video is empty; expected at least one frame chunk.")
     # Converted a slice at a time, so the converter's float temporaries stay slice-sized.
     first_slices = iter(first_raw_chunk.split(_HOST_SLICE_FRAMES))
+    del first_raw_chunk  # the slices own it until drained; do not pin window one for the whole film
     first_slice = host_frames(next(first_slices))
 
     if frame_converter.pixel_format == PixelFormat.RGB24:
