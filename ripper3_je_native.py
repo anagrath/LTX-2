@@ -19,6 +19,7 @@ import torch
 from ltx_core.model.video_vae import AUTO_TILING, get_video_chunks_number
 from ltx_core.types import VideoPixelShape
 from ltx_core.quantization.fp8_cast import build_policy
+from ltx_core.model.transformer.compiling import CompilationConfig
 from ltx_pipelines.chunks import (ChunkConfig, generate_uniform_chunks, denoise_chunks,
     spatially_upsample_chunks, decode_chunks, pipeline_output_from_chunks)
 from ltx_pipelines.chunks.layout import uniform_chunk_layouts
@@ -31,20 +32,37 @@ from ltx_pipelines.utils.model_paths import ModelPaths
 from ltx_pipelines.utils.types import ImageConditioningInput, OffloadMode, VideoAudio
 
 
+def prepare_story_run(pipeline, prompts, **kwargs):
+    """Encode all windows in one encoder lifetime, reusing the opening context."""
+    encoder = pipeline.prompt_encoder
+    encoded = []
+
+    def encode_all(requested, **options):
+        if requested != [prompts[0]] or options.get('enhance_first_prompt'):
+            raise ValueError('Story setup requires the unenhanced opening prompt')
+        start = time.monotonic()
+        encoded.extend(encoder(prompts, **options))
+        logging.info('All %d story prompts encoded in %.3fs', len(encoded), time.monotonic()-start)
+        return encoded[:1]
+
+    pipeline.prompt_encoder = encode_all
+    try:
+        ctx = pipeline._prepare_run(prompt=prompts[0], **kwargs)
+    finally:
+        pipeline.prompt_encoder = encoder
+    return ctx, [VideoAudio(video=e.video_encoding, audio=e.audio_encoding) for e in encoded]
+
+
 @torch.inference_mode()
 def story_result(pipeline, args, plan):
     config=ChunkConfig(chunk_pixel_frames=args.chunk_frames,next_video_carry_frames=args.carry_frames)
     prompts=plan['prompts']
     frame_rate=24
-    ctx=pipeline._prepare_run(prompt=prompts[0],seed=args.seed,height=1024,width=576,
+    ctx,contexts=prepare_story_run(pipeline,prompts,seed=args.seed,height=1024,width=576,
         frame_rate=24,num_frames=args.num_frames,
         images=[ImageConditioningInput.at(str(args.image),0,1.0)],color_space=None,
         enhance_prompt=False,enhance_static_cache=False,vae_dtype=None,tiling_config=AUTO_TILING,
         generated_keyframes=0,decode_with_keyframes=False,chunk_config=config)
-    contexts=[VideoAudio(video=ctx.video_context,audio=ctx.audio_context)]
-    if len(prompts)>1:
-        for encoded in pipeline.prompt_encoder(prompts[1:]):
-            contexts.append(VideoAudio(video=encoded.video_encoding,audio=encoded.audio_encoding))
     target=VideoPixelShape(batch=1,frames=ctx.num_frames,height=ctx.stage_1_height,
         width=ctx.stage_1_width,fps=frame_rate)
     layouts=uniform_chunk_layouts(target_pixel_shape=target,config=config)
@@ -66,7 +84,9 @@ def story_result(pipeline, args, plan):
         **pipeline._sampler_kwargs(args.seed,ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
     decoded=decode_chunks(refined,pipeline.video_decoder,pipeline.audio_decoder,fps=frame_rate,
         tiling_config=ctx.tiling_config,generator=ctx.generator,dtype=ctx.vae_dtype)
-    return pipeline_output_from_chunks(decoded,num_frames=ctx.num_frames,tiling_config=ctx.tiling_config)
+    # Both lazy denoising iterators share one streaming transformer lifetime.
+    with pipeline.stage.resident():
+        return pipeline_output_from_chunks(decoded,num_frames=ctx.num_frames,tiling_config=ctx.tiling_config)
 
 
 def main():
@@ -78,6 +98,7 @@ def main():
     p.add_argument('--carry-frames',type=int,default=0)
     p.add_argument('--story-plan',type=Path,required=True)
     p.add_argument('--seed',type=int,default=42)
+    p.add_argument('--compile',action='store_true',help='Use upstream block compilation, without CUDA graphs for CPU offload')
     args=p.parse_args()
     if args.num_frames<1 or (args.num_frames-1)%8:p.error('Target frames must be 8*k+1')
     root=Path('/home/anagrath/ai/models/LTX-2.5')
@@ -95,12 +116,15 @@ def main():
     report={'status':'running','native_audio':True,'external_tts':False,
             'dub_it_loaded':False,'audio_reference_used':False,'loras':[],
             'target_frames':args.num_frames,'image':str(args.image),
-            'seed':args.seed,'glm_state':state,'sampler':'official LTX-2.5 Euler ancestral'}
+            'seed':args.seed,'glm_state':state,'sampler':'official LTX-2.5 Euler ancestral',
+            'optimizations':{'single_encoder_lifetime':True,'persistent_streaming_transformer':True,
+                             'compile':args.compile,'cuda_graphs':False}}
     torch.cuda.reset_peak_memory_stats();start=time.monotonic()
     try:
         pipeline=DistilledPipeline(model_paths=models,
             spatial_upsampler_path=str(root/'latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors'),
-            loras=[],quantization=build_policy(models.transformer()),offload_mode=OffloadMode.CPU)
+            loras=[],quantization=build_policy(models.transformer()),offload_mode=OffloadMode.CPU,
+            compilation_config=CompilationConfig() if args.compile else None)
         plan=json.loads(args.story_plan.read_text())
         report['story_plan']=plan
         if ' '.join(plan['dialogue'])!=plan['script']:

@@ -342,15 +342,19 @@ class DiffusionStage:
             yield X0Model(streaming_wrapper).eval()
 
     def _transformer_ctx(self, **kwargs: object) -> AbstractContextManager:
+        resident = self._resident
+        if resident is not None and resident.active and not self._transformer_builder.builds_per_shape:
+            if resident.model is None:
+                lifetime = (
+                    self._streaming_transformer_ctx()
+                    if self._is_streaming
+                    else self._transformer_lifetime(self._build_transformer(**kwargs))
+                )
+                resident.model = resident.lifetime.enter_context(lifetime)
+            return nullcontext(resident.model)
         if self._is_streaming:
             return self._streaming_transformer_ctx()
-        if self._resident is None or not self._resident.active or self._transformer_builder.builds_per_shape:
-            return self._transformer_lifetime(self._build_transformer(**kwargs))
-        if self._resident.model is None:
-            self._resident.model = self._resident.lifetime.enter_context(
-                self._transformer_lifetime(self._build_transformer(**kwargs))
-            )
-        return nullcontext(self._resident.model)
+        return self._transformer_lifetime(self._build_transformer(**kwargs))
 
     def _transformer_lifetime(self, transformer: X0Model) -> AbstractContextManager:
         if self._transformer_builder.keeps_gpu_resident_weights and (
@@ -369,11 +373,11 @@ class DiffusionStage:
         block's end releases it. A copy with another builder or policy (``with_builder``,
         ``with_loras``, ``with_attention``, ``with_quantization``) is outside the block and builds
         per call. Every call inside must want the stage's weights: the block does not track LoRA
-        sets, so a call on a stage with other LoRAs must not happen inside it. A streaming stage, a
-        builder that builds per latent shape (tiled data parallel), or a nested block just runs the
-        body.
+        sets, so a call on a stage with other LoRAs must not happen inside it. A streaming stage retains its CPU weights and bounded GPU buffer pool, while
+        blocks continue to transfer on demand. A builder that builds per latent shape
+        (tiled data parallel), or a nested block, just runs the body.
         """
-        if self._is_streaming or self._resident is not None:
+        if self._resident is not None:
             yield
             return
         holder = _ResidentTransformer()

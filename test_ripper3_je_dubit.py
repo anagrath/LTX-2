@@ -1,4 +1,5 @@
 """CPU regression checks for the local long-video/reference composition."""
+from contextlib import contextmanager, nullcontext
 from dataclasses import dataclass
 from pathlib import Path
 from types import SimpleNamespace
@@ -26,6 +27,7 @@ class ReferenceCompositionTests(unittest.TestCase):
         from ripper3_je_native import story_result as native_story
         class Prepared(Exception):pass
         class Fake:
+            prompt_encoder = None
             def _prepare_run(inner, **kwargs):
                 self.assertTrue(torch.is_inference_mode_enabled())
                 inspect.signature(DistilledPipeline._prepare_run).bind(inner,**kwargs)
@@ -44,10 +46,11 @@ class ReferenceCompositionTests(unittest.TestCase):
             tiling_config=None,stage_1_width=288,stage_1_height=512,
             chunk_config=native.ChunkConfig(chunk_pixel_frames=185,next_video_carry_frames=0))
         pipeline=SimpleNamespace(device=torch.device('cpu'),
-            _prepare_run=lambda **kwargs:context,
+            _prepare_run=lambda **kwargs:(pipeline.prompt_encoder([kwargs['prompt']],enhance_first_prompt=False),context)[1],
+            prompt_encoder=lambda prompts,**kwargs:[SimpleNamespace(video_encoding=context.video_context,audio_encoding=context.audio_context)],
             _video_conditionings=lambda *args:lambda chunk:[],
             _sampler_kwargs=lambda *args:{},
-            stage=SimpleNamespace(video_scale_factors=VIDEO_SCALE_FACTORS),
+            stage=SimpleNamespace(video_scale_factors=VIDEO_SCALE_FACTORS,resident=nullcontext),
             upsampler=object(),video_decoder=object(),audio_decoder=object())
         args=SimpleNamespace(chunk_frames=185,carry_frames=0,seed=42,
             num_frames=185,image=Path('image.png'))
@@ -55,6 +58,52 @@ class ReferenceCompositionTests(unittest.TestCase):
         with patch.object(native,'pipeline_output_from_chunks',return_value=sentinel) as pack:
             self.assertIs(native.story_result(pipeline,args,{'prompts':['speech']}),sentinel)
             self.assertEqual(pack.call_args.kwargs['num_frames'],185)
+
+    def test_native_encoder_lifetime_encodes_all_windows_once_and_restores(self):
+        from ripper3_je_native import prepare_story_run
+        calls=[]
+        def encoder(prompts,**options):
+            calls.append(prompts)
+            return [SimpleNamespace(video_encoding=p,audio_encoding=p+' audio') for p in prompts]
+        pipeline=SimpleNamespace(prompt_encoder=encoder)
+        def prepare(**kwargs):
+            first,=pipeline.prompt_encoder([kwargs['prompt']],enhance_first_prompt=False)
+            return first
+        pipeline._prepare_run=prepare
+        first,contexts=prepare_story_run(pipeline,['one','two','three'])
+        self.assertEqual(calls,[['one','two','three']])
+        self.assertEqual(first.video_encoding,'one')
+        self.assertEqual([c.audio for c in contexts],['one audio','two audio','three audio'])
+        self.assertIs(pipeline.prompt_encoder,encoder)
+        def fail(**kwargs):raise RuntimeError('setup failed')
+        pipeline._prepare_run=fail
+        with self.assertRaises(RuntimeError):prepare_story_run(pipeline,['one'])
+        self.assertIs(pipeline.prompt_encoder,encoder)
+
+    def test_streaming_residency_builds_once_and_cleans_up_on_failure(self):
+        from ltx_pipelines.utils.blocks.diffusion_stage import DiffusionStage
+        from unittest.mock import PropertyMock
+        stage=DiffusionStage.__new__(DiffusionStage)
+        stage._resident=None
+        stage._transformer_builder=SimpleNamespace(builds_per_shape=False)
+        events=[]
+        model=object()
+        @contextmanager
+        def streaming():
+            events.append('build')
+            try:yield model
+            finally:events.append('cleanup')
+        stage._streaming_transformer_ctx=streaming
+        with patch.object(DiffusionStage,'_is_streaming',new_callable=PropertyMock,return_value=True):
+            with self.assertRaisesRegex(RuntimeError,'decode failure'):
+                with stage.resident():
+                    with stage._transformer_ctx() as first:self.assertIs(first,model)
+                    with stage.resident():
+                        with stage._transformer_ctx() as second:self.assertIs(second,model)
+                    self.assertEqual(events,['build'])
+                    raise RuntimeError('decode failure')
+        self.assertEqual(events,['build','cleanup'])
+        self.assertIsNone(stage._resident)
 
     def test_target_duration_is_independent_of_reference_duration(self):
         @dataclass
