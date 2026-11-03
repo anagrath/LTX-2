@@ -1,0 +1,23 @@
+{
+  "kept_reference": "/mnt/mongo-raid/shared/Images/JE - Refined Standing Reference v2.png",
+  "archive": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611",
+  "moved": {
+    "/mnt/mongo-raid/shared/Images/._IMG_4340.HEIC": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/._IMG_4340.HEIC",
+    "/mnt/mongo-raid/shared/Images/._JE - Softer Standing Reference.png": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/._JE - Softer Standing Reference.png",
+    "/mnt/mongo-raid/shared/Images/._JE - Updated Hip and Thigh Reference.png": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/._JE - Updated Hip and Thigh Reference.png",
+    "/mnt/mongo-raid/shared/Images/Fu Lu - Source.png": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/Fu Lu - Source.png",
+    "/mnt/mongo-raid/shared/Images/JE - Softer Standing Reference.png": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/JE - Softer Standing Reference.png",
+    "/mnt/mongo-raid/shared/Images/JE - Updated Hip and Thigh Reference.png": "/mnt/mongo-raid/shared/Archive/Images-20261102-214611/JE - Updated Hip and Thigh Reference.png"
+  },
+  "relinked_workspace_aliases": [
+    "/home/anagrath/ai/outputs/ltx/fu-lu-reference-20261102/fu-lu-source.png",
+    "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-softer-standing-anchor.png"
+  ],
+  "restored_on_user_correction": [
+    "/mnt/mongo-raid/shared/Images/Fu Lu - Source.png"
+  ],
+  "kept_images": [
+    "JE - Refined Standing Reference v2.png",
+    "Fu Lu - Source.png"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "kept": [
+    "Fu Lu - Hello.mp4",
+    "JE All Ages - Four Windows.mp4"
+  ],
+  "deleted": [
+    {
+      "name": "._JE All Ages - All Optimizations.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Athletic Influencer - NATTEN.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Athletic Influencer.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Clean Ending - 41 Seconds.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Confident Slow Voice.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Native LTX 2.5 - Playful.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Natural Cadence.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Refined Standing - 41 Seconds.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Restored Opening.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Standing - 41 Seconds.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Updated Script v2.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "._JE All Ages - Updated Script.mp4",
+      "bytes": 4096
+    },
+    {
+      "name": "JE All Ages - All Optimizations.mp4",
+      "bytes": 11901599
+    },
+    {
+      "name": "JE All Ages - Athletic Influencer - NATTEN.mp4",
+      "bytes": 12439433
+    },
+    {
+      "name": "JE All Ages - Athletic Influencer.mp4",
+      "bytes": 12416584
+    },
+    {
+      "name": "JE All Ages - Clean Ending - 41 Seconds.mp4",
+      "bytes": 6639021
+    },
+    {
+      "name": "JE All Ages - Confident Slow Voice.mp4",
+      "bytes": 16422230
+    },
+    {
+      "name": "JE All Ages - Natural Cadence.mp4",
+      "bytes": 13303810
+    },
+    {
+      "name": "JE All Ages - Refined Standing - 41 Seconds.mp4",
+      "bytes": 6488548
+    },
+    {
+      "name": "JE All Ages - Restored Opening.mp4",
+      "bytes": 6405861
+    },
+    {
+      "name": "JE All Ages - Standing - 41 Seconds.mp4",
+      "bytes": 7146540
+    },
+    {
+      "name": "JE All Ages - Updated Script v2.mp4",
+      "bytes": 5847738
+    },
+    {
+      "name": "JE All Ages - Updated Script.mp4",
+      "bytes": 6694045
+    }
+  ]
+}

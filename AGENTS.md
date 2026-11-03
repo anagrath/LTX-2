@@ -306,3 +306,22 @@ Completed186.275s render including prep,187.635s submission total; opened/played
 Shared/Videos/JE All Ages - Four Windows.mp4 directly on Mac. No ASR/decode gate
 or quality approval implied. Evidence local-records/four-windows-41-20261102.
 Worker1996568 remains alive with CPU weights and video models retained.
+
+## Preferred output, second take and shared cleanup
+
+Owner called first four-window JE close to perfect, noting funny audio on we cover
+from counting through algebra. Requested a second take with same prompts and cleanup.
+Take2 uses same input/settings but seed43 (first take42); all4 captions hit cached
+embeddings in0.013s. Opened/played Shared/Videos/JE All Ages - Four Windows - Take 2.mp4.
+Keep first JE All Ages - Four Windows.mp4 and Fu Lu - Hello.mp4. Eleven other
+shared videos were explicitly authorized for deletion and removed, with stale
+sidecars. Current visible videos are those three. No new audio-quality approval
+or spoken-phrase correctness is implied for Take2 until owner reviews.
+
+Current Images must keep BOTH JE - Refined Standing Reference v2.png AND Fu Lu -
+Source.png. The latter was mistakenly included in an archive move, then immediately
+restored on owner clarification; workspace alias repaired. Other images archived
+at Shared/Archive/Images-20261102-214611 on the same RAID5, not destroyed. Original
+IMG_4340.HEIC was already absent in cleanup listing, only its orphan sidecar present.
+Evidence/timing/manifests local-records/four-windows-take2-20261102. Worker1996568
+remains alive with retained models and weights.
