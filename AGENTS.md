@@ -163,3 +163,35 @@ omits one "we" and repeats "that" near the ending. The review video is
 A/B workers stopped after completion. The owner now delegated individual prompt
 caching, safe queued extension prewarming and conservative checkpoint/reuse
 implementation; no new GPU tests/renders authorized for that coding task yet.
+
+## Latest owner review and CPU overlap experiment
+
+The49.04s natural-cadence video rendered255.261s; startup+explicit prewarm+render
+was303.773s. Delivered directly per owner: do not delay future requested review
+playback for extra media checks. Owner then requested41s, no stretching, standing
+talking instead of awkward walking, fuller covered bust and slimmer legs. New
+reference/plan are `je-boardwalk-standing-41-anchor.png` and
+`all-ages-native-standing-41-story-plan.json` in the same reference workspace.
+Standing41.04s video: render221.555s, prewarm41.395s, complete pipeline273.273s.
+It is in Shared/Videos as `JE All Ages - Standing - 41 Seconds.mp4` and was opened
+on the Mac without new decode/ASR checks as requested. Do not claim subjective
+quality approval until the owner reviews it. Both render drivers stop workers
+after completion; GLM draft/RTX worker remain off.
+
+User correctly observed serial prewarm only moves work earlier. Do not describe
+it as true compute overlap or subtract preparation from end-to-end comparisons.
+Per-caption CPU LRU, explicit and serial lookahead prewarm, and opt-in completed
+scene artifact reuse are committed52d1c41. Whole-scene artifact reuse is not
+partial-window continuation and reports zero model generation explicitly.
+
+Actual CPU FP32 benchmark on3990X:16threads idleGPU50.59s/warm caption;32threads
+with simultaneousGPUwork33.40s/warm caption (first27.62s),~71.9GiB peakRAM.
+Not a controlled thread-count comparison because contention differs. GPU timing
+logs show six-caption encoder forward2.262s and projection0.735s, while encoder
+load26.155s and projection load4.692s dominate. No backgroundCPU production
+encoding was enabled; benchmark outputs have not had GPU-conditioning/quality
+equivalence verified. Next targeted proposal is immutable packed CPU source-weight
+reuse and fresh per-build GPU buffers, avoiding repeated staging and preserving
+GPU inference. Do not simply switch streaming ModelRegistry cache_weights on:
+pinned-source construction mutates source entries toNone while consuming them.
+Benchmarks/recommendation are in local-records/cpu-encoding-overlap-20261102.

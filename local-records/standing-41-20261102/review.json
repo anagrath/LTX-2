@@ -1,0 +1,11 @@
+{
+  "delivered_video": "/mnt/mongo-raid/shared/Videos/JE All Ages - Standing - 41 Seconds.mp4",
+  "output_duration_s": 41.041666666666664,
+  "total_wall_s": 273.273,
+  "render_wall_s": 221.555,
+  "render_receipt_wall_s": 222.669,
+  "prewarm_wall_s": 41.395,
+  "quality_checks": "Owner explicitly requested immediate viewing without checks. No new video decode or ASR run for this render.",
+  "cpu_overlap": "Separate32threadCPU benchmark overlapped thisGPUrun; not controlled isolatedperformance attribution. Actual CPU results saved separately.",
+  "render_wall_note": "Exact run_job wall_s retained in result.json; rendered video fresh, artifactreuse disabled."
+}

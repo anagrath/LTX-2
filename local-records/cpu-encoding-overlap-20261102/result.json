@@ -1,0 +1,81 @@
+{
+  "status": "completed",
+  "device": "cpu",
+  "dtype": "float32",
+  "threads": 16,
+  "interop_threads": 1,
+  "torch": "2.13.0+cu132",
+  "prompt_source": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/all-ages-native-natural-cadence-story-plan.json",
+  "prompt_index": 0,
+  "prompt_chars": 1660,
+  "phases": {
+    "text_model_load": {
+      "wall_s": 7.032
+    },
+    "projection_model_load": {
+      "wall_s": 1.655
+    },
+    "caption_1_text_encode": {
+      "wall_s": 38.149,
+      "mask_shape": [
+        1,
+        1024
+      ],
+      "valid_tokens": 316,
+      "hidden_state_count": 49,
+      "hidden_shape": [
+        1,
+        1024,
+        3840
+      ]
+    },
+    "caption_1_projection": {
+      "wall_s": 12.798,
+      "video_shape": [
+        1,
+        1024,
+        4096
+      ],
+      "audio_shape": [
+        1,
+        1024,
+        2048
+      ],
+      "finite": true,
+      "dtype": "torch.float32"
+    },
+    "caption_2_text_encode": {
+      "wall_s": 37.91,
+      "mask_shape": [
+        1,
+        1024
+      ],
+      "valid_tokens": 316,
+      "hidden_state_count": 49,
+      "hidden_shape": [
+        1,
+        1024,
+        3840
+      ]
+    },
+    "caption_2_projection": {
+      "wall_s": 12.683,
+      "video_shape": [
+        1,
+        1024,
+        4096
+      ],
+      "audio_shape": [
+        1,
+        1024,
+        2048
+      ],
+      "finite": true,
+      "dtype": "torch.float32"
+    }
+  },
+  "pid": 1967257,
+  "phase": "finished",
+  "phase_started_monotonic": 277786.437916875,
+  "peak_rss_kib": 75359028
+}

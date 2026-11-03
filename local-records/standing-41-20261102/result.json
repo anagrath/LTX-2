@@ -1,0 +1,86 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "dub_it_loaded": false,
+  "audio_reference_used": false,
+  "loras": [],
+  "target_frames": 985,
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-standing-41-anchor.png",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "sampler": "official LTX-2.5 Euler ancestral",
+  "optimizations": {
+    "single_encoder_lifetime": true,
+    "persistent_streaming_transformer": true,
+    "compile": true,
+    "cuda_graphs": false,
+    "progressive_encode": true,
+    "completed_audio_device": "cpu",
+    "decoder_mode": "chunked_compile",
+    "auxiliary_residency": true
+  },
+  "story_plan": {
+    "script": "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover? And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really! We have seen success with students as young as two years old. How cool is that? And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range! Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join. Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.",
+    "dialogue": [
+      "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?",
+      "And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!",
+      "We have seen success with students as young as two years old. How cool is that?",
+      "And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!",
+      "Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.",
+      "Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages."
+    ],
+    "prompts": [
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"We have seen success with students as young as two years old. How cool is that?\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, standing comfortably on a sunny wooden beach boardwalk, talking directly to the viewer. Her blue eyes, freckles, ears and trunk retain her recognizable identity. Match the reference: fit and lean with softer muscular definition, a slim waist, curvy elephant silhouette, fuller covered bust and slimmer legs, the same cropped coral sleeveless top and opaque fitted navy leggings. Her feet stay planted in one comfortable place, hips level and shoulders relaxed. Natural small upper-body conversational gestures and expressive eye contact; a stable upright stance throughout. One glossy red ball rests securely in her left hand. Ocean, sand and railings remain behind her. Stable phone-camera framing, warm engaged eye contact and occasional modest conversational gestures. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She sounds excited and enthusiastic, speaking confidently at a natural conversational pace. Lively varied cadence: connected flowing phrases, crisp emphasis, brief meaningful pauses between thoughts and natural quick changes in melody. Clear articulation, easy breathing and a confident friendly presence. Clean foreground speech with quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.\""
+    ],
+    "num_frames": 985,
+    "fps": 24,
+    "chunk_frames": 185,
+    "carry_frames": 25,
+    "duration_s": 41.041666666666664,
+    "word_count": 102,
+    "delivery": "Excited, confident conversational cadence at41 seconds; same smooth chest resonance and medium-high pitch",
+    "acting": [
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact.",
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact.",
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact.",
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact.",
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact.",
+      "Standing and talking with planted feet, level hips, modest upper-body gestures and expressive eye contact."
+    ],
+    "dub_it": false,
+    "audio_reference": null,
+    "external_tts": false,
+    "comparison_changes": [
+      "Restore41.04s for102-word spoken script; no stretching direction or extra spoken setup",
+      "Standing direct to camera instead of walking",
+      "Reference with fuller covered bust and slimmer legs"
+    ],
+    "unchanged": [
+      "FAQ wording and factual claims",
+      "Adult JE identity, cropped coral top, navy leggings, red ball, beach boardwalk",
+      "Smooth chesty medium-high voice description, excited confident conversational delivery",
+      "Native LTX-2.5,seed42,576x1024,24fps,six185-frame windows and25-frame carry"
+    ],
+    "prompt_format": "Screenplay-style scene/action and voice/performance directions; only JE dialogue is quoted."
+  },
+  "wall_s": 221.555,
+  "peak_allocated_bytes": 17524470272,
+  "peak_reserved_bytes": 19002294272,
+  "peak_process_rss_kib": 74875172
+}

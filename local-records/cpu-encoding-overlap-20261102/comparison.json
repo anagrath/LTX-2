@@ -1,0 +1,21 @@
+{
+  "16_threads_idle_gpu": {
+    "threads": 16,
+    "model_load_s": 8.687,
+    "caption_1_s": 50.947,
+    "caption_2_s": 50.592999999999996,
+    "finite": true,
+    "peak_rss_gib": 71.86796951293945
+  },
+  "32_threads_concurrent_gpu": {
+    "threads": 32,
+    "model_load_s": 7.484,
+    "caption_1_s": 27.619999999999997,
+    "caption_2_s": 33.403999999999996,
+    "finite": true,
+    "peak_rss_gib": 71.86494827270508
+  },
+  "measurement_limits": "Single caption repeated twice per process;32-thread run concurrent with GPUvideo,16-thread run without concurrent GPUrender. Not controlled solely by thread count. FP32CPU and BF16GPU conditioning are not verified equivalent.",
+  "conclusion": "CPU32threads can plausibly prepare one caption in27.6-33.4s alongside30-40s windows, but actual GPUbatch projection/encoding math only~3s for6captions. Prefer removing~31s repeated source/model setup before adding expensive CPUinference.",
+  "recommended_next_step": "Dedicated immutable CPU packed-source cache for Gemma block weights, fresh per-build source views/provider/GPU slots, disposeGPU afterencoding. Do not enable generic cache_weights=True without fixing destructive block_sd mutation. Optionalprojection CPUstaging later."
+}

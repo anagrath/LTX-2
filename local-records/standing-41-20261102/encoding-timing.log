@@ -1,0 +1,5 @@
+2026-11-02 19:18:47,767 INFO Prompt encoder model-load time: 26.155s
+2026-11-02 19:18:50,029 INFO Prompt encoder forward time (6 captions): 2.262s
+2026-11-02 19:19:00,338 INFO Prompt projection model-load time: 4.692s
+2026-11-02 19:19:01,073 INFO Prompt projection forward time (6 captions): 0.735s
+2026-11-02 19:19:04,887 INFO All 6 story prompts encoded in 0.010s

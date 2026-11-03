@@ -1,0 +1,82 @@
+{
+  "status": "completed",
+  "device": "cpu",
+  "dtype": "float32",
+  "threads": 32,
+  "interop_threads": 1,
+  "torch": "2.13.0+cu132",
+  "measurement_context": "concurrent GPU creative render; shared host RAM/memory bandwidth",
+  "prompt_source": "/home/anagrath/ai/experiments/ltx-setup-20261102/cpu-encoding-overlap/threads-32-concurrent/source-plan.json",
+  "prompt_index": 0,
+  "prompt_chars": 1660,
+  "phases": {
+    "text_model_load": {
+      "wall_s": 6.562
+    },
+    "projection_model_load": {
+      "wall_s": 0.922
+    },
+    "caption_1_text_encode": {
+      "wall_s": 20.982,
+      "mask_shape": [
+        1,
+        1024
+      ],
+      "valid_tokens": 316,
+      "hidden_state_count": 49,
+      "hidden_shape": [
+        1,
+        1024,
+        3840
+      ]
+    },
+    "caption_1_projection": {
+      "wall_s": 6.638,
+      "video_shape": [
+        1,
+        1024,
+        4096
+      ],
+      "audio_shape": [
+        1,
+        1024,
+        2048
+      ],
+      "finite": true,
+      "dtype": "torch.float32"
+    },
+    "caption_2_text_encode": {
+      "wall_s": 24.273,
+      "mask_shape": [
+        1,
+        1024
+      ],
+      "valid_tokens": 316,
+      "hidden_state_count": 49,
+      "hidden_shape": [
+        1,
+        1024,
+        3840
+      ]
+    },
+    "caption_2_projection": {
+      "wall_s": 9.131,
+      "video_shape": [
+        1,
+        1024,
+        4096
+      ],
+      "audio_shape": [
+        1,
+        1024,
+        2048
+      ],
+      "finite": true,
+      "dtype": "torch.float32"
+    }
+  },
+  "pid": 1969433,
+  "phase": "finished",
+  "phase_started_monotonic": 277989.017262638,
+  "peak_rss_kib": 75355860
+}

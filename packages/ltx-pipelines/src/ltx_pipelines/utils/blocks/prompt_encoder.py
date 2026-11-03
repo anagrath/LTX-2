@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import time
 from contextlib import AbstractContextManager
 
 import torch
@@ -185,16 +186,32 @@ class PromptEncoder:
             )
 
         logger.info("Building text encoder from %s", self._text_encoder_path)
+        phase_start = time.monotonic()
         with self._text_encoder_ctx() as text_encoder:
+            if self._device.type == "cuda":
+                torch.cuda.synchronize(self._device)
+            logger.info("Prompt encoder model-load time: %.3fs", time.monotonic() - phase_start)
             if enhance_first_prompt and not separate_enhancer:
                 prompts[0] = generate_enhanced_prompt(text_encoder, prompts[0], **enhance_kwargs)
+            phase_start = time.monotonic()
             raw_outputs = text_encoder.encode(prompts)
+            if self._device.type == "cuda":
+                torch.cuda.synchronize(self._device)
+            logger.info("Prompt encoder forward time (%d captions): %.3fs", len(prompts), time.monotonic() - phase_start)
         logger.info("Text encoder done, building embeddings processor from %s", self._embeddings_paths)
 
+        phase_start = time.monotonic()
         with gpu_model(
             self._build_embeddings_processor(), alloc_trim_strategy=self._alloc_trim_strategy
         ) as embeddings_processor:
+            if self._device.type == "cuda":
+                torch.cuda.synchronize(self._device)
+            logger.info("Prompt projection model-load time: %.3fs", time.monotonic() - phase_start)
+            phase_start = time.monotonic()
             result = [embeddings_processor.process_hidden_states(hs, mask) for hs, mask in raw_outputs]
+            if self._device.type == "cuda":
+                torch.cuda.synchronize(self._device)
+            logger.info("Prompt projection forward time (%d captions): %.3fs", len(prompts), time.monotonic() - phase_start)
         logger.info("Prompt encoding complete")
         return result
 
