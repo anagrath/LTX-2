@@ -1,0 +1,83 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "dub_it_loaded": false,
+  "audio_reference_used": false,
+  "loras": [],
+  "target_frames": 985,
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-athletic-anchor.png",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "sampler": "official LTX-2.5 Euler ancestral",
+  "optimizations": {
+    "single_encoder_lifetime": true,
+    "persistent_streaming_transformer": true,
+    "compile": true,
+    "cuda_graphs": false
+  },
+  "story_plan": {
+    "script": "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover? And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really! We have seen success with students as young as two years old. How cool is that? And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range! Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join. Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.",
+    "dialogue": [
+      "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?",
+      "And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!",
+      "We have seen success with students as young as two years old. How cool is that?",
+      "And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!",
+      "Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.",
+      "Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages."
+    ],
+    "prompts": [
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Start immediately with a spontaneous excited greeting to friends: Hey, check this out, guys! Playfully stretch ALL in all the time, then lift the pitch with curiosity on the question. Roll the red ball in her left palm, briefly show it to camera and smile. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment.",
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Deliver the answer like a delightful reveal: emphasize ALL ages, then give counting through algebra a clear rhythmic contrast. During a short pause, give the red ball one small toss of only a few inches from her left palm and catch it in the same hand, with a knowing smile. One toss only. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment.",
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Sound pleasantly surprised and delighted on as young as TWO years old. Raise her eyebrows, tilt her head and add a small ear wiggle. Give the ball a gentle tap with the tip of her trunk while keeping it secure in her left hand. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"We have seen success with students as young as two years old. How cool is that?\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment.",
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Shift into confident but lively explanation, with pointed emphasis on college algebra and an amused eyebrow lift at the contrast. Use her free hand to make a small explanatory gesture; keep the ball comfortably at her left hip during this more detailed sentence. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment.",
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Make the practical explanation friendly and easy, with light separate stresses on computer, tablet and phone. Raise the red ball like a pretend microphone for a playful beat, then lower it. The ball remains a red sphere. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment.",
+      "A continuous portrait 3D animated creator-style video of JE, exactly the female gray elephant in the starting image, walking along a sunny wooden beach boardwalk. Keep her recognizable blue eyes, freckles, face, ears and trunk, light sleeveless coral beach tank top and navy leggings, her trim athletic build and toned arms and legs. The ocean, sand and railings remain in the background. She walks with relaxed athletic confidence and a polished, natural beach-model camera presence. A smooth phone-camera view follows her walk. There is exactly one glossy red ball; it normally rests in her left hand and returns there after each playful action. Maintain object size, shape and color. JE has the clear, youthful voice of an American woman in her early twenties: light, smooth, bright, clean-toned and naturally higher-pitched, with easy fluent articulation. She sounds like a bubbly young social-media creator telling friends something exciting, with a smile in her voice, animated melodic pitch changes, playful emphasis and lively conversational timing. Her voice stays smooth and clear throughout, without rasp, gravel, hoarseness or creaky vocal fry. Keep one consistent speaker throughout. Her eyebrows, ears, trunk and free hand respond naturally to the meaning of the words, with believable synchronized mouth movement. Clean foreground speech with quiet ocean ambience, no music or other speakers. Finish with a delighted recap, emphasizing the surprising range without implying every two-year-old can use the program. Give guys a friendly conversational bounce, gently rotate the ball in her left palm and finish with a bright smile. Speak the following dialogue exactly once, preserving every word and adding no ad-libs: \"Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.\". No captions, lettering, logos or watermarks. Continue the same character, speaker and scene from the preceding segment."
+    ],
+    "num_frames": 985,
+    "fps": 24,
+    "chunk_frames": 185,
+    "carry_frames": 25,
+    "duration_s": 41.041666666666664,
+    "word_count": 102,
+    "delivery": "Young adult female creator voice; rewritten influencer wording and playful ball acting",
+    "acting": [
+      "Start immediately with a spontaneous excited greeting to friends: Hey, check this out, guys! Playfully stretch ALL in all the time, then lift the pitch with curiosity on the question. Roll the red ball in her left palm, briefly show it to camera and smile.",
+      "Deliver the answer like a delightful reveal: emphasize ALL ages, then give counting through algebra a clear rhythmic contrast. During a short pause, give the red ball one small toss of only a few inches from her left palm and catch it in the same hand, with a knowing smile. One toss only.",
+      "Sound pleasantly surprised and delighted on as young as TWO years old. Raise her eyebrows, tilt her head and add a small ear wiggle. Give the ball a gentle tap with the tip of her trunk while keeping it secure in her left hand.",
+      "Shift into confident but lively explanation, with pointed emphasis on college algebra and an amused eyebrow lift at the contrast. Use her free hand to make a small explanatory gesture; keep the ball comfortably at her left hip during this more detailed sentence.",
+      "Make the practical explanation friendly and easy, with light separate stresses on computer, tablet and phone. Raise the red ball like a pretend microphone for a playful beat, then lower it. The ball remains a red sphere.",
+      "Finish with a delighted recap, emphasizing the surprising range without implying every two-year-old can use the program. Give guys a friendly conversational bounce, gently rotate the ball in her left palm and finish with a bright smile."
+    ],
+    "dub_it": false,
+    "audio_reference": null,
+    "external_tts": false,
+    "comparison_changes": [
+      "Owner-authorized rewrite of original FAQ into influencer wording, preserving factual claims",
+      "Explicit youthful, smooth, bright adult female voice direction",
+      "Owner-requested athletic, toned, trimmer build, light top and same leggings",
+      "Single text encoder lifetime, compiled transformer, persistent CPU-offloaded streaming transformer"
+    ],
+    "unchanged": [
+      "Native LTX-2.5 joint audio/video, no Dub-It or external TTS",
+      "seed 42",
+      "576x1024 at 24 fps",
+      "985 frames, six 185-frame windows with 25-frame overlap",
+      "Face identity, sunny boardwalk, navy leggings and red ball"
+    ]
+  },
+  "wall_s": 291.198,
+  "peak_allocated_bytes": 16480361984,
+  "peak_reserved_bytes": 18398314496,
+  "peak_process_rss_kib": 74814776
+}

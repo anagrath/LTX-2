@@ -1,0 +1,29 @@
+{
+  "triton_fallback": {
+    "mean_ms": 0.15175679922103882,
+    "finite": true
+  },
+  "natten": {
+    "mean_ms": 0.3678719997406006,
+    "finite": true
+  },
+  "shape": [
+    1,
+    13,
+    32,
+    18,
+    8,
+    64
+  ],
+  "kernel": [
+    3,
+    3,
+    3
+  ],
+  "dtype": "torch.bfloat16",
+  "natten_version": "0.21.7",
+  "torch": "2.13.0+cu132",
+  "max_abs_difference": 0.0078125,
+  "mean_abs_difference": 0.00018024444580078125,
+  "note": "Representative synthetic NA kernel benchmark, not an end-to-end decoder measurement"
+}

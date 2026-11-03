@@ -1,0 +1,11 @@
+{
+  "original_completed_native_s": 548.808,
+  "resident_compiled_triton_s": 291.198,
+  "resident_compiled_natten_s": 284.826,
+  "natten_observed_reduction_pct": 2.1882018420456006,
+  "review_file": "/mnt/mongo-raid/shared/Videos/JE All Ages - Athletic Influencer - NATTEN.mp4",
+  "mac_playback_verified": true,
+  "speech_review": "ASR detects acting-direction leakage, repeated greeting and a garbled FAQ question. Owner requested viewing this version and explicitly stopped a proposed rerender. No corrected render started.",
+  "timing_limits": "Single sequential measurements; compiler caches and warm state differ. Do not attribute all changes or the small NATTEN difference causally.",
+  "long_form_goal": "Owner wants 5-10 minute YouTube videos using company characters, potentially a children\u2019s channel. No channel publication or full episode generation authorized yet."
+}
