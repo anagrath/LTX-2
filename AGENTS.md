@@ -402,3 +402,22 @@ Prompts explicitly exclude instruments/beat/harmonies, but owner must assess aud
 and melody; do not claim prompt compliance from generation success alone. Never
 upload personal Fu Lu videos to marketing without instruction. Evidence under
 local-records/fu-lu-{limerick,finnegan,acappella}-20261102; source photo preserved.
+
+## November3 Fu Lu outdoor walking hook
+
+New source JPEG in Shared/Images: AB87D244-0AE1-4916-9431-F7CC2BBCC06A_1_201_a.jpeg.
+Owner requested walking dog with her two-syllable name taking a whistle-like
+hip-hop hook. Assistant offered original generated hip-hop-style music; do not
+describe it as using the referenced commercial recording. No song was downloaded
+or sampled. Current brief explicitly requests music; prior no-backing constraint
+was for the separate limerick, not a global restriction on all Fu Lu videos.
+Built-in imagegen reframed the new photo into portrait full-body walking seed:
+Shared/Images/Fu Lu - Walking Reference.png. Original photo/tool output preserved.
+New native video Shared/Videos/Fu Lu - Walking Hook.mp4 opened/played on Mac.
+217frames/24fps=9.0417s,one217-frame window,no carry,seed46,576x1024;
+submission45.098s on existing worker1996568. Prompts request three two-note Fu Lu
+vocal hooks over original instrumental; owner review of timing/music/identity
+pending. Exact prompt and seed-image edit evidence:
+local-records/fu-lu-walk-hook-20261103. Runtime queue still uses November2
+refined-standing-41/queue; new driver explicitly points there rather than assuming
+a same-date queue. No marketing upload or deletion of existing sources.

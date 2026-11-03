@@ -1,0 +1,19 @@
+{
+  "script": "Fu Lu! Fu Lu! Fu Lu!",
+  "dialogue": [
+    "Fu Lu! Fu Lu! Fu Lu!"
+  ],
+  "prompts": [
+    "SCENE / ACTION:\nA photorealistic portrait video of Fu Lu, the exact female Chinese Crested dog from the starting image, walking toward the camera on the same sunny leaf-covered path. Preserve her distinctive gray-and-white face, black nose, dark round eyes, wispy silky white-and-gray crest, natural small-dog body and coat. Her four paws follow a relaxed natural canine walking gait. The low eye-level camera tracks backward smoothly to keep her complete body in frame as she approaches with a cute self-assured little swagger. Her crest moves gently with her steps. When she vocalizes her name, her canine mouth and jaw clearly articulate the two syllables in sync; keep her dog identity and anatomy, without becoming a human or cartoon. No people, outfits, captions, text, logos or watermarks.\n\nMUSIC / VOCAL PERFORMANCE (direction, not lyrics):\nAn original playful early-2000s Southern hip-hop-style instrumental intro: bouncy heavy bass, crisp snare and handclap rhythm, punchy short brass stabs and a catchy two-note high whistle-style hook. At each of three hook repetitions, Fu Lu's friendly clear female voice takes over the whistle melody and sings her name on its two notes: the first syllable Foo on the first note, the second syllable Loo on the second note. Her name is the rhythmic two-note hook rather than a spoken sentence. Leave instrumental space between the three short calls, approximately at two, five and eight seconds. The groove stays steady while she walks. No male rapper, other singer, additional words or lyrics. This is newly generated music, not a copy or sample of an existing recording.\n\nVOCAL WORDS \u2014 FU LU (only these words, each name exactly two syllables):\n\"Fu Lu! Fu Lu! Fu Lu!\""
+  ],
+  "num_frames": 217,
+  "chunk_frames": 217,
+  "carry_frames": 0,
+  "fps": 24,
+  "duration_s": 9.041666666666666,
+  "native_audio": true,
+  "external_tts": false,
+  "source_photo": "/mnt/mongo-raid/shared/Images/AB87D244-0AE1-4916-9431-F7CC2BBCC06A_1_201_a.jpeg",
+  "seed_image": "/mnt/mongo-raid/shared/Images/Fu Lu - Walking Reference.png",
+  "notes": "Owner described a two-note whistle intro; this take uses original generated hip-hop music and Fu Lu on the two-note hook, not a licensed song recording."
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: identity-preserve. Edit the supplied photograph into a portrait 9:16 first frame for a photorealistic video. Preserve this exact female Chinese Crested dog Fu Lu: her distinctive gray-and-white face, dark round eyes, black nose, wispy long white-and-gray crest, delicate ears and natural small-dog proportions. Keep the same sunlit outdoor path, fallen autumn leaves and shaded greenery. Reframe to show her complete body and all four paws, in the beginning of a natural four-legged walk toward a camera at her eye level, leaving some path below her paws and space above her crest. She looks toward the camera with a confident cute expression. Keep her as the same real dog, not a cartoon, human or a different breed. Restore any cropped body naturally, using realistic canine anatomy and the same coat pattern. Camera-centered full-body composition, realistic warm daylight, no new clothing, accessories, people, text, logo or watermark. Preserve her original facial identity particularly carefully.",
+  "source_photo": "/mnt/mongo-raid/shared/Images/AB87D244-0AE1-4916-9431-F7CC2BBCC06A_1_201_a.jpeg",
+  "generated_source": "/home/anagrath/.codex/generated_images/01a18ea3-f671-7011-9151-9ed0cfc6ecc6/exec-f021cd20-fd2a-45e4-9c68-b8fdc8923416.png",
+  "shared_reference": "/mnt/mongo-raid/shared/Images/Fu Lu - Walking Reference.png"
+}

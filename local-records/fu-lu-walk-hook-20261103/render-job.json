@@ -1,0 +1,9 @@
+{
+  "output_dir": "/home/anagrath/ai/outputs/ltx/fu-lu-walk-hook-20261103",
+  "image": "/home/anagrath/ai/outputs/ltx/fu-lu-walk-reference-20261103/walking-seed.png",
+  "story_plan": "/home/anagrath/ai/outputs/ltx/fu-lu-walk-reference-20261103/walk-hook-story-plan.json",
+  "num_frames": 217,
+  "chunk_frames": 217,
+  "carry_frames": 0,
+  "seed": 46
+}
