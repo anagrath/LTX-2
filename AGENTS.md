@@ -98,3 +98,29 @@ Validation: `.venv/bin/python -m unittest test_ripper3_streaming_output
 real synthetic H.264/AAC encode/decode, frame/audio ordering, existing overlap
 blend/audio-crossfade equivalence, independent retained-tail storage, and
 residency/inference/cleanup on consumer failure. `git diff --check` passed.
+
+## Fork and November 2 optimized worker
+
+The owner explicitly authorized a GitHub fork, pushing our work, delegated RAM
+streaming, and all three subsequent optimizations: decoder compilation, auxiliary
+model reuse, and a persistent worker. `origin` is now `anagrath/LTX-2`; `upstream`
+is `Lightricks/LTX-2`. Work branch: `local/ripper3-python314-20261102`. Never push
+our changes to upstream. Model weights, tokens, and generated media stay outside Git.
+
+Use `RIPPER3-RUNNER.md` for commands and worker job JSON. Native defaults now use
+`chunked_compile` decode and opt-in scopes retaining the video/audio decoder and
+upsampler; `--no-keep-auxiliary-models` and `--decoder-mode chunked_eager` enable
+comparison. `ripper3_ltx_worker.py` provides a local serial file queue, graceful
+stop, retained models, and a bounded 512-MiB CPU cache of complete unenhanced prompt
+batches. All jobs still check GLM drafting/RTX worker are off. No external service,
+boot service, or architecture/placement change was installed.
+
+All 24 relevant CPU tests pass. Two 145-frame GPU smoke jobs in one worker took
+99.632s then 33.601s; exact prompt cache hit reduced prompt encoding from 38.301s
+to 0.002s. Output decode checks passed. With all changes enabled, the 985-frame JE
+benchmark took 231.450s (warm worker, fresh JE prompt encoding 32.466s), compared
+with the previous 284.826s NATTEN run. Peak PyTorch allocation was 14,689,660,928
+bytes versus 16,480,361,984 before. This is an overall sequential comparison, not
+a controlled per-feature attribution. Automatic decode tile sizing changes with
+resident models and allocator state; current warm worker chose 120-frame decode
+tiles versus the prior 192, so reuse/compilation gains have memory tradeoffs.

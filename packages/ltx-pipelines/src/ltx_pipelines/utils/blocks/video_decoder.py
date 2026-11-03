@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import logging
+from contextlib import contextmanager
 from collections.abc import Callable, Iterator, Sequence
 
 import torch
@@ -31,6 +32,7 @@ from ltx_core.model.video_vae.transformer import (
 )
 from ltx_core.multigpu.vae.distributed_decoder import DistributedVideoDecoder, OwnedSingleFrames
 from ltx_pipelines.utils.gpu_model import gpu_model
+from ltx_pipelines.utils.blocks.residency import ModelResidency, build_model, model_context
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +96,7 @@ class VideoDecoder:
                 module_ops=module_ops,
             )
         self._alloc_trim_strategy = alloc_trim_strategy
+        self._resident: ModelResidency | None = None
 
     @property
     def checkpoint_path(self) -> str:
@@ -110,6 +113,7 @@ class VideoDecoder:
         """
         new = copy.copy(self)
         new._decoder_builder = builder
+        new._resident = None
         return new
 
     def _prepared_builder(self) -> BuilderProtocol:
@@ -128,6 +132,38 @@ class VideoDecoder:
         )
         return builder.with_module_ops((*builder.module_ops, op))
 
+    @contextmanager
+    def resident(self) -> Iterator[None]:
+        """Reuse a lazy build with fixed dtype/policy until scope exit.
+
+        Consume/close decoding iterators inside this scope. Nested scopes share
+        the lifetime; `with_builder` copies always have an independent lifetime.
+        """
+        if self._resident is not None:
+            yield
+            return
+        holder = ModelResidency()
+        self._resident = holder
+        try:
+            yield
+        finally:
+            self._resident = None
+            holder.close()
+
+    def _decoder_context(self, build_dtype: torch.dtype):
+        key = ("video_decoder", id(self._decoder_builder), self._device, build_dtype,
+               self._diffusion_vae, self._diffvae_optimization)
+        def build():
+            logger.info("Building video decoder from %s", self._checkpoint_path)
+            return build_model(self._prepared_builder(), self._resident, device=self._device, dtype=build_dtype)
+        return model_context(self._resident, key, build, self._alloc_trim_strategy)
+
+    def _decode_iter(self, build_dtype: torch.dtype, decode: Callable) -> Iterator[torch.Tensor]:
+        # Acquire at iteration time so closing an unused iterator cannot leak a build.
+        residency = self._resident
+        with self._decoder_context(build_dtype) as decoder:
+            yield from _guarded_iter(decode(decoder), residency)
+
     def __call__(
         self,
         latent: torch.Tensor,
@@ -138,7 +174,7 @@ class VideoDecoder:
         keyframes: DecodeKeyframes | None = None,
         device_fn: Callable[[int], str | torch.device] | None = None,
     ) -> Iterator[torch.Tensor]:
-        """Decode *latent* to pixel-space video chunks. Decoder freed after exhaustion.
+        """Decode *latent* to pixel-space chunks; free after exhaustion or resident scope exit.
         ``dtype`` overrides the constructor dtype for this call only (e.g. float32 for
         HDR raw-in/raw-out). Omitted → same dtype as on construction (SDR default).
         ``keyframes`` anchors the decode on already-encoded planes. Every decoder in this repo
@@ -149,17 +185,11 @@ class VideoDecoder:
         """
         build_dtype = self._dtype if dtype is None else dtype
         latent = latent.to(dtype=build_dtype)
-        logger.info("Building video decoder from %s", self._checkpoint_path)
-        decoder = self._prepared_builder().build(device=self._device, dtype=build_dtype).eval()
         extra = {} if keyframes is None else {"keyframes": keyframes}
         if device_fn is not None:
             extra["device_fn"] = device_fn
-        chunks = decoder.decode_video(latent, tiling_config, generator, **extra)
-        return _cleanup_iter(
-            chunks,
-            decoder,
-            alloc_trim_strategy=self._alloc_trim_strategy,
-        )
+        return self._decode_iter(build_dtype,
+            lambda decoder: decoder.decode_video(latent, tiling_config, generator, **extra))
 
     def decode_single_frames(
         self,
@@ -178,14 +208,7 @@ class VideoDecoder:
             return iter(())
         build_dtype = self._dtype if dtype is None else dtype
         moved = [latent.to(dtype=build_dtype) for latent in latents]
-        logger.info("Building video decoder from %s", self._checkpoint_path)
-        decoder = self._prepared_builder().build(device=self._device, dtype=build_dtype).eval()
-        chunks = decoder.decode_single_frames(moved, generator)
-        return _cleanup_iter(
-            chunks,
-            decoder,
-            alloc_trim_strategy=self._alloc_trim_strategy,
-        )
+        return self._decode_iter(build_dtype, lambda decoder: decoder.decode_single_frames(moved, generator))
 
     def decode_owned_single_frames(
         self,
@@ -203,15 +226,47 @@ class VideoDecoder:
             return OwnedSingleFrames([], iter(()), dict)
         build_dtype = self._dtype if dtype is None else dtype
         moved = [latent.to(dtype=build_dtype) for latent in latents]
+        # OwnedSingleFrames exposes ownership metadata immediately, so acquire here.
+        # A resident build remains owned by the explicit outer scope.
+        residency = self._resident
+        if residency is not None:
+            with self._decoder_context(build_dtype) as decoder:
+                owned = _owned_frames(decoder, moved, generator)
+            return owned._replace(planes=_guarded_iter(owned.planes, residency))
         logger.info("Building video decoder from %s", self._checkpoint_path)
         decoder = self._prepared_builder().build(device=self._device, dtype=build_dtype).eval()
-        if isinstance(decoder, DistributedVideoDecoder):
-            owned = decoder.owned_single_frames(moved, generator)
-        else:
-            owned = OwnedSingleFrames(list(range(len(moved))), decoder.decode_single_frames(moved, generator), dict)
+        try:
+            owned = _owned_frames(decoder, moved, generator)
+        except BaseException:
+            with gpu_model(decoder, alloc_trim_strategy=self._alloc_trim_strategy):
+                raise
         return owned._replace(
             planes=_cleanup_iter(owned.planes, decoder, alloc_trim_strategy=self._alloc_trim_strategy)
         )
+
+
+def _owned_frames(decoder, moved, generator) -> OwnedSingleFrames:
+    if isinstance(decoder, DistributedVideoDecoder):
+        return decoder.owned_single_frames(moved, generator)
+    return OwnedSingleFrames(list(range(len(moved))), decoder.decode_single_frames(moved, generator), dict)
+
+
+def _guarded_iter(it: Iterator[torch.Tensor], residency: ModelResidency | None) -> Iterator[torch.Tensor]:
+    """Close decode resources early and reject resuming a disposed resident model."""
+    try:
+        while True:
+            if residency is not None and not residency.active:
+                raise RuntimeError("decode iterator resumed after its residency scope ended")
+            try:
+                item = next(it)
+            except StopIteration:
+                return
+            yield item
+    finally:
+        close = getattr(it, "close", None)
+        if close is not None:
+            close()
+
 
 
 def _cleanup_iter(

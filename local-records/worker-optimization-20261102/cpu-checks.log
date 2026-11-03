@@ -1,0 +1,40 @@
+/home/anagrath/ai/code/LTX-2/.venv/lib/python3.14/site-packages/colour/utilities/verbose.py:340: ColourUsageWarning: "Matplotlib" related API features are not available: "No module named 'matplotlib'".
+See the installation guide for more information: https://www.colour-science.org/installation-guide/
+  warn(*args, **kwargs)
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+100%|██████████| 4/4 [00:00<00:00, 693.04it/s]
+.............ERROR:root:LTX job failed: 1.running.json
+Traceback (most recent call last):
+  File "/home/anagrath/ai/code/LTX-2/ripper3_ltx_worker.py", line 82, in process_pending
+    run(args)
+    ~~~^^^^^^
+  File "/home/anagrath/ai/code/LTX-2/test_ripper3_ltx_worker.py", line 42, in fail
+    raise RuntimeError('test failure')
+RuntimeError: test failure
+...........
+----------------------------------------------------------------------
+Ran 24 tests in 0.200s
+
+OK
+nanobind: leaked 2 instances!
+ - leaked instance 0x762d4ae2d608 of type "OpenImageIO.OpenImageIO.TypeDesc"
+ - leaked instance 0x762d4ae2d628 of type "OpenImageIO.OpenImageIO.TypeDesc"
+nanobind: leaked 3 types!
+ - leaked type "OpenImageIO.OpenImageIO.TypeDesc"
+ - leaked type "OpenImageIO.OpenImageIO.ImageSpec"
+ - leaked type "BASETYPE"
+nanobind: leaked 114 functions!
+ - leaked function "__contains__"
+ - leaked function "__repr__"
+ - leaked function ""
+ - leaked function "basevalues"
+ - leaked function "__setitem__"
+ - leaked function "fromstring"
+ - leaked function "pixel_bytes"
+ - leaked function "size"
+ - leaked function "is_box2"
+ - leaked function ""
+ - ... skipped remainder
+nanobind: this is likely caused by a reference counting issue in the binding code.
+See https://nanobind.readthedocs.io/en/latest/refleaks.html

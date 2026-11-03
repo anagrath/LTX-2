@@ -1,0 +1,33 @@
+{
+  "video": "/home/anagrath/ai/outputs/ltx/je-all-ages-all-optimizations-20261102/video.mp4",
+  "width": 576,
+  "height": 1024,
+  "fps": 24.0,
+  "frame_count": 985,
+  "video_duration_s": 41.041666666666664,
+  "distinct_frames": 985,
+  "near_black_frames": [],
+  "sample_frames": [
+    0,
+    89,
+    178,
+    268,
+    357,
+    447,
+    536,
+    626,
+    715,
+    805,
+    894,
+    984
+  ],
+  "audio_rate": 48000,
+  "audio_channels": 2,
+  "audio_samples_per_channel": 1969120,
+  "audio_duration_s": 41.02333333333333,
+  "audio_rms": 0.20460049252005472,
+  "audio_peak": 1.0078566074371338,
+  "audio_finite": true,
+  "audio_video_duration_delta_s": -0.01833333333333087,
+  "sha256": "c5ce3726c48210f5148bb2042e5fabdf8c5d4b3a0d335c95c2a029e30a34f39f"
+}

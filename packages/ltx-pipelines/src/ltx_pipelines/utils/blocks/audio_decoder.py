@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterator
+from contextlib import contextmanager
 
 import torch
 
@@ -15,7 +17,7 @@ from ltx_core.model.audio_vae import (
 )
 from ltx_core.model.audio_vae import decode_audio as vae_decode_audio
 from ltx_core.types import Audio
-from ltx_pipelines.utils.gpu_model import gpu_model
+from ltx_pipelines.utils.blocks.residency import ModelResidency, build_model, model_context
 
 logger = logging.getLogger(__name__)
 
@@ -49,9 +51,24 @@ class AudioDecoder:
             registry=registry or ModelRegistry(cache_models=True, cache_weights=False),
         )
         self._alloc_trim_strategy = alloc_trim_strategy
+        self._resident: ModelResidency | None = None
+
+    @contextmanager
+    def resident(self) -> Iterator[None]:
+        """Reuse lazy builds until scope exit; nested scopes share the lifetime."""
+        if self._resident is not None:
+            yield
+            return
+        holder = ModelResidency()
+        self._resident = holder
+        try:
+            yield
+        finally:
+            self._resident = None
+            holder.close()
 
     def __call__(self, latent: torch.Tensor) -> Audio:
-        """Decode audio *latent* through VAE decoder + vocoder, then free both."""
+        """Decode audio; free models per call or at explicit resident scope exit."""
         logger.info("Building audio decoder + vocoder from %s", self._checkpoint_path)
         # The vocoder always runs in fp32 (bf16 accumulation degrades spectral
         # metrics). On CUDA/CPU it is stored in bf16 and autocast upcasts per-op to
@@ -59,13 +76,15 @@ class AudioDecoder:
         # avoid the per-call cast. Negligible footprint for this small model.
         vocoder_dtype = torch.float32 if self._device.type == "mps" else self._dtype
         with (
-            gpu_model(
-                self._decoder_builder.build(device=self._device, dtype=self._dtype).eval(),
-                alloc_trim_strategy=self._alloc_trim_strategy,
+            model_context(
+                self._resident, ("decoder", id(self._decoder_builder), self._device, self._dtype),
+                lambda: build_model(self._decoder_builder, self._resident, device=self._device, dtype=self._dtype),
+                self._alloc_trim_strategy,
             ) as decoder,
-            gpu_model(
-                self._vocoder_builder.build(device=self._device, dtype=vocoder_dtype).eval(),
-                alloc_trim_strategy=self._alloc_trim_strategy,
+            model_context(
+                self._resident, ("vocoder", id(self._vocoder_builder), self._device, vocoder_dtype),
+                lambda: build_model(self._vocoder_builder, self._resident, device=self._device, dtype=vocoder_dtype),
+                self._alloc_trim_strategy,
             ) as vocoder,
         ):
             return vae_decode_audio(latent, decoder, vocoder)

@@ -1,0 +1,7 @@
+{
+  "source": "/home/anagrath/ai/outputs/ltx/je-all-ages-all-optimizations-20261102/video.mp4",
+  "model": "openai/whisper-small.en",
+  "revision": "e8727524f962ee844a7319d92be39ac1bd25655a",
+  "text": "Hey, check this out guys, playfully stretch all and all the time. Hey, check this out guys, I get asked all the time, what ages does Elephant Learning covers in Fence? And honestly, all ages. We cover everything from counting all the way through algebra. Yep, real. We have seen success with students as young as two years old. How cool is that? In our algebra curriculum, it was designed to help students struggling with college algebra. So quite the range. Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join! Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.",
+  "transcription_mode": "native timestamped long-form; no independent hard cuts"
+}

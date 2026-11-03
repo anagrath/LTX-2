@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterator
+from contextlib import contextmanager
 
 import torch
 
@@ -10,7 +12,7 @@ from ltx_core.loader.single_gpu_model_builder import SingleGPUModelBuilder as Bu
 from ltx_core.model.upsampler import LatentUpsamplerConfigurator, upsample_video
 from ltx_core.model.video_vae import VideoEncoderConfigurator
 from ltx_pipelines.utils.blocks.image_conditioner import VAE_ENCODER_SD_OPS
-from ltx_pipelines.utils.gpu_model import gpu_model
+from ltx_pipelines.utils.blocks.residency import ModelResidency, build_model, model_context
 
 logger = logging.getLogger(__name__)
 
@@ -44,18 +46,35 @@ class VideoUpsampler:
             registry=registry or ModelRegistry(cache_models=True, cache_weights=False),
         )
         self._alloc_trim_strategy = alloc_trim_strategy
+        self._resident: ModelResidency | None = None
+
+    @contextmanager
+    def resident(self) -> Iterator[None]:
+        """Reuse lazy builds until scope exit; nested scopes share the lifetime."""
+        if self._resident is not None:
+            yield
+            return
+        holder = ModelResidency()
+        self._resident = holder
+        try:
+            yield
+        finally:
+            self._resident = None
+            holder.close()
 
     def __call__(self, latent: torch.Tensor) -> torch.Tensor:
-        """Upsample *latent* using video encoder + spatial upsampler, then free both."""
+        """Upsample video; free models per call or at explicit resident scope exit."""
         logger.info("Building video encoder + spatial upsampler from %s", self._upsampler_path)
         with (
-            gpu_model(
-                self._encoder_builder.build(device=self._device, dtype=self._dtype).eval(),
-                alloc_trim_strategy=self._alloc_trim_strategy,
+            model_context(
+                self._resident, ("encoder", id(self._encoder_builder), self._device, self._dtype),
+                lambda: build_model(self._encoder_builder, self._resident, device=self._device, dtype=self._dtype),
+                self._alloc_trim_strategy,
             ) as encoder,
-            gpu_model(
-                self._upsampler_builder.build(device=self._device, dtype=self._dtype).eval(),
-                alloc_trim_strategy=self._alloc_trim_strategy,
+            model_context(
+                self._resident, ("upsampler", id(self._upsampler_builder), self._device, self._dtype),
+                lambda: build_model(self._upsampler_builder, self._resident, device=self._device, dtype=self._dtype),
+                self._alloc_trim_strategy,
             ) as upsampler,
         ):
             return upsample_video(latent=latent, video_encoder=encoder, upsampler=upsampler)

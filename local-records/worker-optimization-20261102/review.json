@@ -1,0 +1,19 @@
+{
+  "cpu_tests": 24,
+  "cpu_tests_passed": true,
+  "gpu_smoke_runs_s": [
+    99.632,
+    33.601
+  ],
+  "prompt_encoding_cold_s": 38.301,
+  "prompt_encoding_cache_hit_s": 0.002,
+  "previous_je_s": 284.826,
+  "all_optimizations_je_s": 231.45,
+  "observed_elapsed_reduction_pct": 18.739862231678295,
+  "peak_allocated_before_bytes": 16480361984,
+  "peak_allocated_after_bytes": 14689660928,
+  "je_worker_state": "warm models, fresh JE prompt encoding; 32.466s encoding included",
+  "timing_limit": "Sequential measurements, not isolated feature attribution; worker initialization excluded from warm JE run. AUTO tile shape differs.",
+  "quality": "Full 985-frame AV decode and frame review passed. Existing opening speech-direction leakage/repeated greeting remains; no creative prompt correction was made for this timing comparison.",
+  "long_duration_limit": "CPU lifetime/order tests and full 41s render verified; no 5-10 minute GPU stress test performed."
+}

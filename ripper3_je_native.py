@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Plain LTX-2.5 joint video/audio story with per-window acting prompts."""
 import argparse
-from contextlib import contextmanager
+from contextlib import contextmanager, ExitStack
 from dataclasses import replace
 from types import SimpleNamespace
 import json
@@ -19,6 +19,7 @@ os.environ['PYTORCH_CUDA_ALLOC_CONF']='expandable_segments:True'
 
 import torch
 from ltx_core.model.video_vae import AUTO_TILING, get_video_chunks_number
+from ltx_core.model.video_vae.transformer import DiffVAEMode
 from ltx_core.types import VideoPixelShape
 from ltx_core.quantization.fp8_cast import build_policy
 from ltx_core.model.transformer.compiling import CompilationConfig
@@ -101,7 +102,11 @@ def story_result(pipeline, args, plan):
     with torch.inference_mode():
         decoded, ctx = _story_chunks(pipeline, args, plan)
         video = audio = None
-        with pipeline.stage.resident():
+        with ExitStack() as lifetime:
+            lifetime.enter_context(pipeline.stage.resident())
+            if getattr(args, "keep_auxiliary_models", False):
+                for component in (pipeline.video_decoder, pipeline.audio_decoder, pipeline.upsampler):
+                    lifetime.enter_context(component.resident())
             try:
                 video, audio, sample_rate = split_decoded_chunks(decoded)
                 yield SimpleNamespace(video=video, audio=audio, audio_sampling_rate=sample_rate,
@@ -114,7 +119,7 @@ def story_result(pipeline, args, plan):
                         close()
 
 
-def main():
+def parser():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--image',type=Path,required=True)
@@ -123,34 +128,53 @@ def main():
     p.add_argument('--carry-frames',type=int,default=0)
     p.add_argument('--story-plan',type=Path,required=True)
     p.add_argument('--seed',type=int,default=42)
-    p.add_argument('--compile',action='store_true',help='Use upstream block compilation, without CUDA graphs for CPU offload')
-    args=p.parse_args()
-    if args.num_frames<1 or (args.num_frames-1)%8:p.error('Target frames must be 8*k+1')
-    root=Path('/home/anagrath/ai/models/LTX-2.5')
+    p.add_argument('--compile',action='store_true',help='Compile transformer blocks without CUDA graphs for CPU offload')
+    p.add_argument('--decoder-mode',choices=['chunked_eager','chunked_compile','combined_compile'],default='chunked_compile')
+    p.add_argument('--no-keep-auxiliary-models',dest='keep_auxiliary_models',action='store_false',default=True)
+    return p
+
+
+def glm_state():
     state=json.loads(subprocess.check_output(['/usr/bin/python3',
         '/home/anagrath/ai/code/stripe-runtime-worktrees/prefill-critical-20261102/python/draft_model.py','status'],text=True))
-    if state['draft_loaded'] or state['worker_running']:p.error('GLM drafting must be OFF')
-    output=args.output_dir.resolve();output.mkdir(parents=True,exist_ok=True)
-    if (output/'video.mp4').exists():p.error('Choose a fresh output directory')
+    if state['draft_loaded'] or state['worker_running']:
+        raise RuntimeError('GLM drafting and its RTX worker must be OFF')
+    return state
+
+
+def build_pipeline(*, compile_transformer=False, decoder_mode='chunked_compile'):
+    root=Path('/home/anagrath/ai/models/LTX-2.5')
     models=ModelPaths.from_split(
         transformer_path=str(root/'diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors'),
         text_encoder_path=str(root/'text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors'),
         video_vae_path=str(root/'vae/ltx-2.5-video-vae-bf16.safetensors'),
         audio_vae_path=str(root/'vae/ltx-2.5-audio-vae-bf16.safetensors'))
-    logging.basicConfig(level=logging.INFO,format='%(asctime)s %(levelname)s %(name)s: %(message)s')
+    return DistilledPipeline(model_paths=models,
+        spatial_upsampler_path=str(root/'latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors'),
+        loras=[],quantization=build_policy(models.transformer()),offload_mode=OffloadMode.CPU,
+        compilation_config=CompilationConfig() if compile_transformer else None,
+        diffvae_optimization=DiffVAEMode(decoder_mode))
+
+
+def run_job(args, pipeline=None):
+    if args.num_frames<1 or (args.num_frames-1)%8:
+        raise ValueError('Target frames must be 8*k+1')
+    state=glm_state()
+    output=args.output_dir.resolve();output.mkdir(parents=True,exist_ok=True)
+    if (output/'video.mp4').exists() or (output/'result.json').exists():
+        raise ValueError('Choose a fresh output directory')
     report={'status':'running','native_audio':True,'external_tts':False,
             'dub_it_loaded':False,'audio_reference_used':False,'loras':[],
             'target_frames':args.num_frames,'image':str(args.image),
             'seed':args.seed,'glm_state':state,'sampler':'official LTX-2.5 Euler ancestral',
             'optimizations':{'single_encoder_lifetime':True,'persistent_streaming_transformer':True,
                              'compile':args.compile,'cuda_graphs':False,
-                             'progressive_encode':True,'completed_audio_device':'cpu'}}
+                             'progressive_encode':True,'completed_audio_device':'cpu',
+                             'decoder_mode':args.decoder_mode,'auxiliary_residency':args.keep_auxiliary_models}}
     torch.cuda.reset_peak_memory_stats();start=time.monotonic()
     try:
-        pipeline=DistilledPipeline(model_paths=models,
-            spatial_upsampler_path=str(root/'latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors'),
-            loras=[],quantization=build_policy(models.transformer()),offload_mode=OffloadMode.CPU,
-            compilation_config=CompilationConfig() if args.compile else None)
+        if pipeline is None:
+            pipeline=build_pipeline(compile_transformer=args.compile,decoder_mode=args.decoder_mode)
         plan=json.loads(args.story_plan.read_text())
         report['story_plan']=plan
         if ' '.join(plan['dialogue'])!=plan['script']:
@@ -169,6 +193,12 @@ def main():
             peak_process_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
         (output/'result.json').write_text(json.dumps(report,indent=2)+'\n')
         print(json.dumps({k:report[k] for k in ['status','wall_s','peak_allocated_bytes']}),flush=True)
+    return report
+
+
+def main():
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s %(levelname)s %(name)s: %(message)s')
+    run_job(parser().parse_args())
 
 
 if __name__=='__main__':main()
