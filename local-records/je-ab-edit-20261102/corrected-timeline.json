@@ -1,0 +1,56 @@
+{
+  "take_a": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows.mp4",
+  "take_b": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows - Take 2.mp4",
+  "fps": 24,
+  "removed_b_frames": [
+    267,
+    318
+  ],
+  "removed_b_s": [
+    11.125,
+    13.25
+  ],
+  "broll_output_frames": [
+    267,
+    466
+  ],
+  "broll_output_s": [
+    11.125,
+    19.416666666666668
+  ],
+  "return_b_source_frame": 517,
+  "return_b_source_s": 21.541666666666668,
+  "closing_b_out_frame": 935,
+  "closing_a_in_frame": 918,
+  "closing_output_frame": 884,
+  "closing_output_s": 36.833333333333336,
+  "expected_frames": 951,
+  "expected_duration_s": 39.625,
+  "broll_shots": [
+    {
+      "start_s": 30,
+      "frames": 96,
+      "crop": [
+        608,
+        1080,
+        950,
+        0
+      ]
+    },
+    {
+      "start_s": 300,
+      "frames": 103,
+      "crop": [
+        608,
+        1080,
+        850,
+        0
+      ]
+    }
+  ],
+  "broll_drive_id": "1NvqtYBFnQ0inut33ER1EFhImCOHuiKsQ",
+  "broll_audio_used": false,
+  "speed_multiplier": 1.0,
+  "note": "Really removed from both picture and audio. Source B audio preserved under B-roll; A supplies picture and audio for closing. No tempo or playback-rate filter.",
+  "encode_wall_s": 7.02
+}

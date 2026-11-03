@@ -1,0 +1,48 @@
+{
+  "take_a": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows.mp4",
+  "take_b": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows - Take 2.mp4",
+  "broll_drive_id": "1NvqtYBFnQ0inut33ER1EFhImCOHuiKsQ",
+  "broll_drive_url": "https://drive.google.com/file/d/1NvqtYBFnQ0inut33ER1EFhImCOHuiKsQ/view",
+  "broll_title": "Students Using Elephant Learning App.mp4",
+  "fps": 24,
+  "width": 576,
+  "height": 1024,
+  "broll_start_b_frame": 267,
+  "broll_start_b_s": 11.125,
+  "broll_end_b_frame": 517,
+  "broll_end_b_s": 21.541666666666668,
+  "return_cue": "have in We have seen success",
+  "broll_shots": [
+    {
+      "source_start_s": 30,
+      "frames": 120,
+      "crop": [
+        608,
+        1080,
+        950,
+        0
+      ]
+    },
+    {
+      "source_start_s": 300,
+      "frames": 130,
+      "crop": [
+        608,
+        1080,
+        850,
+        0
+      ]
+    }
+  ],
+  "take_b_out_frame": 935,
+  "take_b_out_s": 38.958333333333336,
+  "take_a_in_frame": 918,
+  "take_a_in_s": 38.25,
+  "closing_cue": "Do me a favor, go check it out okay?",
+  "broll_audio_used": false,
+  "audio_declick_fade_ms": 5,
+  "expected_frames": 1002,
+  "expected_duration_s": 41.75,
+  "notes": "B audio retained over B-roll, including Really; source A and B are preserved. Word timestamps are ASR estimates, not manual phonetic alignment.",
+  "encode_wall_s": 7.373
+}

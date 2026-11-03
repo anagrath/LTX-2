@@ -325,3 +325,23 @@ at Shared/Archive/Images-20261102-214611 on the same RAID5, not destroyed. Origi
 IMG_4340.HEIC was already absent in cleanup listing, only its orphan sidecar present.
 Evidence/timing/manifests local-records/four-windows-take2-20261102. Worker1996568
 remains alive with retained models and weights.
+
+## A/B edit with Google Drive B-roll
+
+Owner requested editorial assembly: B base, B-roll at Really, return on have in
+We have seen success (preserve B walking), and A's picture/audio for Do me a favor
+closing. Original A/B/Fu Lu stay intact. The first edit mistakenly retained Really
+and owner reported fast-forward appearance. Rebuilt from original sources,
+removing B11.125–13.25s from picture/audio. Return sourceB21.5417s, cut to A38.25s
+after B38.9583s; corrected length39.625s/951frames/24fps. No time scaling/tempo
+filter. Explicit QuickTime playback1x was observed after reopening corrected file.
+Do not claim the reported perceptual speed issue is resolved without owner review.
+
+Current edited review: Shared/Videos/JE All Ages - Edited A+B.mp4 (replaced failed
+export; failed file retained on scratch only). App-use B-roll from verified Drive
+file1NvqtYBFnQ0inut33ER1EFhImCOHuiKsQ, Students Using Elephant Learning App.mp4,
+two portrait crops from30s and300s. B-roll audio excluded; B voice under footage.
+Drive plugin raw download failed413, rclone downloaded read-only. Marketing index
+was read for discovery; no Drive write or upload. Full index and source media stay
+outside Git. Repro scripts/timelines: local-records/je-ab-edit-20261102.
+Shared Images must still keep JE reference AND Fu Lu - Source.png.

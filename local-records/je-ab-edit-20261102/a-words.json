@@ -1,0 +1,621 @@
+{
+  "text": " Hey, okay, check this out guys. I get asked this all the time. What ages does elephant learning cover? We accept students of all ages because we cover from counting through algebra. We have seen success with students as young as two years old. We've also helped students struggling with college algebra find confidence. If your student is working on any of these subjects, then elephant learning can help them learn years of mathematics in just a few months. Do me a favor. Go check it out, okay?",
+  "chunks": [
+    {
+      "text": " Hey,",
+      "timestamp": [
+        0.0,
+        1.4
+      ]
+    },
+    {
+      "text": " okay,",
+      "timestamp": [
+        1.4,
+        2.4
+      ]
+    },
+    {
+      "text": " check",
+      "timestamp": [
+        2.4,
+        2.82
+      ]
+    },
+    {
+      "text": " this",
+      "timestamp": [
+        2.82,
+        3.1
+      ]
+    },
+    {
+      "text": " out",
+      "timestamp": [
+        3.1,
+        3.42
+      ]
+    },
+    {
+      "text": " guys.",
+      "timestamp": [
+        3.42,
+        4.7
+      ]
+    },
+    {
+      "text": " I",
+      "timestamp": [
+        4.7,
+        4.7
+      ]
+    },
+    {
+      "text": " get",
+      "timestamp": [
+        4.7,
+        4.98
+      ]
+    },
+    {
+      "text": " asked",
+      "timestamp": [
+        4.98,
+        5.38
+      ]
+    },
+    {
+      "text": " this",
+      "timestamp": [
+        5.38,
+        5.74
+      ]
+    },
+    {
+      "text": " all",
+      "timestamp": [
+        5.74,
+        6.22
+      ]
+    },
+    {
+      "text": " the",
+      "timestamp": [
+        6.22,
+        6.46
+      ]
+    },
+    {
+      "text": " time.",
+      "timestamp": [
+        6.46,
+        7.6
+      ]
+    },
+    {
+      "text": " What",
+      "timestamp": [
+        7.6,
+        7.7
+      ]
+    },
+    {
+      "text": " ages",
+      "timestamp": [
+        7.7,
+        8.22
+      ]
+    },
+    {
+      "text": " does",
+      "timestamp": [
+        8.22,
+        8.64
+      ]
+    },
+    {
+      "text": " elephant",
+      "timestamp": [
+        8.64,
+        9.16
+      ]
+    },
+    {
+      "text": " learning",
+      "timestamp": [
+        9.16,
+        9.7
+      ]
+    },
+    {
+      "text": " cover?",
+      "timestamp": [
+        9.7,
+        11.68
+      ]
+    },
+    {
+      "text": " We",
+      "timestamp": [
+        11.68,
+        12.12
+      ]
+    },
+    {
+      "text": " accept",
+      "timestamp": [
+        12.12,
+        12.8
+      ]
+    },
+    {
+      "text": " students",
+      "timestamp": [
+        12.8,
+        13.64
+      ]
+    },
+    {
+      "text": " of",
+      "timestamp": [
+        13.64,
+        14.02
+      ]
+    },
+    {
+      "text": " all",
+      "timestamp": [
+        14.02,
+        14.7
+      ]
+    },
+    {
+      "text": " ages",
+      "timestamp": [
+        14.7,
+        15.42
+      ]
+    },
+    {
+      "text": " because",
+      "timestamp": [
+        15.42,
+        16.36
+      ]
+    },
+    {
+      "text": " we",
+      "timestamp": [
+        16.36,
+        16.7
+      ]
+    },
+    {
+      "text": " cover",
+      "timestamp": [
+        16.7,
+        17.28
+      ]
+    },
+    {
+      "text": " from",
+      "timestamp": [
+        17.28,
+        17.98
+      ]
+    },
+    {
+      "text": " counting",
+      "timestamp": [
+        17.98,
+        18.66
+      ]
+    },
+    {
+      "text": " through",
+      "timestamp": [
+        18.66,
+        19.44
+      ]
+    },
+    {
+      "text": " algebra.",
+      "timestamp": [
+        19.44,
+        21.28
+      ]
+    },
+    {
+      "text": " We",
+      "timestamp": [
+        21.28,
+        21.68
+      ]
+    },
+    {
+      "text": " have",
+      "timestamp": [
+        21.68,
+        21.88
+      ]
+    },
+    {
+      "text": " seen",
+      "timestamp": [
+        21.88,
+        22.14
+      ]
+    },
+    {
+      "text": " success",
+      "timestamp": [
+        22.14,
+        22.66
+      ]
+    },
+    {
+      "text": " with",
+      "timestamp": [
+        22.66,
+        22.94
+      ]
+    },
+    {
+      "text": " students",
+      "timestamp": [
+        22.94,
+        23.44
+      ]
+    },
+    {
+      "text": " as",
+      "timestamp": [
+        23.38,
+        23.82
+      ]
+    },
+    {
+      "text": " young",
+      "timestamp": [
+        23.82,
+        24.18
+      ]
+    },
+    {
+      "text": " as",
+      "timestamp": [
+        24.18,
+        24.5
+      ]
+    },
+    {
+      "text": " two",
+      "timestamp": [
+        24.5,
+        24.84
+      ]
+    },
+    {
+      "text": " years",
+      "timestamp": [
+        24.84,
+        25.08
+      ]
+    },
+    {
+      "text": " old.",
+      "timestamp": [
+        25.08,
+        26.04
+      ]
+    },
+    {
+      "text": " We've",
+      "timestamp": [
+        26.04,
+        26.32
+      ]
+    },
+    {
+      "text": " also",
+      "timestamp": [
+        26.32,
+        26.64
+      ]
+    },
+    {
+      "text": " helped",
+      "timestamp": [
+        26.64,
+        26.92
+      ]
+    },
+    {
+      "text": " students",
+      "timestamp": [
+        26.92,
+        27.3
+      ]
+    },
+    {
+      "text": " struggling",
+      "timestamp": [
+        27.3,
+        27.68
+      ]
+    },
+    {
+      "text": " with",
+      "timestamp": [
+        27.68,
+        28.04
+      ]
+    },
+    {
+      "text": " college",
+      "timestamp": [
+        28.04,
+        28.44
+      ]
+    },
+    {
+      "text": " algebra",
+      "timestamp": [
+        28.44,
+        28.94
+      ]
+    },
+    {
+      "text": " find",
+      "timestamp": [
+        28.94,
+        29.46
+      ]
+    },
+    {
+      "text": " confidence.",
+      "timestamp": [
+        29.46,
+        30.96
+      ]
+    },
+    {
+      "text": " If",
+      "timestamp": [
+        30.96,
+        31.24
+      ]
+    },
+    {
+      "text": " your",
+      "timestamp": [
+        31.24,
+        31.38
+      ]
+    },
+    {
+      "text": " student",
+      "timestamp": [
+        31.38,
+        31.68
+      ]
+    },
+    {
+      "text": " is",
+      "timestamp": [
+        31.68,
+        31.84
+      ]
+    },
+    {
+      "text": " working",
+      "timestamp": [
+        31.84,
+        32.04
+      ]
+    },
+    {
+      "text": " on",
+      "timestamp": [
+        32.04,
+        32.28
+      ]
+    },
+    {
+      "text": " any",
+      "timestamp": [
+        32.28,
+        32.5
+      ]
+    },
+    {
+      "text": " of",
+      "timestamp": [
+        32.5,
+        32.62
+      ]
+    },
+    {
+      "text": " these",
+      "timestamp": [
+        32.62,
+        32.78
+      ]
+    },
+    {
+      "text": " subjects,",
+      "timestamp": [
+        32.78,
+        33.54
+      ]
+    },
+    {
+      "text": " then",
+      "timestamp": [
+        33.54,
+        33.6
+      ]
+    },
+    {
+      "text": " elephant",
+      "timestamp": [
+        33.6,
+        33.92
+      ]
+    },
+    {
+      "text": " learning",
+      "timestamp": [
+        33.92,
+        34.24
+      ]
+    },
+    {
+      "text": " can",
+      "timestamp": [
+        34.24,
+        34.5
+      ]
+    },
+    {
+      "text": " help",
+      "timestamp": [
+        34.5,
+        34.68
+      ]
+    },
+    {
+      "text": " them",
+      "timestamp": [
+        34.68,
+        34.86
+      ]
+    },
+    {
+      "text": " learn",
+      "timestamp": [
+        34.86,
+        35.08
+      ]
+    },
+    {
+      "text": " years",
+      "timestamp": [
+        35.08,
+        35.48
+      ]
+    },
+    {
+      "text": " of",
+      "timestamp": [
+        35.48,
+        35.72
+      ]
+    },
+    {
+      "text": " mathematics",
+      "timestamp": [
+        35.72,
+        36.18
+      ]
+    },
+    {
+      "text": " in",
+      "timestamp": [
+        36.18,
+        36.6
+      ]
+    },
+    {
+      "text": " just",
+      "timestamp": [
+        36.6,
+        36.84
+      ]
+    },
+    {
+      "text": " a",
+      "timestamp": [
+        36.84,
+        37.04
+      ]
+    },
+    {
+      "text": " few",
+      "timestamp": [
+        37.04,
+        37.22
+      ]
+    },
+    {
+      "text": " months.",
+      "timestamp": [
+        37.22,
+        38.26
+      ]
+    },
+    {
+      "text": " Do",
+      "timestamp": [
+        38.26,
+        38.5
+      ]
+    },
+    {
+      "text": " me",
+      "timestamp": [
+        38.5,
+        38.66
+      ]
+    },
+    {
+      "text": " a",
+      "timestamp": [
+        38.66,
+        38.78
+      ]
+    },
+    {
+      "text": " favor.",
+      "timestamp": [
+        38.78,
+        39.42
+      ]
+    },
+    {
+      "text": " Go",
+      "timestamp": [
+        39.42,
+        39.72
+      ]
+    },
+    {
+      "text": " check",
+      "timestamp": [
+        39.72,
+        39.92
+      ]
+    },
+    {
+      "text": " it",
+      "timestamp": [
+        39.92,
+        40.04
+      ]
+    },
+    {
+      "text": " out,",
+      "timestamp": [
+        40.04,
+        40.22
+      ]
+    },
+    {
+      "text": " okay?",
+      "timestamp": [
+        40.22,
+        41.0
+      ]
+    }
+  ]
+}
