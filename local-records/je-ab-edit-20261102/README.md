@@ -61,3 +61,15 @@ edit moved back to scratch, so Shared does not retain that superseded review fil
 OriginalA/B/Fu Lu remain. No new ASR or full-decode review delayed playback, and
 owner approval remains pending. New scripts/timeline are edit_tightened.py and
 tightened-timeline.json; earlier scripts are historical evidence.
+
+## Natural pause on A side
+
+Owner requested0.5–1s pause on the A side because If your student starts abruptly.
+The A in point moved from745/24=31.0417s to732/24=30.5s, within measured quiet
+lead-in30.4318–31.1560s. This adds13 natural video/audio frames (0.5417s), bringing
+A's quiet lead-in before If to about0.656s, plus the small trailing B pause.
+All earlier cuts/crops remain. No frozen frame, inserted digital silence, repeated
+word or speech rate change.901frames/24fps=37.5417s. Encode6.176s. Open/play on Mac
+returned1x and37.542s. Latest review is Shared/Videos/JE All Ages - Final Cut - Pause.mp4;
+previous Final Cut moved to scratch. Scripts/timeline: edit_paused.py and
+paused-timeline.json. Owner review remains pending.

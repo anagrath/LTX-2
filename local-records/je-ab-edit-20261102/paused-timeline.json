@@ -1,0 +1,79 @@
+{
+  "take_a": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows.mp4",
+  "take_b": "/mnt/mongo-raid/shared/Videos/JE All Ages - Four Windows - Take 2.mp4",
+  "fps": 24,
+  "speed_multiplier": 1.0,
+  "removed_b_intervals_frames": [
+    [
+      267,
+      318
+    ],
+    [
+      456,
+      508
+    ]
+  ],
+  "removed_b_intervals_s": [
+    [
+      11.125,
+      13.25
+    ],
+    [
+      19.0,
+      21.166666666666668
+    ]
+  ],
+  "silence_observed_previous_edit_s": [
+    16.749396,
+    19.203104
+  ],
+  "broll_output_frames": [
+    267,
+    419
+  ],
+  "broll_output_s": [
+    11.125,
+    17.458333333333332
+  ],
+  "return_b_source_frame": 522,
+  "return_b_source_s": 21.75,
+  "return_cue": "seen in We have seen success; We have remains under B-roll",
+  "take_b_out_frame": 751,
+  "take_b_out_s": 31.291666666666668,
+  "take_a_in_frame": 732,
+  "take_a_in_s": 30.5,
+  "take_a_output_frame": 648,
+  "take_a_output_s": 27.0,
+  "take_a_cue": "Quiet natural A lead-in before If your student; use A through the end",
+  "a_quiet_lead_in_s": 0.6560419999999993,
+  "added_a_lead_in_frames": 13,
+  "expected_frames": 901,
+  "expected_duration_s": 37.541666666666664,
+  "broll_shots": [
+    {
+      "source_start_s": 30,
+      "frames": 96,
+      "crop": [
+        608,
+        1080,
+        950,
+        0
+      ]
+    },
+    {
+      "source_start_s": 300,
+      "frames": 56,
+      "crop": [
+        608,
+        1080,
+        850,
+        0
+      ]
+    }
+  ],
+  "broll_drive_id": "1NvqtYBFnQ0inut33ER1EFhImCOHuiKsQ",
+  "broll_audio_used": false,
+  "audio_declick_fade_ms": 5,
+  "note": "Built from original A/B. Really removed; gap collapsed while retaining short natural pause. A begins at30.5s within its quiet lead-in; no time scaling or tempo filters.",
+  "encode_wall_s": 6.176
+}

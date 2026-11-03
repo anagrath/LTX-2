@@ -357,3 +357,10 @@ output27s (If your student), through closing. Same portrait B-roll crops, shorte
 second shot. No speed scaling. Evidence appended in local-records/je-ab-edit-20261102,
 edit_tightened.py/tightened-timeline.json. A/B/Fu Lu sources and both Images keepers
 remain intact. User creative review still pending; no ASR/decode playback gate.
+
+Owner requested half-to-one-second pause on A side of If your student cut. A in
+point moved745→732 (31.0417→30.5s), using its natural quiet lead-in before speech
+at31.156s, about0.656s on A side. Adds13frames,901frames/37.5417s total. Other
+cuts and speed unchanged. Opened/played at observed1x on Mac: Shared/Videos/JE All
+Ages - Final Cut - Pause.mp4. Previous Final Cut moved back to scratch. Evidence
+edit_paused.py/paused-timeline.json in same local-records folder. Owner review pending.
