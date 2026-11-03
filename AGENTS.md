@@ -257,3 +257,9 @@ sips (original preserved). Native6.04s video greeting: Hello, My name is Fu Lu.
 Shared/Videos/Fu Lu - Hello.mp4 opened/played on Mac. Submission32.595s including
 5.708s prompt preparation. Same warm worker; no external TTS or image edit.
 Evidence records: clean-ending-41-20261102 and fu-lu-hello-20261102.
+
+Owner-script41s completed188.647s including6.298s fresh-caption preparation using
+the warm worker. Opened/played on Mac: Shared/Videos/JE All Ages - Updated Script.mp4.
+Exact prompt wording was checked; no ASR/decode gate was added. Do not claim
+generated speech is word-perfect without owner review. Evidence:
+local-records/owner-script-41-20261102. Worker1996568 stays alive at the same queue.

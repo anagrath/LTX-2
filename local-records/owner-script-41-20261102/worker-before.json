@@ -1,0 +1,38 @@
+{
+  "pid": 1996568,
+  "state": "idle",
+  "decoder_mode": "chunked_compile",
+  "compile": true,
+  "prepared_weights_cache_gib": 32,
+  "prompt_cache_hits": 11,
+  "prompt_cache_misses": 14,
+  "prompt_cache_bytes": 176275456,
+  "prepared_weights": {
+    "hits": 9,
+    "misses": 3,
+    "evictions": 0,
+    "bytes": 32277182208,
+    "entries": 3,
+    "prepare_wall_s": 25.557,
+    "inflight_copies": 0,
+    "max_bytes": 34359738368
+  },
+  "last_prewarm": {
+    "prewarm_wall_s": 6.493,
+    "prompt_count": 6,
+    "cache_hits": 0,
+    "cache_misses": 12,
+    "cache_bytes": 151093248,
+    "prepared_weights": {
+      "hits": 3,
+      "misses": 3,
+      "evictions": 0,
+      "bytes": 32277182208,
+      "entries": 3,
+      "prepare_wall_s": 25.557,
+      "inflight_copies": 0,
+      "max_bytes": 34359738368
+    }
+  },
+  "output_dir": "/home/anagrath/ai/outputs/ltx/fu-lu-hello-20261102"
+}
