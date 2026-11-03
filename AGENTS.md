@@ -465,3 +465,8 @@ its beginning; owner suggested earlier3.6start. Latest trial uses exact3.600–8
 Restarts8.65/13.7/18.75s. Rap/pauses/video unchanged,no model rerender. Opened/played
 on Mac at1x: Shared/Videos/Fu Lu - Walking Rap - Loop 3.6.mp4,19.125s. Owner review
 pending; do not assert auditory seamlessness. Evidence local-records/fu-lu-rap-loop-36-20261103.
+
+Owner found3.6too early and requested3.75. Latest selected source is3.750–8.650s,
+4.9s/235200samples at48kHz. Restarts8.65/13.55/18.45s. Paused rap/video unchanged,
+19.125s. Opened/played on Mac1x: Fu Lu - Walking Rap - Loop 3.75.mp4. Owner review
+pending; supersedes3.6trial. Repro local-records/fu-lu-rap-loop-375-20261103.
