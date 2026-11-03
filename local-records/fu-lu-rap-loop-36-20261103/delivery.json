@@ -1,0 +1,12 @@
+{
+  "shared_video": "/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Rap - Loop 3.6.mp4",
+  "mac_open_and_play_commands_succeeded": true,
+  "observed_quicktime_rate": 1.0,
+  "duration_s": 19.125,
+  "owner_loop_source_s": [
+    3.6,
+    8.65
+  ],
+  "loop_duration_s": 5.05,
+  "rap_and_picture_regenerated": false
+}

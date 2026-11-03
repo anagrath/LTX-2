@@ -458,3 +458,10 @@ Reuses paused v2 rapper unchanged; same19.125s picture. Opened/played on Mac at1
 Shared/Videos/Fu Lu - Walking Rap - Selected Loop.mp4. Owner audible-join review
 pending. Evidence local-records/fu-lu-rap-selected-loop-20261103. Earlier pending
 selection notes and guessed ranges are superseded. No model rerender needed.
+
+Owner reported gap in3.959–8.65loop. Source silencedetect found0.248687s quiet at
+its beginning; owner suggested earlier3.6start. Latest trial uses exact3.600–8.650s,
+5.05s/242400samples at48kHz,5ms edge fades without period-shortening overlap.
+Restarts8.65/13.7/18.75s. Rap/pauses/video unchanged,no model rerender. Opened/played
+on Mac at1x: Shared/Videos/Fu Lu - Walking Rap - Loop 3.6.mp4,19.125s. Owner review
+pending; do not assert auditory seamlessness. Evidence local-records/fu-lu-rap-loop-36-20261103.
