@@ -12,7 +12,12 @@ from ltx_core.conditioning import (
     ConditioningItem,
     VideoGeneratedKeyframeSlots,
 )
-from ltx_core.devices import activation_budget_bytes, cleanup_accelerator_memory, get_preferred_device
+from ltx_core.devices import (
+    activation_budget_bytes,
+    cleanup_accelerator_memory,
+    cuda_allocatable_bytes,
+    get_preferred_device,
+)
 from ltx_core.loader.sft_loader import SafetensorsModelStateDictLoader
 from ltx_core.model.audio_vae import encode_audio
 from ltx_core.model.transformer import Modality, TokenTimesteps
@@ -159,6 +164,10 @@ def tiling_config_for_vae(
     """Decode tiling for pipelines.
     Conv VAE: aspect-coupled long-side 768/64 + temporal 80/24.
     DiffVAE: halo/memory-aware :func:`recommended_decode_tiling_config`.
+    CUDA counts reusable allocator-cache blocks, so an otherwise identical warm
+    worker does not receive smaller tiles solely because it has a warm cache.
+    Live tensors, other processes and per-process memory limits still reduce
+    the budget; the recommender's weight charge and safety reserve are unchanged.
     Pass ``keyframes=True`` for a keyframe-aware ``decode_video(keyframes=)`` decode: joint attention runs
     eager blocks, which changes both the stage-5 coefficient and the withheld reserve.
     """
@@ -179,7 +188,11 @@ def tiling_config_for_vae(
 
     resolved_device = device if device is not None else get_device()
     if free_bytes is None:
-        free_bytes = activation_budget_bytes(resolved_device)
+        free_bytes = (
+            cuda_allocatable_bytes(resolved_device)
+            if resolved_device.type == "cuda"
+            else activation_budget_bytes(resolved_device)
+        )
 
     return recommended_decode_tiling_config(
         **geometry,

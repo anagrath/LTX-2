@@ -124,3 +124,42 @@ bytes versus 16,480,361,984 before. This is an overall sequential comparison, no
 a controlled per-feature attribution. Automatic decode tile sizing changes with
 resident models and allocator state; current warm worker chose 120-frame decode
 tiles versus the prior 192, so reuse/compilation gains have memory tradeoffs.
+
+## Current JE creative revision and budget A/B
+
+The owner now authorized the next render after settling these changes:
+excited rather than playful; slow confident speech; full chest resonance with a
+higher speaking pitch, smooth rather than raspy; adult cropped coral top, very
+fitted navy leggings, and a lean toned but curvy elephant silhouette. Remove
+all stretching directions and quoted/example dialogue from acting descriptions.
+Keep the 102-word FAQ's factual claims. The new prompt file is
+`/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/all-ages-native-confident-slow-story-plan.json`,
+with `je-boardwalk-cropped-confident-anchor.png`. It uses 1369 frames (57.04s),
+six 249-frame windows and 25-frame overlap, 576x1024/24fps/seed42. The added time
+is intentional to slow speech; raw render time is not directly comparable to
+previous 985-frame creative versions.
+
+The owner explicitly requested timing the agent's next speedup. That change
+makes single-GPU CUDA AUTO tiling count reusable allocator cache via
+`cuda_allocatable_bytes`; live allocations, process cap, model allowance and
+compiled safety reserve remain accounted for. Twenty-eight CPU checks passed
+with CUDA hidden; four CUDA-budget tests use mocks. A matched short GPU A/B is
+running: detached baseline worktree at16835ab imports old ltx-pipelines via
+PYTHONPATH, while fixed uses this checkout. Same145-frame image/plan/seed, fresh
+serial worker per condition, first job warmup plus two repeated jobs. Baseline
+runs first; results are sequential, not randomized. Only after both succeed does
+the fixed worker run the revised57-second creative. Driver/logs under
+`/home/anagrath/ai/experiments/ltx-setup-20261102/decode-budget-ab/`.
+
+The matched budget A/B completed: render-only final repeats25.594s baseline vs
+24.586s fixed (~3.94% less elapsed), with more VRAM used for larger stable tiles.
+Earlier repeated jobs32.950s vs24.536s include shape/compiler/allocator warmup;
+do not advertise that average as steady-state speedup. Evidence is in
+`local-records/decode-budget-ab-20261102/`. Both145-frame final clips passed full
+A/V decode. Revised57.04s creative completed in296.479s and passed1369-frame decode
+and contact-sheet review. ASR no longer detects opening direction leakage; it
+omits one "we" and repeats "that" near the ending. The review video is
+`/mnt/mongo-raid/shared/Videos/JE All Ages - Confident Slow Voice.mp4`.
+A/B workers stopped after completion. The owner now delegated individual prompt
+caching, safe queued extension prewarming and conservative checkpoint/reuse
+implementation; no new GPU tests/renders authorized for that coding task yet.

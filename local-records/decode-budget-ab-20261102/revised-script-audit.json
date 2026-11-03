@@ -1,0 +1,19 @@
+{
+  "script_exact_match_after_normalization": false,
+  "expected_words": 102,
+  "transcribed_words": 102,
+  "differences": [
+    {
+      "operation": "delete",
+      "expected": "we",
+      "asr": ""
+    },
+    {
+      "operation": "insert",
+      "expected": "",
+      "asr": "that"
+    }
+  ],
+  "opening_direction_leakage_detected": false,
+  "note": "ASR is a content check, not a listening assessment. Voice quality and exact join pronunciation need user review."
+}

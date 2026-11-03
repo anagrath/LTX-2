@@ -224,6 +224,17 @@ A keyframe decode is **not** compiled -- the compiled entry points are the keyfr
 
 Pipeline `AUTO_TILING` resolves via `tiling_config_for_vae`: for a **Conv VAE** that is aspect-coupled long-side `768/64` spatial tiles plus temporal `80/24` (`TileSizeConfig.from_long_side`). For **DiffVAE**, recommended decode tiling enumerates legal per-axis tile **sizes** on the VAE grid (via the same `split_by_size` path decode uses) and emits a `TileSizeConfig` with independent `frames` / `height` / `width` `DimensionSizeConfig` values. Tile sizes are floored at ``2xOverlap`` so blend masks stay complementary. The resolved tile is logged at INFO. Stage-5 coefficients and reserves come from the grid above; `tiling_config_for_vae(..., keyframes=True)` selects the keyframe column, and a `chunked_compile` remapped to the Triton/eager fallback uses the `chunked_eager` row.
 
+On CUDA, automatic planning counts unused blocks already held by this process's
+caching allocator as allocatable memory (`cuda_allocatable_bytes`). A warm cache
+therefore does not shrink the tile solely because driver-reported free memory is
+lower. Live tensor allocations, other processes, and the configured per-process
+memory fraction still constrain the budget. Explicit `free_bytes` overrides are
+honored unchanged; CPU/MPS budget selection is unchanged. This does not remove
+the recommender's model-weight charge or its existing safety reserve. A retained
+decoder may consequently still be charged conservatively twice (once in live
+allocations and once in the weight estimate); do not remove that allowance
+without accounting for the decoder's actual residency and validating peak usage.
+
 **DFR** always keyframe-decodes (`decode_video(keyframes=)`), so `AUTO_TILING` uses the **keyframe** VRAM column. At 4K with temporal rounds, decode is usually the memory cliff, not the denoise; there is no decode-tile CLI flag. `--spatial-upscalings 2` keeps stage-2 denoise at half resolution. Each temporal tile reloads the transformer. See [Running DFR](pipelines.md#running-dfr).
 
 **CLI:**

@@ -1,0 +1,49 @@
+{
+  "baseline": [
+    {
+      "run": 1,
+      "wall_s": 99.486,
+      "peak_allocated_bytes": 13718405632
+    },
+    {
+      "run": 2,
+      "wall_s": 32.95,
+      "peak_allocated_bytes": 8176945664
+    },
+    {
+      "run": 3,
+      "wall_s": 25.594,
+      "peak_allocated_bytes": 10920396288
+    }
+  ],
+  "baseline_tiles": [
+    "2026-11-02 18:27:38,395 INFO DiffVAE AUTO tiling: 152f x 608x576 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=23524081664",
+    "2026-11-02 18:28:41,799 INFO DiffVAE AUTO tiling: 96f x 448x384 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=9489940480",
+    "2026-11-02 18:29:16,341 INFO DiffVAE AUTO tiling: 152f x 448x576 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=15735259136"
+  ],
+  "fixed": [
+    {
+      "run": 1,
+      "wall_s": 99.58,
+      "peak_allocated_bytes": 13718405632
+    },
+    {
+      "run": 2,
+      "wall_s": 24.536,
+      "peak_allocated_bytes": 12464940032
+    },
+    {
+      "run": 3,
+      "wall_s": 24.586,
+      "peak_allocated_bytes": 12464940032
+    }
+  ],
+  "fixed_tiles": [
+    "2026-11-02 18:30:46,328 INFO DiffVAE AUTO tiling: 152f x 608x576 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=24264224768",
+    "2026-11-02 18:31:49,401 INFO DiffVAE AUTO tiling: 152f x 608x576 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=18175174656",
+    "2026-11-02 18:32:15,544 INFO DiffVAE AUTO tiling: 152f x 608x576 (overlap T=40 HW=160) mode=chunked_compile keyframes=False free_bytes=19800140800"
+  ],
+  "final_repeat_reduction_pct": 3.938423067906549,
+  "method": "Same pinned models, seed42,145 frames,576x1024,24fps,unchanged image and one-prompt plan. Separate fresh workers; first job warmup, then two exact repeats. Baseline imported old ltx-pipelines from detached16835ab worktree; fixed imported current code. Baseline first, no randomization. Later scene render excluded.",
+  "interpretation": "Final repeat25.594s vs24.586s (~3.94% less elapsed). Second repeat32.950s vs24.536s also includes differing shape/compile/allocator warmup effects, so do not advertise average as steady-state speedup. Fixed uses larger stable tiles and more peak VRAM. Small sequential sample, not statistical proof."
+}

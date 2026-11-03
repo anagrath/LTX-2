@@ -1,0 +1,33 @@
+{
+  "video": "/home/anagrath/ai/outputs/ltx/budget-ab-baseline-20261102-3/video.mp4",
+  "width": 576,
+  "height": 1024,
+  "fps": 24.0,
+  "frame_count": 145,
+  "video_duration_s": 6.041666666666667,
+  "distinct_frames": 145,
+  "near_black_frames": [],
+  "sample_frames": [
+    0,
+    13,
+    26,
+    39,
+    52,
+    65,
+    78,
+    91,
+    104,
+    117,
+    130,
+    144
+  ],
+  "audio_rate": 48000,
+  "audio_channels": 2,
+  "audio_samples_per_channel": 288480,
+  "audio_duration_s": 6.01,
+  "audio_rms": 0.07551596076682258,
+  "audio_peak": 0.5207619071006775,
+  "audio_finite": true,
+  "audio_video_duration_delta_s": -0.031666666666667176,
+  "sha256": "b0950d9000939fa1490fdfcf2f6ed6ab71f32a156db45f4d4da06ae6de21f6c7"
+}

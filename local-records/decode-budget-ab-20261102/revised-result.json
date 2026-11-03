@@ -1,0 +1,87 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "dub_it_loaded": false,
+  "audio_reference_used": false,
+  "loras": [],
+  "target_frames": 1369,
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-cropped-confident-anchor.png",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "sampler": "official LTX-2.5 Euler ancestral",
+  "optimizations": {
+    "single_encoder_lifetime": true,
+    "persistent_streaming_transformer": true,
+    "compile": true,
+    "cuda_graphs": false,
+    "progressive_encode": true,
+    "completed_audio_device": "cpu",
+    "decoder_mode": "chunked_compile",
+    "auxiliary_residency": true
+  },
+  "story_plan": {
+    "script": "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover? And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really! We have seen success with students as young as two years old. How cool is that? And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range! Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join. Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.",
+    "dialogue": [
+      "Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?",
+      "And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!",
+      "We have seen success with students as young as two years old. How cool is that?",
+      "And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!",
+      "Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.",
+      "Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages."
+    ],
+    "prompts": [
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Hey, check this out, guys! I get asked all the time: what ages does Elephant Learning cover?\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"And honestly? All ages! We cover everything from counting all the way through algebra. Yep, really!\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"We have seen success with students as young as two years old. How cool is that?\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"And our algebra curriculum? It was designed to help students struggling with college algebra. So, quite the range!\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Basically, if they can use a computer, tablet, or phone and understand the prompts, they can join.\"",
+      "SCENE / ACTION:\nA continuous portrait 3D animated video of JE, the adult female gray elephant in the starting image, walking slowly along a sunny wooden beach boardwalk. Her blue eyes, freckles, ears and trunk retain her recognizable identity. She has a fit, lean, toned but curvy elephant silhouette, a cropped coral sleeveless top and very fitted opaque navy leggings. One glossy red ball rests in her left hand. Ocean, sand and railings remain behind her. Smooth following camera, confident graceful posture, gentle natural gestures and warm engaged eye contact. The ball remains secure in her left hand. No captions, text, logos or watermarks.\n\nVOICE / PERFORMANCE (direction, not dialogue):\nOne consistent adult female American voice, rich and full with warm chest resonance, a medium-high speaking pitch and smooth clear tone. The voice has depth and body while retaining a lifted bright pitch. She is excited and enthusiastic about the information, speaking slowly, deliberately and confidently with complete clear words, natural breathing pauses and expressive melody. Unhurried confident excitement rather than teasing or exaggerated playful acting. Smooth vocal texture throughout. Clean foreground speech, quiet ocean ambience, no music or other speakers.\n\nDIALOGUE \u2014 JE (spoken once):\n\"Two years old through college algebra. Counting to algebra, guys! That is what we mean by all ages.\""
+    ],
+    "num_frames": 1369,
+    "fps": 24,
+    "chunk_frames": 249,
+    "carry_frames": 25,
+    "duration_s": 57.041666666666664,
+    "word_count": 102,
+    "delivery": "Excited, slow and confident; smooth chest resonance with a medium-high speaking pitch",
+    "acting": [
+      "Confident natural gestures and engaged expression; gentle ball handling.",
+      "Confident natural gestures and engaged expression; gentle ball handling.",
+      "Confident natural gestures and engaged expression; gentle ball handling.",
+      "Confident natural gestures and engaged expression; gentle ball handling.",
+      "Confident natural gestures and engaged expression; gentle ball handling.",
+      "Confident natural gestures and engaged expression; gentle ball handling."
+    ],
+    "dub_it": false,
+    "audio_reference": null,
+    "external_tts": false,
+    "comparison_changes": [
+      "Remove the stretching instruction and repeated dialogue examples from acting directions",
+      "Excited rather than playful, deliberate slow confident speech, fuller chest resonance with higher pitch",
+      "Adult cropped coral top, fitted navy leggings and lean curvy athletic silhouette",
+      "Increase dialogue time from41.04 to57.04 seconds; six249-frame windows,25-frame carry"
+    ],
+    "unchanged": [
+      "102-word influencer FAQ and its factual claims",
+      "Recognizable elephant identity, beach boardwalk and red ball",
+      "Native LTX-2.5 joint audio/video, no Dub-It or external TTS",
+      "Seed42;576x1024 at24fps"
+    ],
+    "prompt_format": "Screenplay-style scene/action and voice/performance directions; only JE dialogue is quoted."
+  },
+  "wall_s": 296.479,
+  "peak_allocated_bytes": 14689660928,
+  "peak_reserved_bytes": 15969812480,
+  "peak_process_rss_kib": 74823924
+}

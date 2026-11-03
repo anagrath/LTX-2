@@ -1,0 +1,33 @@
+{
+  "video": "/home/anagrath/ai/outputs/ltx/je-confident-slow-20261102/video.mp4",
+  "width": 576,
+  "height": 1024,
+  "fps": 24.0,
+  "frame_count": 1369,
+  "video_duration_s": 57.041666666666664,
+  "distinct_frames": 1369,
+  "near_black_frames": [],
+  "sample_frames": [
+    0,
+    124,
+    248,
+    373,
+    497,
+    621,
+    746,
+    870,
+    994,
+    1119,
+    1243,
+    1368
+  ],
+  "audio_rate": 48000,
+  "audio_channels": 2,
+  "audio_samples_per_channel": 2735840,
+  "audio_duration_s": 56.99666666666667,
+  "audio_rms": 0.19484616672812538,
+  "audio_peak": 0.9893746376037598,
+  "audio_finite": true,
+  "audio_video_duration_delta_s": -0.0449999999999946,
+  "sha256": "5fa8d148d9a4b930eee0fa22b6af90e4bbd7ccda2f527d77be8ac12a3bce147c"
+}

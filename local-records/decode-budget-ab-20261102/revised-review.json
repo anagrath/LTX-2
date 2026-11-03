@@ -1,0 +1,17 @@
+{
+  "render_wall_s": 296.479,
+  "output_duration_s": 57.041666666666664,
+  "render_seconds_per_output_second": 5.197586559532505,
+  "previous_render_wall_s": 231.45,
+  "previous_output_duration_s": 41.041666666666664,
+  "previous_render_seconds_per_output_second": 5.639390862944163,
+  "comparison_limit": "Creative duration, chunk length, image and prompts changed; normalized throughput is descriptive, not isolated speedup. Separate same-input short A/B in comparison.json.",
+  "shared_video": "/mnt/mongo-raid/shared/Videos/JE All Ages - Confident Slow Voice.mp4",
+  "opening_direction_leakage_detected": false,
+  "speech_asr_differences": [
+    "Missing we at start of We have seen success",
+    "Repeated that in final line"
+  ],
+  "review_limit": "ASR and visual/decode checks; subjective voice quality awaits owner review.",
+  "worker_state": "A/B driver stopped both workers after jobs; no GPU render remains."
+}

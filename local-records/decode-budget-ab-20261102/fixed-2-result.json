@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "native_audio": true,
+  "external_tts": false,
+  "dub_it_loaded": false,
+  "audio_reference_used": false,
+  "loras": [],
+  "target_frames": 145,
+  "image": "/home/anagrath/ai/outputs/ltx/elephant-reference-20261102/je-boardwalk-athletic-anchor.png",
+  "seed": 42,
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "sampler": "official LTX-2.5 Euler ancestral",
+  "optimizations": {
+    "single_encoder_lifetime": true,
+    "persistent_streaming_transformer": true,
+    "compile": true,
+    "cuda_graphs": false,
+    "progressive_encode": true,
+    "completed_audio_device": "cpu",
+    "decoder_mode": "chunked_compile",
+    "auxiliary_residency": true
+  },
+  "story_plan": {
+    "script": "Hey, guys! Let us learn something fun together.",
+    "dialogue": [
+      "Hey, guys! Let us learn something fun together."
+    ],
+    "prompts": [
+      "A portrait 3D animated adult female gray elephant with blue eyes and freckles, wearing a light coral sleeveless top and navy leggings, standing on a sunny beach boardwalk and holding one red ball. Same identity as the starting image. A light, clear young adult female American voice says: \"Hey, guys! Let us learn something fun together.\" Natural cheerful speech, quiet ocean ambience, no other speakers or music. Gentle smiling camera-facing motion. No captions or lettering."
+    ]
+  },
+  "wall_s": 24.536,
+  "peak_allocated_bytes": 12464940032,
+  "peak_reserved_bytes": 14759755776,
+  "peak_process_rss_kib": 74823924
+}
