@@ -186,12 +186,19 @@ def serve(config):
     signal.signal(signal.SIGTERM, stop_signal)
     signal.signal(signal.SIGINT, stop_signal)
     status = directory/'worker.json'
-    info = {'pid':os.getpid(),'state':'starting','decoder_mode':config.decoder_mode,'compile':config.compile}
+    info = {'pid':os.getpid(),'state':'starting','decoder_mode':config.decoder_mode,'compile':config.compile,
+            'prepared_weights_cache_gib':getattr(config,'prepared_weights_cache_gib',0)}
     write_json(status, info)
     try:
         glm_state()
         with torch.inference_mode(), ExitStack() as lifetime:
             pipeline = build_pipeline(compile_transformer=config.compile, decoder_mode=config.decoder_mode)
+            prepared_encoder = pipeline.prompt_encoder
+            prepared_gib = getattr(config, 'prepared_weights_cache_gib', 0)
+            if prepared_gib:
+                prepared_encoder.enable_prepared_weights(max_bytes=prepared_gib*1024**3)
+                # Registered first so borrowers/models dispose before owner cache clears.
+                lifetime.callback(prepared_encoder.clear_prepared_weights)
             cache = PromptCache(pipeline.prompt_encoder, pipeline.device,
                 identity=(str(Path(__file__).resolve()),config.compile,config.decoder_mode,'pinned-LTX-2.5-49b093a39c19169a8a81721dcc541e07e945232f'))
             pipeline.prompt_encoder = cache
@@ -219,6 +226,8 @@ def serve(config):
                 info.update(state='prewarming')
                 write_json(status,info)
                 details = prewarm_prompts(cache, pipeline.device, prompts)
+                if prepared_gib:
+                    details['prepared_weights'] = prepared_encoder.prepared_weight_stats()
                 info.update(last_prewarm=details)
                 write_json(status,info)
                 return details
@@ -250,6 +259,8 @@ def serve(config):
             while not stopping and not stop.exists():
                 info.update(state='idle',prompt_cache_hits=cache.hits,prompt_cache_misses=cache.misses,
                             prompt_cache_bytes=cache.bytes)
+                if prepared_gib:
+                    info['prepared_weights'] = prepared_encoder.prepared_weight_stats()
                 write_json(status,info)
                 if getattr(config, 'lookahead', 0) and next(directory.glob('*.job.json'), None) is not None:
                     prepare_lookahead(directory, config, prepare)
@@ -269,6 +280,8 @@ def main():
         command.add_argument('--queue',type=Path,required=True)
         if name == 'serve':
             command.add_argument('--compile',action='store_true')
+            command.add_argument('--prepared-weights-cache-gib',type=int,choices=range(65),default=0,
+                help='Retain bounded prepared encoder weights in CPU RAM across cache misses; 0 disables')
             command.add_argument('--scene-cache-dir',type=Path,help='Opt-in completed-scene artifact checkpoints; never counted as generation throughput')
             command.add_argument('--lookahead',type=int,choices=range(5),default=0,help='Serial prewarm of next job plus N queued successors at job boundaries')
             command.add_argument('--decoder-mode',choices=['chunked_eager','chunked_compile','combined_compile'],default='chunked_compile')

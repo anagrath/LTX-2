@@ -195,3 +195,32 @@ reuse and fresh per-build GPU buffers, avoiding repeated staging and preserving
 GPU inference. Do not simply switch streaming ModelRegistry cache_weights on:
 pinned-source construction mutates source entries toNone while consuming them.
 Benchmarks/recommendation are in local-records/cpu-encoding-overlap-20261102.
+
+## Prepared prompt weights and current 41-second reference
+
+The owner authorized retained prepared weights, GPU timing and the next41s JE
+video. `ripper3_ltx_worker.py serve --prepared-weights-cache-gib 32` now retains
+immutable packed encoder/projection CPU weights while releasing per-call GPU
+buffers. Keep this worker alive across jobs; prior experiment drivers stopped
+workers and discarded their RAM state. Do not call this a disk/KV/video-state
+cache or claim serial prewarm is parallel compute. Built-in CPU RAM streaming,
+no LoRAs only. Existing CUDA block copy stream/events already overlap transfers
+with queued compute; no new provider/synchronization architecture was introduced.
+
+46 CPU tests passed. A corrected real safetensors tuple-path regression preceded
+the GPU success: direct encoding bypassing caption LRU took33.272s cold,6.435s
+for changed captions using retained weights,6.283s re-encoding originals; original
+cold/warm outputs were bitwise equal. Retained footprint32,277,182,208bytes.
+Evidence: local-records/prepared-weights-20261102. First cold preparation remains
+necessary; report it separately and include it in full cold totals.
+
+Current approved image is `je-refined-standing-reference-v2.png` and plan is
+`all-ages-native-refined-standing-41-story-plan.json` in the reference workspace.
+Preserve102-word FAQ, standing/planted feet, natural excited confident cadence,
+smooth chest resonance with medium-high pitch,985frames/185chunk/25carry,
+576x1024/24fps/seed42. Appearance changes retain slender thighs, rounded hips and
+subtle abdominal definition. No extra speech/stretching or external TTS.
+Timing driver: experiments/ltx-setup-20261102/refined-standing-41/run.py (workspace
+root). It primes older captions once, times fresh changed captions and render,
+and keeps the worker alive afterward. Deliver to Shared/Videos and open/play on
+Mac immediately after completion, without delaying for extra media QA.

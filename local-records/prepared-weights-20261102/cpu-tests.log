@@ -1,0 +1,44 @@
+/home/anagrath/ai/code/LTX-2/.venv/lib/python3.14/site-packages/colour/utilities/verbose.py:340: ColourUsageWarning: "Matplotlib" related API features are not available: "No module named 'matplotlib'".
+See the installation guide for more information: https://www.colour-science.org/installation-guide/
+  warn(*args, **kwargs)
+.........  0%|          | 0/4 [00:00<?, ?it/s]100%|██████████| 4/4 [00:00<00:00, 564.62it/s]
+.............ERROR:root:LTX job failed: 1.running.json
+Traceback (most recent call last):
+  File "/home/anagrath/ai/code/LTX-2/ripper3_ltx_worker.py", line 154, in process_pending
+    details = run(args)
+  File "/home/anagrath/ai/code/LTX-2/test_ripper3_ltx_worker.py", line 42, in fail
+    raise RuntimeError('test failure')
+RuntimeError: test failure
+...............WARNING:root:Skipping invalid lookahead input: 2.job.json
+Traceback (most recent call last):
+  File "/home/anagrath/ai/code/LTX-2/ripper3_ltx_worker.py", line 131, in prepare_lookahead
+    args = job_args(json.loads(path.read_text()), config)
+  File "/home/anagrath/ai/code/LTX-2/ripper3_ltx_worker.py", line 96, in job_args
+    raise ValueError(f'{name} must be an absolute path')
+ValueError: story_plan must be an absolute path
+.........
+----------------------------------------------------------------------
+Ran 46 tests in 0.247s
+
+OK
+nanobind: leaked 2 instances!
+ - leaked instance 0x79de74bd0388 of type "OpenImageIO.OpenImageIO.TypeDesc"
+ - leaked instance 0x79de74bd0368 of type "OpenImageIO.OpenImageIO.TypeDesc"
+nanobind: leaked 3 types!
+ - leaked type "OpenImageIO.OpenImageIO.TypeDesc"
+ - leaked type "OpenImageIO.OpenImageIO.ImageSpec"
+ - leaked type "BASETYPE"
+nanobind: leaked 114 functions!
+ - leaked function ""
+ - leaked function ""
+ - leaked function ""
+ - leaked function "is_vec2"
+ - leaked function ""
+ - leaked function "is_box3"
+ - leaked function "set_colorspace"
+ - leaked function "size"
+ - leaked function ""
+ - leaked function "numelements"
+ - ... skipped remainder
+nanobind: this is likely caused by a reference counting issue in the binding code.
+See https://nanobind.readthedocs.io/en/latest/refleaks.html

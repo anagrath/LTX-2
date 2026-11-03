@@ -8,6 +8,7 @@ import torch
 
 from ltx_core.allocator_trim_strategy import AllocatorTrimStrategy
 from ltx_core.block_streaming import DISK_CPU_SLOTS, StreamingModelBuilder
+from ltx_core.block_streaming.prepared_weights import PreparedStateDictLoader, PreparedWeightsCache, checkpoint_stamp
 from ltx_core.loader.primitives import BuilderProtocol
 from ltx_core.loader.registry import ModelRegistry, Registry
 from ltx_core.loader.single_gpu_model_builder import SingleGPUModelBuilder as Builder
@@ -63,6 +64,8 @@ class PromptEncoder:
         self._dtype = dtype
         self._device = device
         self._offload_mode = offload_mode
+        self._prepared_weights = None
+        self._prepared_source_stamps = None
         self._alloc_trim_strategy = alloc_trim_strategy
         self._prompt_enhancer_gemma_root = prompt_enhancer_gemma_root
 
@@ -132,6 +135,48 @@ class PromptEncoder:
             registry=registry,
         )
 
+    def enable_prepared_weights(self, max_bytes: int = 32*1024**3):
+        """Retain packed CPU Gemma/projection weights; GPU model lifetimes stay per call.
+
+        This opt-in path supports the built-in no-LoRA RAM-streaming encoder only.
+        Enable once before wrapping the encoder in a prompt-embedding cache.
+        """
+        if self._offload_mode != OffloadMode.CPU or self._streaming_text_encoder_builder is None:
+            raise ValueError('Prepared prompt weights require built-in CPU RAM streaming')
+        if self._streaming_text_encoder_builder.loras or self._embeddings_processor_builder.loras:
+            raise ValueError('Prepared prompt weights do not support LoRAs')
+        if self._prepared_weights is not None:
+            if self._prepared_weights.max_bytes != max_bytes:
+                raise ValueError('Restart the encoder to change its prepared-weight budget')
+            return self
+        cache = PreparedWeightsCache(max_bytes)
+        self._streaming_text_encoder_builder = self._streaming_text_encoder_builder.with_prepared_weights(cache)
+        original = self._embeddings_processor_builder
+        self._embeddings_processor_builder = Builder(
+            model_path=original.model_path,
+            model_class_configurator=EmbeddingsProcessorConfigurator.with_gemma_model_path(self._text_encoder_path),
+            model_sd_ops=original.model_sd_ops,module_ops=original.module_ops,
+            model_loader=PreparedStateDictLoader(original.model_loader,cache,self._dtype,
+                pin_memory=self._device.type=='cuda',role='prompt-projection'),
+            registry=ModelRegistry(cache_models=True,cache_weights=False),
+        )
+        self._prepared_weights = cache
+        self._prepared_source_stamps = checkpoint_stamp([self._text_encoder_path,*self._embeddings_paths])
+        return self
+
+    def _check_prepared_sources(self):
+        if self._prepared_weights is not None:
+            current = checkpoint_stamp([self._text_encoder_path,*self._embeddings_paths])
+            if current != self._prepared_source_stamps:
+                raise RuntimeError('Prompt model files changed; restart the worker instead of reusing prepared weights')
+
+    def prepared_weight_stats(self):
+        return None if self._prepared_weights is None else self._prepared_weights.stats()
+
+    def clear_prepared_weights(self):
+        if self._prepared_weights is not None:
+            self._prepared_weights.clear()
+
     def _build_text_encoder(self) -> torch.nn.Module:
         """Build the Gemma text encoder (non-streaming path)."""
         return self._text_encoder_builder.build(device=self._device, dtype=self._dtype).eval()
@@ -141,9 +186,11 @@ class PromptEncoder:
 
     def _build_embeddings_processor(self) -> EmbeddingsProcessor:
         """Build the embeddings processor on the target device."""
+        self._check_prepared_sources()
         return self._embeddings_processor_builder.build(device=self._device, dtype=self._dtype).eval()
 
     def _text_encoder_ctx(self) -> AbstractContextManager:
+        self._check_prepared_sources()
         if self._offload_mode != OffloadMode.NONE:
             return streaming_model(
                 self._streaming_text_encoder_builder, self._device, self._dtype, self._alloc_trim_strategy
@@ -212,6 +259,8 @@ class PromptEncoder:
             if self._device.type == "cuda":
                 torch.cuda.synchronize(self._device)
             logger.info("Prompt projection forward time (%d captions): %.3fs", len(prompts), time.monotonic() - phase_start)
+        if self._prepared_weights is not None:
+            logger.info("Prepared CPU prompt weights: %s", self.prepared_weight_stats())
         logger.info("Prompt encoding complete")
         return result
 

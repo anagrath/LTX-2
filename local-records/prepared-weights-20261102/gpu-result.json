@@ -1,0 +1,69 @@
+{
+  "status": "completed",
+  "glm_state": {
+    "draft_loaded": false,
+    "draft_switch_supported": true,
+    "draft_p_min": 0.8999999761581421,
+    "draft_n_max": 7,
+    "success": true,
+    "worker_running": false,
+    "worker_pid": null,
+    "coordinator_pid": 268529,
+    "endpoint": "127.0.0.1:50053"
+  },
+  "prompt_count": 6,
+  "prepared_budget_bytes": 34359738368,
+  "embedding_cache_used": false,
+  "runs": [
+    {
+      "name": "cold",
+      "wall_s": 33.272,
+      "all_finite": true,
+      "prepared_stats": {
+        "hits": 0,
+        "misses": 3,
+        "evictions": 0,
+        "bytes": 32277182208,
+        "entries": 3,
+        "prepare_wall_s": 25.617,
+        "inflight_copies": 0,
+        "max_bytes": 34359738368
+      },
+      "peak_allocated_bytes": 10269617152
+    },
+    {
+      "name": "warm_changed_captions",
+      "wall_s": 6.435,
+      "all_finite": true,
+      "prepared_stats": {
+        "hits": 3,
+        "misses": 3,
+        "evictions": 0,
+        "bytes": 32277182208,
+        "entries": 3,
+        "prepare_wall_s": 25.617,
+        "inflight_copies": 0,
+        "max_bytes": 34359738368
+      },
+      "peak_allocated_bytes": 10269617152
+    },
+    {
+      "name": "warm_original_again",
+      "wall_s": 6.283,
+      "all_finite": true,
+      "prepared_stats": {
+        "hits": 6,
+        "misses": 3,
+        "evictions": 0,
+        "bytes": 32277182208,
+        "entries": 3,
+        "prepare_wall_s": 25.617,
+        "inflight_copies": 0,
+        "max_bytes": 34359738368
+      },
+      "peak_allocated_bytes": 10269617152,
+      "bitwise_equal_to_cold": true,
+      "max_abs_difference": 0.0
+    }
+  ]
+}

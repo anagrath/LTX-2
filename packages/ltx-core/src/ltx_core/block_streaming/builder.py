@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import logging
+import json
 from dataclasses import replace
 from typing import TYPE_CHECKING, Final, Generic
 
@@ -14,6 +15,9 @@ from torch import nn
 from ltx_core.block_streaming import utils as bs_utils
 from ltx_core.block_streaming.block_fetcher import BlockFetcher
 from ltx_core.block_streaming.disk import DiskBlockReader, DiskTensorReader, LoraSource
+from ltx_core.block_streaming.prepared_weights import (
+    PreparedStateDictLoader, PreparedWeightsCache, checkpoint_stamp, sd_ops_identity,
+)
 from ltx_core.block_streaming.pool import BufferPool
 from ltx_core.block_streaming.provider import WeightsProvider
 from ltx_core.block_streaming.source import DiskWeightSource, PinnedBlock, PinnedWeightSource, WeightSource
@@ -94,6 +98,7 @@ class StreamingModelBuilder(Generic[ModelType], ModelBuilderProtocol[ModelType])
         blocks_attr: str = "",
         blocks_prefix: str = "",
         cpu_slots_count: int | None = None,
+        prepared_weights: PreparedWeightsCache | None = None,
     ) -> None:
         # Read-only: typed with the covariant ModelType, so it must not be a mutable attribute.
         self._model_class_configurator: Final = model_class_configurator
@@ -107,6 +112,7 @@ class StreamingModelBuilder(Generic[ModelType], ModelBuilderProtocol[ModelType])
         self._blocks_attr = blocks_attr
         self._blocks_prefix = blocks_prefix
         self._cpu_slots_count = cpu_slots_count
+        self._prepared_weights = prepared_weights
         self._metadata = LazyModelMetadata(model_path, self._model_loader)
 
     @property
@@ -186,6 +192,19 @@ class StreamingModelBuilder(Generic[ModelType], ModelBuilderProtocol[ModelType])
         clone._registry = registry
         return clone
 
+    def with_prepared_weights(self, cache: PreparedWeightsCache | None) -> Self:
+        """Return a builder sharing prepared CPU sources, never GPU model tensors."""
+        clone = copy.copy(self)
+        clone._prepared_weights = cache
+        return clone
+
+    def _prepared_source_key(self, metadata: dict, dtype: torch.dtype) -> tuple:
+        return (checkpoint_stamp(self.model_path),str(dtype),self.blocks_attr,self.blocks_prefix,
+                id(self.model_class_configurator),id(self.model_loader),id(self.fuse_rule),
+                sd_ops_identity(self.model_sd_ops),
+                tuple((op.name,id(op.matcher),id(op.mutator)) for op in self.module_ops),
+                json.dumps(metadata,sort_keys=True,default=str))
+
     def with_lora_load_device(self, device: torch.device) -> Self:
         # Streaming fuses LoRAs into pinned CPU buffers; no other staging device is meaningful.
         raise NotImplementedError("StreamingModelBuilder loads LoRA weights on CPU only.")
@@ -253,11 +272,20 @@ class StreamingModelBuilder(Generic[ModelType], ModelBuilderProtocol[ModelType])
         cpu_slots_count = cpu_slots_count if cpu_slots_count is not None else len(blocks)
         gpu_slots_count = gpu_slots_count if gpu_slots_count is not None else _DEFAULT_GPU_SLOTS
 
+        if self._prepared_weights is not None and (self.loras or cpu_slots_count < len(blocks)):
+            raise ValueError('Prepared CPU sources require no LoRAs and RAM streaming')
         if cpu_slots_count >= len(blocks):
             lora_sd_and_strengths = self._load_lora_sds()
-            source, lora_sources = self._build_pinned_source(
-                blocks, dtype, cpu_slots_count, block_key_map, lora_sd_and_strengths
-            )
+            if self._prepared_weights is None:
+                source, lora_sources = self._build_pinned_source(
+                    blocks, dtype, cpu_slots_count, block_key_map, lora_sd_and_strengths
+                )
+            else:
+                source = self._prepared_weights.pinned_source(
+                    self._prepared_source_key(metadata,dtype),
+                    lambda: self._build_pinned_source(blocks,dtype,cpu_slots_count,block_key_map,[])[0],
+                )
+                lora_sources = []
             non_block_loras = lora_sd_and_strengths
         else:
             reader = DiskTensorReader(checkpoint_paths)
@@ -428,7 +456,12 @@ class StreamingModelBuilder(Generic[ModelType], ModelBuilderProtocol[ModelType])
         duplication) is applied exactly once and block tensors are never read.
         """
         non_block_sd_ops = self._filtered_sd_ops("non_block", frozenset(mk for _sft_key, mk in non_block_keys))
-        loaded = load_state_dict(self.model_path, self.model_loader, self.registry, device, non_block_sd_ops)
+        if self._prepared_weights is None:
+            loaded = load_state_dict(self.model_path, self.model_loader, self.registry, device, non_block_sd_ops)
+        else:
+            loader = PreparedStateDictLoader(self.model_loader,self._prepared_weights,dtype,
+                                             pin_memory=True,role='text-non-block')
+            loaded = loader.load(self.model_path,sd_ops=non_block_sd_ops,device=device)
         non_block_sd = {key: tensor.to(dtype=dtype) for key, tensor in loaded.sd.items()}
 
         if lora_sd_and_strengths:

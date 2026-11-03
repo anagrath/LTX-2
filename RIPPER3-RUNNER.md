@@ -66,6 +66,23 @@ write a job JSON with absolute paths:
 ```
 
 The worker handles one job at a time and holds its reusable models across jobs.
+For repeated new captions, add `--prepared-weights-cache-gib 32` to `serve`.
+This retains packed text-encoder and projection weights in CPU RAM, while each
+encoding call still releases its temporary GPU buffers. The measured retained
+weight footprint is about 30.1 GiB, separate from prompt embeddings and video
+models. The flag defaults to zero (disabled). Keep the same worker alive between
+jobs: restarting discards this RAM cache and requires another cold preparation.
+Only the built-in CPU RAM streaming path without LoRAs is supported. Restart
+after changing model files or code; source changes detected by the encoder fail
+instead of silently using old prepared weights.
+
+A six-caption GPU check on November 2 measured 33.272s cold versus 6.435s for
+changed captions with prepared weights retained. Encoding the original captions
+again took 6.283s and produced bitwise-identical conditioning tensors. These
+measurements bypassed the exact-caption embedding cache entirely; they measure
+prompt preparation, not video generation or total render throughput. Existing
+CUDA copy-stream/event ordering continues to overlap block transfers with compute.
+
 It caches up to 512 MiB of individual unenhanced caption embeddings in CPU RAM.
 Changing one caption only encodes the changed caption; other captions, including
 reordered/duplicated ones, reuse their exact cached contexts. Returned tensors
