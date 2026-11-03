@@ -421,3 +421,31 @@ pending. Exact prompt and seed-image edit evidence:
 local-records/fu-lu-walk-hook-20261103. Runtime queue still uses November2
 refined-standing-41/queue; new driver explicitly points there rather than assuming
 a same-date queue. No marketing upload or deletion of existing sources.
+
+## Fu Lu rap extension and pending owner melody-loop selection
+
+Owner requested extending approved Walking Hook with My name is Fu Lu, pronounced
+with ooooh/looooh. Native dry rap was generated from original last frame216,
+then edited onto intro with an actual source-audio loop; not latent-state resume.
+V1 used opening two-beat crop0.336–1.456s and was rejected as jarring/incorrect.
+Owner clarified pauses: My name is... Fu... Lu. Pronounced with an... Ooooh... loooh.
+V2 generated249frames,seed48,10.375s with pauses requested. It used later audio
+2.016–8.736s (6.72s),7-frame bridge,19.125s total. Opened/played Shared/Videos/Fu Lu -
+Walking Rap v2.mp4 at observed1x; owner rejected loop again. Do not label either
+loop correct or approved. Original Walking Hook remains intact. V1 shared rap
+export was absent when v2 began; do not infer why or recreate it unasked.
+
+Crucial clarification: owner wants the WHOLE MELODY over the beat, not drum-period
+matching. Previous cuts were inferred from onset/tempo analysis and did not identify
+the desired melodic phrase. This session cannot actually listen: forwarding audio
+returned audio content omitted because you do not support audio input. Do not claim
+to have heard/verified the melody, or treat Whisper's music transcription as truth.
+Stop guessing boundaries. Owner loop selection is pending.
+
+A local selector is open in Safari on Mac: Shared/Incoming/Fu Lu Loop Selector.html.
+It plays the original9s Walking Hook, offers Mark start(I)/Mark end(O), draggable
+boundaries, Loop selection, and Save selection JSON download. Owner can report the
+two times or save fu-lu-loop-selection.json on Mac. Once supplied, use those exact
+source bounds for the melodic loop and revise the existing v2 editorial mix.
+No need to regenerate the rap just to change the audio loop. Repro scripts and
+HTML saved in local-records/fu-lu-rap-{extension,v2}-20261103; media stays outside Git.

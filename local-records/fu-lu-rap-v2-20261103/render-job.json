@@ -1,0 +1,9 @@
+{
+  "output_dir": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-section-v2-20261103",
+  "image": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-reference-20261103/continuation-seed.png",
+  "story_plan": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-reference-20261103/rap-paused-story-plan.json",
+  "num_frames": 249,
+  "chunk_frames": 249,
+  "carry_frames": 0,
+  "seed": 48
+}

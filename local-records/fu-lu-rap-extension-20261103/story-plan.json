@@ -1,0 +1,19 @@
+{
+  "script": "My name is Fu Lu. Pronounced with an ooooh, looooh.",
+  "dialogue": [
+    "My name is Fu Lu. Pronounced with an ooooh, looooh."
+  ],
+  "prompts": [
+    "SCENE / ACTION:\nContinue the photorealistic shot of Fu Lu, the female Chinese Crested dog in the starting image, walking toward the camera on the same sunny leaf-covered path. Match her exact gray-and-white face, dark eyes, black nose, delicate canine muzzle, wispy silky crest and natural coat. Continue her current forward step without changing direction, camera angle, environment or character design. The eye-level camera tracks backward smoothly to keep her face and moving paws visible. She gives a cute confident little head bob and raps directly to the camera, her canine mouth and jaw articulating each syllable in sync. Preserve natural four-legged walking, fur motion and the same realistic warm sunlight. No people, human body, outfits, text, captions, logos or watermarks.\n\nVOICE / RAP PERFORMANCE (silent direction):\nOne friendly clear female voice, mid-high pitch, playful swagger and crisp confident diction. Perform a dry solo rhythmic rap at107beats per minute. Start after a brief half-second pickup, deliver the name clearly, then stretch the two final vowel sounds with rhythmic emphasis. The first long sound is ooooh and the second is looooh. Keep the exact words, speak/rap each once, and let the two long sounds land as a playful pronunciation punchline. No singing a different song, extra words, male rapper or second voice. Crucially generate the vocal alone: no instrumental beat, background music, percussion, whistle or accompaniment. A separately preserved original instrumental will be mixed afterward, so the generated audio should be a clean solo vocal with only faint natural outdoor ambience.\n\nRAP WORDS \u2014 FU LU (only these words, once):\n\"My name is Fu Lu. Pronounced with an ooooh, looooh.\""
+  ],
+  "num_frames": 217,
+  "chunk_frames": 217,
+  "carry_frames": 0,
+  "fps": 24,
+  "duration_s": 9.041666666666666,
+  "native_audio": true,
+  "external_tts": false,
+  "source_clip": "/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Hook.mp4",
+  "source_seed_frame": 216,
+  "notes": "Image-seeded editorial continuation, not saved latent/KV continuation. Generate native dry rap for mixing with an actual loop from the approved intro."
+}

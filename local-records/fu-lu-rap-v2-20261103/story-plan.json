@@ -1,0 +1,19 @@
+{
+  "script": "My name is... Fu... Lu. Pronounced with an... Ooooh... loooh.",
+  "dialogue": [
+    "My name is... Fu... Lu. Pronounced with an... Ooooh... loooh."
+  ],
+  "prompts": [
+    "SCENE / ACTION:\nContinue the photorealistic shot of Fu Lu, the female Chinese Crested dog in the starting image, walking toward the camera on the same sunny leaf-covered path. Match her exact gray-and-white face, dark eyes, black nose, delicate canine muzzle, wispy silky crest and natural coat. Continue her current forward step without changing direction, camera angle, environment or character design. The eye-level camera tracks backward smoothly to keep her face and moving paws visible. She gives a cute confident little head bob and raps directly to the camera, her canine mouth and jaw articulating each syllable in sync. Preserve natural four-legged walking, fur motion and the same realistic warm sunlight. No people, human body, outfits, text, captions, logos or watermarks.\n\nVOICE / RAP PERFORMANCE (silent direction):\nOne friendly clear female voice, mid-high pitch, playful confident swagger. A relaxed sparse rhythmic rap at107beats per minute, not a hurried sentence. Keep every ellipsis as an audible pause of about one beat. Begin after a half-second pickup. Say the short setup, wait, say Fu clearly, wait, then Lu clearly. After another small beat, say the pronunciation setup, wait, hold the Ooooh vowel for about two beats, wait a beat, then hold loooh for about two beats. The pauses are important: give each name syllable its own space and let the final vowel sounds breathe. Do not speak the word pause or add any words. Generate only this solo vocal and faint natural outdoor ambience, without music, drums, whistles, accompaniment or other singers; the original vocalized music hook will be mixed afterward.\n\nRAP WORDS \u2014 FU LU (ellipses mark silent pauses):\n\"My name is... Fu... Lu. Pronounced with an... Ooooh... loooh.\""
+  ],
+  "num_frames": 249,
+  "chunk_frames": 249,
+  "carry_frames": 0,
+  "fps": 24,
+  "duration_s": 10.375,
+  "native_audio": true,
+  "external_tts": false,
+  "source_clip": "/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Hook.mp4",
+  "source_seed_frame": 216,
+  "notes": "Owner requested deliberate ellipsis pauses and the vocalized fu-fu-lu-lu-lu-fu music body loop, not the opening instrumental reset."
+}

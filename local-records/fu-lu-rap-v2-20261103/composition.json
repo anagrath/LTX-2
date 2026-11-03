@@ -1,0 +1,21 @@
+{
+  "output": "/home/anagrath/ai/outputs/ltx/fu-lu-walk-rap-v2-20261103/video.mp4",
+  "intro": "/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Hook.mp4",
+  "rap_section": "/home/anagrath/ai/outputs/ltx/fu-lu-rap-section-v2-20261103/video.mp4",
+  "seed_source_frame": 216,
+  "continuation_type": "last-frame image-seeded new native clip, editorial crossfade; not latent-state extension",
+  "beat_source_start_s": 2.016,
+  "beat_loop_s": 6.72,
+  "estimated_bpm": 107.14285714285714,
+  "loop_phase_offset_s": 0.0,
+  "intro_video_audio_preserved_before_s": 8.75,
+  "bridge_frames": 7,
+  "bridge_s": 0.2916666666666667,
+  "expected_frames": 459,
+  "expected_duration_s": 19.125,
+  "music_ducked_under_rap": true,
+  "loop_content": "later vocalized fu-fu-lu-lu-lu-fu body, not the opening instrumental",
+  "rap_text": "My name is... Fu... Lu. Pronounced with an... Ooooh... loooh.",
+  "new_vocal_source": "native LTX audio prompted dry a cappella rap; no separate TTS",
+  "compose_wall_s": 3.89
+}

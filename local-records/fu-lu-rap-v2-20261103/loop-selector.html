@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fu Lu — choose the melody loop</title>
+<style>
+body{margin:0;background:#10161d;color:#eef3f8;font:17px system-ui,sans-serif}main{max-width:900px;margin:auto;padding:28px}h1{font-size:28px}p{color:#bcc9d5;line-height:1.5}section{display:grid;grid-template-columns:250px 1fr;gap:28px}video{width:250px;max-height:450px;border-radius:12px;background:#000}button{background:#273a4c;border:1px solid #58718a;color:white;border-radius:8px;padding:12px 16px;margin:5px 5px 5px 0;font-size:15px;cursor:pointer}.primary{background:#246f67}label{display:block;margin-top:20px}input{width:100%;margin:12px 0}output{font-variant-numeric:tabular-nums;color:#79e2cb}#status{min-height:26px}small{color:#b9c7d4}@media(max-width:650px){section{grid-template-columns:1fr}video{width:180px}}
+</style>
+<main><h1>Choose Fu Lu’s melody loop</h1>
+<p>Play the original clip. Mark where the complete melody starts and ends, then preview the loop until it joins naturally.</p>
+<section><video id="v" controls preload="auto" src="../Videos/Fu%20Lu%20-%20Walking%20Hook.mp4"></video>
+<div><p>Current time: <output id="now">0.000</output> seconds</p>
+<button id="markStart">Mark start (I)</button><button id="markEnd">Mark end (O)</button>
+<label>Start: <output id="startText">0.000</output> seconds<input id="start" type="range" min="0" max="9.041667" step="0.001" value="0"></label>
+<label>End: <output id="endText">9.042</output> seconds<input id="end" type="range" min="0" max="9.041667" step="0.001" value="9.041667"></label>
+<p>Loop length: <output id="length">9.042</output> seconds</p>
+<button class="primary" id="loop">Loop selection</button><button id="stop">Stop</button><button class="primary" id="save">Save selection</button>
+<p id="status"></p><small>“Save selection” downloads fu-lu-loop-selection.json to your Mac. You can also tell me the displayed start and end times.</small>
+</div></section></main>
+<script>
+const v=document.querySelector('#v'),start=document.querySelector('#start'),end=document.querySelector('#end');let looping=false;
+const n=x=>Number(x.value),show=(id,value)=>document.querySelector(id).textContent=value.toFixed(3);
+function refresh(){show('#startText',n(start));show('#endText',n(end));show('#length',Math.max(0,n(end)-n(start)))}
+function valid(){if(n(end)<=n(start)+.05){document.querySelector('#status').textContent='Choose an end after the start.';return false}return true}
+v.addEventListener('loadedmetadata',()=>{start.max=end.max=v.duration;end.value=v.duration;refresh()});
+start.oninput=end.oninput=refresh;
+function markStart(){start.value=v.currentTime;refresh()}function markEnd(){end.value=v.currentTime;refresh()}
+document.querySelector('#markStart').onclick=markStart;document.querySelector('#markEnd').onclick=markEnd;
+document.querySelector('#loop').onclick=()=>{if(!valid())return;looping=true;v.currentTime=n(start);v.playbackRate=1;v.play();document.querySelector('#status').textContent='Looping the selected phrase.'};
+document.querySelector('#stop').onclick=()=>{looping=false;v.pause();document.querySelector('#status').textContent='Stopped.'};
+function tick(){show('#now',v.currentTime);if(looping&&!v.paused&&v.currentTime>=n(end)-.008)v.currentTime=n(start);requestAnimationFrame(tick)}tick();
+v.addEventListener('ended',()=>{if(looping){v.currentTime=n(start);v.play()}});
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key.toLowerCase()==='i')markStart();if(e.key.toLowerCase()==='o')markEnd()});
+document.querySelector('#save').onclick=()=>{if(!valid())return;const selection={source:'Fu Lu - Walking Hook.mp4',source_path:'/mnt/mongo-raid/shared/Videos/Fu Lu - Walking Hook.mp4',start_s:n(start),end_s:n(end),duration_s:n(end)-n(start),selection_basis:'Owner-selected complete melody phrase',created_at:new Date().toISOString()};const url=URL.createObjectURL(new Blob([JSON.stringify(selection,null,2)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='fu-lu-loop-selection.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.querySelector('#status').textContent='Selection saved. Tell me when it is ready.'};
+</script></html>
